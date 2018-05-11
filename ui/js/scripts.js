@@ -15,10 +15,9 @@ function validateLogin(){
     }
 }
 
-
-
-
-
+function clickDiv(){
+    window.location.href = "../html/requestdetails.html"
+}
 
 function displayPage(){
     if(document.getElementById('username').value === "admin001"){
