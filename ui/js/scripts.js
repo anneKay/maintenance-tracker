@@ -15,10 +15,9 @@ function validateLogin(){
     }
 }
 
-function validateSignUp(){
-    event.preventDefault();
 
-}
+
+
 
 
 function displayPage(){
