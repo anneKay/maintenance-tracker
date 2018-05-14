@@ -41,84 +41,47 @@ img.logo-bg{
     display: block;
 }
 
+/*pagination modules*/
 
-/* InputText Modules*/
-input[type=text], select {
-    width: 100%;
-    padding: 17px 20px;
-    margin: 15px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-} 
-input[type=date]{
-    width: 100%;
-    padding: 17px 20px;
-    margin: 15px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+.pagination {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 14em;
+	margin-bottom:2em !important;
+
 }
 
+	.pagination a {
+		color: black;
+		float: left;
+		padding: 8px 16px;
+		text-decoration: none;
+		transition: background-color .3s;
+		border: 1px solid #ddd;
+	}
 
-input[type=text].search {
-    width: 300px;
-    padding: 12px 20px;
-    margin-top: 0.5em;
-    margin-right: 1em;
-    float: left;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-input[type=text].search:hover {
- border-color: green;
-}
+		.pagination a.active {
+			background-color: #4CAF50;
+			color: white;
+			border: 1px solid #4CAF50;
+		}
 
-input[type=password], select {
-    width: 100%;
-    padding: 17px 20px;
-    margin: 15px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+		.pagination a:hover:not(.active) {
+			background-color: #ddd;
+		}
 
-input[type=submit] {
-    width: 20%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 25px 0 5px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
 
 div.signup a, div.login a{
     text-decoration: none;
+}
+.signup {
+
 }
 
 div.signup a:hover div.login a:hover{
     text-decoration: none;
     color: #45a049;
-}
-div.form-container{
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 2em 5em;
-    
 }
 
 /*Footer Modules*/
@@ -144,36 +107,140 @@ footer h1{
 
 @media (min-width: 48em){
 
+	/* InputText Modules*/
+	input[type=text], select {
+		width: 100%;
+		padding: 17px 20px;
+		margin: 15px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+
+	input[type=date] {
+		width: 100%;
+		padding: 17px 20px;
+		margin: 15px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+
+
+	input[type=text].search {
+		width: 300px;
+		padding: 12px 20px;
+		margin-top: 0.5em;
+		margin-right: 1em;
+		float: left;
+		font-size: 1em;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+
+		input[type=text].search:hover {
+			border-color: green;
+		}
+
+	input[type=password], select {
+		width: 100%;
+		padding: 17px 20px;
+		margin: 15px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+
+	input#cancel {
+		background-color: red;
+		text-align: center;
+		color: white;
+		padding: 14px;
+		margin-right: auto;
+		margin-left: auto;
+		width: 100%;
+		display: block;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-weight: bold;
+		font-size: 20px;
+	}
+
+	input[type=submit] {
+		
+		background-color: #4CAF50;
+		color: white;
+		padding: 14px 20px;
+		margin-right: auto;
+		margin-left: auto;
+		margin-bottom:1em;
+		width: 100%;
+		display: block;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-weight: bold;
+		font-size: 20px;
+	}
+
+
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
+
     /*list item modules*/
 ul {
     background: #eee;
     margin: 3em;
     margin-bottom: 2em;
-    padding: 20px;
+    padding: 5px;
     list-style-type: none;
 }
 ul li {
     background: #fafafa;
     color:black !important;
     margin: 1.5em;
+	
     height: 2.5em;
     font-size: 1.3em;
     padding: 0.7em 1em;
-
     
 }
+	ul li:first-child {
+		margin-top: 4.5em;
+	}
 ul a {
     color:black;
 }
- ul h3.new-request{
+
+	
+ h3.new-request{
      background: green;
+	 float: right;
      color:white;
      width: 20%;
-     margin-left: 34px;
+     margin-right: 4.5em;
+	 margin-bottom: 40px;
+	 margin-top:20px;
      padding: 0.6em;
      text-align: center;
 
  }
+
+	div.form-container {
+		margin-left: 25%;
+		margin-right: 25%;
+		border-radius: 5px;
+		background-color: #f2f2f2;
+		padding: 2em 5em;
+		margin-bottom: 2em;
+	}
+
 
  ul h3.new-request:hover{
     background: rgb(96, 114, 96);
@@ -185,24 +252,24 @@ ul a {
 
 }
 span.accepted{
-    background: green;
-    color:white;
+   
+    color:green;
     padding:0.3em;
     font-size: 0.6em;
     font-family: cursive;
     margin-top: 0.1em;
 }
 span.rejected{
-    background: red;
-    color:white;
+	color: red;
+   
     padding:0.3em;
     font-size: 0.6em;
     font-family: cursive;
     margin-top: 0.1em;
 }
 span.progress{
-    background: rgb(114, 114, 31);
-    color:white;
+    color: rgb(114, 114, 31);
+  
     padding:0.3em;
     font-size: 0.6em;
     font-family: cursive;
@@ -213,7 +280,7 @@ span.progress{
         margin-top:0em;
         margin-left: 0;
         margin-right: 0;
-    
+		position: fixed;
         bottom:0;
         width:100%;
            /* Height of the footer */
@@ -230,7 +297,7 @@ span.progress{
     .header-primary {
         overflow: hidden;
         background-color: white;
-        padding: 5px 1px;
+        padding: 0.3em 2em;
         
       }
       .header-primary a {
@@ -239,27 +306,22 @@ span.progress{
         text-align: center;
         text-decoration: none;
         font-size: 18px; 
-        padding: 12px;
+        margin: 22px;
         
         border-radius: 4px;
       }
 
-      .btn-primar{
+      .btn-header{
         background:#625e91;
+		margin-top: 0.1em !important;
         border-color: #008080;
-        padding-bottom: 0.2em;
+        padding: 0.7em;
         margin-right: 3em;
         color: white !important;
         
         }
       
-      .btn-primary{
-        background:#625e91;
-        border-color: #008080;
-        padding-bottom: 0.2em;
-        color: white !important;
-        
-        }
+      
         .btn-primary:hover {
             background: rgb(153, 145, 145);
             border-color: rgb(107, 239, 248);
@@ -283,23 +345,15 @@ span.progress{
         }
     
       /*Logo Modules*/
-    .logo {
-        overflow: hidden;
-        display: inline-block;
-    }
-    .logo-primary {
-        width: 120px;
-        height: 74px;
-    }
-    .logo-primary img {
-        height: 100%;
-        padding-bottom: 0.7em;
-        padding-top: -0.3em;
-        margin: 0px !important;
-    }
+	
+	.welcome {
+		overflow: hidden;
+		display: inline-block;
+	}
 
-      
+	
       .nav-primary {
+		
         float: right;
       }
     
@@ -316,7 +370,7 @@ padding-bottom: 18px;
 /*input module*/
 
 input[type=text].search {
-    width: 300px;
+    width: 100%;
     padding: 12px 20px;
     margin-top: 0.5em;
     margin-right: auto;
@@ -332,20 +386,83 @@ input[type=text].search:hover {
  border-color: green;
 }
 
-/*Logo Modules*/
-.logo {
-    overflow: hidden;
-    display: inline-block;
-}
-.logo-primary {
-    margin-top: 0.5em;
-    margin-bottom: -0.77em;
-    width: 120px;
-    height: 64px;
-}
-.logo-primary img {
-    height: 100%;
-}
+	/* InputText Modules*/
+	input[type=text], select {
+		width: 100%;
+		padding: 17px 20px;
+		margin: 15px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+
+	input[type=date] {
+		width: 100%;
+		padding: 17px 20px;
+		margin: 15px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+
+	.form-container {
+	margin:2em;
+	background:#eee;
+	padding:2em;
+	}
+	
+
+	input[type=password], select {
+		width: 100%;
+		padding: 17px 20px;
+		margin: 15px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+	input#cancel {
+		background-color: red;
+		text-align: center;
+		color: white;
+		padding: 14px;
+		margin-right: auto;
+		margin-left: auto;
+		width: 100%;
+		display: block;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-weight: bold;
+		font-size: 20px;
+	}
+
+
+	input[type=submit] {
+		
+		background-color: #4CAF50;
+		color: white;
+		padding: 14px 20px;
+		margin-right: auto;
+		margin-left: auto;
+		margin-bottom:1em;
+		width: 100%;
+		display: block;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-weight: bold;
+		font-size: 20px;
+	}
+
+
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
+
+
 
 /*Navigation Modules*/
 .nav > ul {
@@ -377,17 +494,10 @@ ul li {
 ul a {
     color:black;
 }
- ul h3.new-request{
-     background: green;
-     color:white;
-     width: 40%;
-     margin-left: 34px;
-     padding: 0.6em;
-     font-size: 0.9em;
-     text-align: center;
-
- }
-
+	h3.new-request {
+		padding-top: 2em;
+		padding-left: 2em;
+	}
  ul h3.new-request:hover{
     background: rgb(96, 114, 96);
     color:white;
