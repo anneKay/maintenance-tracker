@@ -1,4 +1,4 @@
-<html>
+﻿<html>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,27 +8,28 @@
   </head>
   <body>
       <main class="container">
-          <img src="../img/mt-logo.png" class="logo-bg" alt="app logo">
+          <a href="../../index.html"><img src="../img/mt-logo.png" class="logo-bg" alt="app logo"></a>
           <h3 class="app-title">Maintenance Tracker</h3>
-          <div class="form-container">
-            <form onsubmit="validateLogin()">
-                <label for="username">User Name</label>
-                <input type="text" class="username" id="username" name="username" placeholder="Enter Your Password">
-                
-                <label for="password">Password</label>
-                <input type="text" class="password" id="password" name="password" placeholder="Enter Your Password..">
-                  
-                <input type="submit" onclick="validateLogin()" value="Login">
-            </form>
-            <div>
-                <a><h3>forgot password?</h3></a>
-            </div>
-            <div><h4 id="error-text"></h4></div>
-          </div>
+		  <div class="form-container">
+			  <form onsubmit="validateLogin()">
+			  	<label for="username">User Name</label>
+			  	<input type="text" class="username" id="username" name="username" placeholder="Enter Your Password">
+			  	<div><h4 id="error-username"></h4></div>
+			  	<label for="password">Password</label>
+			  	<input type="text" class="password" id="password" name="password" placeholder="Enter Your Password..">
+			  	<div><h4 id="error-password"></h4></div>
+			  	<div>
+			  		<h4>forgot password? <a>Click here</a></h4>
+			  	</div>
+			  	<input type="submit" onclick="validateLogin()" value="Login">
+			  </form>
+		
+		  	
+		  	<div class="signup">
+		  		<h3>New to Maintenance Tracker? <a href="signup.html">Sign Up</a></h3>
+		  	</div>
+		  </div>
 
-          <div class= "signup">
-              <h3>New to Maintenance Tracker? <a href="signup.html">Sign Up</a></h3>
-          </div>
       </main>
   </body>
 </html>
