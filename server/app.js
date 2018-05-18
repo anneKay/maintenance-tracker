@@ -7,6 +7,7 @@ import Joi from 'joi';
 
 import bodyParser from 'body-parser';
 app.use(bodyParser.json());
+const requests = [];
 
 
 
@@ -15,7 +16,9 @@ app.use(bodyParser.json());
 
 
 
-
+app.get('/api/v1/users/requests', (req, res) => {
+    res.send(requests);
+})
 
 
 
@@ -25,12 +28,12 @@ app.post('/api/v1/users/requests', (req, res) => {
         res.status(400).send(error.details[0].message);
         return;
     }
-    const requests = [];
+    
     const request = {
         id: requests.length + 1,
         title: req.body.title,
         description: req.body.description,
-        requestType: req.body.description
+        requestType: req.body.requestType
     }
     requests.push(request);
     res.send(request);
