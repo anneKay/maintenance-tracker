@@ -20,3 +20,17 @@ describe('POST /api/v1/users/requests', () => {
             .end(done);
     })
 });
+
+describe('GET /api/v1/users/requests', () => {
+    it('should get the list of requests made by users', (done) => {
+       
+        request(app)
+            .get('/api/v1/users/requests')
+            .expect(200)
+            .expect((res) => {
+                expect(res.body.length).toBe(1);
+               
+            }).end(done);
+
+})
+});
