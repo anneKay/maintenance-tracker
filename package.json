@@ -1,0 +1,38 @@
+{
+  "name": "maintenance-tracker",
+  "version": "1.0.0",
+  "description": "Maintenance Tracker App is an application that provides users with the ability to reach out to operations or repairs department regarding repair or maintenance requests and monitor the status of their request.",
+  "main": "build/app.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register **/*testcase.js",
+    "test-watch": "nodemon --exec 'npm test'",
+    "babel": "babel --presets es2015 server/controller/controller.js -o build/controller/controller.js",
+    "start": "nodemon build/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anneKay/maintenance-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anneKay/maintenance-tracker/issues"
+  },
+  "homepage": "https://github.com/anneKay/maintenance-tracker#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "expect": "^1.20.2",
+    "mocha": "^3.0.2",
+    "nodemon": "^1.10.2",
+    "supertest": "^2.0.0"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
