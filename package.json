@@ -2,12 +2,12 @@
   "name": "maintenance-tracker",
   "version": "1.0.0",
   "description": "Maintenance Tracker App is an application that provides users with the ability to reach out to operations or repairs department regarding repair or maintenance requests and monitor the status of their request.",
-  "main": "build/app.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register **/*testcase.js",
     "test-watch": "nodemon --exec 'npm test'",
-    "babel": "babel --presets es2015 server/controller/controller.js -o build/controller/controller.js",
-    "start": "nodemon build/app.js"
+    "babel": "babel --presets es2015 server/app.js.js -o build/app.js",
+    "start": "nodemon --exec babel-node --presets=es2015 server/app.js"
   },
   "repository": {
     "type": "git",

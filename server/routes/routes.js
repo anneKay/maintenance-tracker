@@ -8,9 +8,9 @@ router.post('/v1/users/requests', createRequest);
 
 router.get('/v1/users/requests', getAllRequests);
 
-router.get('/v1/users/requests/:id', getRequest);
+//router.get('/v1/users/requests/:id', getRequest);
 
-router.put('/v1/users/requests/:id'. putRequest);
+router.put('/v1/users/requests/:id', putRequest);
 
 router.delete('/v1/users/requests/:id', deleteRequest);
 
