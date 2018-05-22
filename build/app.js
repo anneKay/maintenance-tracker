@@ -1,20 +1,26 @@
+'use strict';
 
- import express from 'express';
- const app = express();
+var _express = require('express');
 
- import {requestRoute} from './routes/routes';
+var _express2 = _interopRequireDefault(_express);
 
- import bodyParser from 'body-parser';
+var _routes = require('./routes');
 
- app.use(bodyParser.json());
+var _bodyParser = require('body-parser');
+
+var _bodyParser2 = _interopRequireDefault(_bodyParser);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = (0, _express2.default)();
+
+app.use(_bodyParser2.default.json());
+
+app.use('/api', _routes.requestRoute);
 
 
-app.use('/api', requestRoute);
-const port = process.env.PORT || 4000;
-  app.listen(port);
-
-
-// const va
+var port = process.env.PORT || 5000;
+app.listen(port);
 
 
 // // list of requests
@@ -32,14 +38,13 @@ const port = process.env.PORT || 4000;
 // })
 
 
-
 // app.post('/api/v1/users/requests', (req, res) => {
 //     const {error} = validateRequest(req.body);
 //     if(error) {
 //         res.status(400).send(error.details[0].message);
 //         return;
 //     }
-    
+
 //     const request = {
 //         id: requests.length + 1,
 //         title: req.body.title,
@@ -78,8 +83,6 @@ const port = process.env.PORT || 4000;
 //     res.send(request);
 // })
 
- 
-
 // const validateRequest = (request) => {
 //     const schema = {
 //         title: Joi.string().min(3).required(),
@@ -88,5 +91,3 @@ const port = process.env.PORT || 4000;
 //     };
 //     return Joi.validate(request, schema);
 // }
-
-
