@@ -63,7 +63,9 @@ exports.deleteRequest = (req,res) => {
 // function using the 'joi lib' for request validation
 const validateRequest = (request) => {
     const schema = {
-        name:Joi.string().min(3).required()
+        title: Joi.string().min(3).required(),
+        description: Joi.string().min(10).required(),
+        requestType: Joi.string().min(3),
     };
     return Joi.validate(request, schema);
 }

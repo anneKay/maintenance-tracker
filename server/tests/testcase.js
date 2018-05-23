@@ -5,14 +5,14 @@ import request from 'supertest';
 import app from './../app'
 
 let requestId = 1;
-let mRequest ={
+let mRequest = {
     title: "fix washer",
      description: "found clog inside of it",
      requestType: "urgent" }
    
 
 // test case for a post request
-describe('POST /api/v1/users/requests', () => {
+describe('POST/api/v1/users/requests', () => {
     it('should create a new request', (done) => {
        
         request(app)
