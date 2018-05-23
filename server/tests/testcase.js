@@ -1,10 +1,11 @@
 //import libraries
-const expect = require('expect');
-const request = require('supertest');
 
-const app = require('./../../build/app');
+import expect from 'expect';
+import request from 'supertest';
+import app from './../app'
+
 let requestId = 1;
-let requests ={
+let mRequest ={
     title: "fix washer",
      description: "found clog inside of it",
      requestType: "urgent" }
@@ -16,7 +17,7 @@ describe('POST /api/v1/users/requests', () => {
        
         request(app)
             .post('/api/v1/users/requests')
-            .send(requests)
+            .send(mRequest)
             .expect(200)
             .end(done);
     })
