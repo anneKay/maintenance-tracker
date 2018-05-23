@@ -20,9 +20,9 @@ router.post('/users/requests', _controller.createRequest);
 
 router.get('/users/requests', _controller.getAllRequests);
 
-router.put('/users/requests/:id', _controller.putRequest);
-
 router.get('/users/requests/:id', _controller.getRequestById);
+
+router.put('/users/requests/:id', _controller.putRequest);
 
 router.delete('/users/requests/:id', _controller.deleteRequest);
 
