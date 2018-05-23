@@ -47,7 +47,7 @@ describe('GET /api/v1/users/requests/:id', () => {
             .get(`/api/v1/users/requests/${requestId}`)
             .expect(200)
             .expect((res) => {
-               expect(res.body.title).toBe(requests.title);
+               expect(res.body.title).toBe(mRequest.title);
                
             }).end(done);
             
