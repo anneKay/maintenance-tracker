@@ -1,8 +1,10 @@
+//import 'joi' for request validation
 import Joi from 'joi';
 
 // list of requests
 const requests = [];
 
+//method calls for route handlers
 exports.createRequest = (req, res) =>{
     const {error} = validateRequest(req.body);
     if(error) {
@@ -18,8 +20,7 @@ exports.createRequest = (req, res) =>{
     }
     requests.push(request);
     res.send(request);
-    console.log('post started');
-   // addRequest;
+   
 }
 
 exports.getAllRequests = (req,res) => {
@@ -59,6 +60,7 @@ exports.deleteRequest = (req,res) => {
     res.send(request);
 }
 
+// function using the 'joi lib' for request validation
 const validateRequest = (request) => {
     const schema = {
         name:Joi.string().min(3).required()

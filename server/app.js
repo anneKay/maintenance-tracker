@@ -1,4 +1,4 @@
-
+//imports from libraries and local files
  import express from 'express';
  
  import routes from './routes/routes';
@@ -7,7 +7,6 @@
 
  const app = express();
 
- 
  app.use(bodyParser.json());
 
  const port = process.env.PORT || 3000;

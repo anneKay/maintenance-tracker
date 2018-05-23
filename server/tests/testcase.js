@@ -1,4 +1,4 @@
-//require("babel-register")
+//import libraries
 const expect = require('expect');
 const request = require('supertest');
 
@@ -10,7 +10,7 @@ let requests ={
      requestType: "urgent" }
    
 
-
+// test case for a post request
 describe('POST /api/v1/users/requests', () => {
     it('should create a new request', (done) => {
        
@@ -24,7 +24,7 @@ describe('POST /api/v1/users/requests', () => {
 });
 
 
-
+//test case for Get request
 describe('GET /api/v1/users/requests', () => {
     it('should get the list of requests made by users', (done) => {
        
@@ -38,6 +38,7 @@ describe('GET /api/v1/users/requests', () => {
 })
 });
 
+//test case for a Get request by ID for a single request
 describe('GET /api/v1/users/requests/:id', () => {
     it('should get a request made by a user', (done) => {
        
@@ -52,6 +53,7 @@ describe('GET /api/v1/users/requests/:id', () => {
 })
 });
 
+//test case for a Put request for modifying a single request
 describe('PUT /api/v1/users/requests/:id', () => {
     
     it('should modify a request made by a user', (done) => {
@@ -70,6 +72,7 @@ describe('PUT /api/v1/users/requests/:id', () => {
 })
 });
 
+//test case for a Delete request
 describe('DELETE /api/v1/users/requests/:id', () => {
     
     it('should remove a request made by a user', (done) => {
