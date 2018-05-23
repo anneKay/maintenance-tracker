@@ -1,10 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.deleteRequest = exports.putRequest = exports.getRequest = exports.getAllRequests = exports.createRequest = undefined;
-
 var _joi = require('joi');
 
 var _joi2 = _interopRequireDefault(_joi);
@@ -14,7 +9,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // list of requests
 var requests = [];
 
-var createRequest = exports.createRequest = function createRequest(req, res) {
+//method calls for route handlers
+//import 'joi' for request validation
+exports.createRequest = function (req, res) {
     var _validateRequest = validateRequest(req.body),
         error = _validateRequest.error;
 
@@ -31,23 +28,13 @@ var createRequest = exports.createRequest = function createRequest(req, res) {
     };
     requests.push(request);
     res.send(request);
-    console.log('post started');
-    // addRequest;
 };
 
-var getAllRequests = exports.getAllRequests = function getAllRequests(req, res) {
+exports.getAllRequests = function (req, res) {
     res.send(requests);
 };
 
-var getRequest = exports.getRequest = function getRequest(req, res) {
-    var request = requests.find(function (c) {
-        return c.id === parseInt(req.params.id);
-    });
-    if (!request) return res.status(404).send('the request with the given id does not exist');
-    res.send(request);
-};
-
-var putRequest = exports.putRequest = function putRequest(req, res) {
+exports.putRequest = function (req, res) {
     var request = requests.find(function (r) {
         return r.id === parseInt(req.params.id);
     });
@@ -67,7 +54,15 @@ var putRequest = exports.putRequest = function putRequest(req, res) {
     res.send(request);
 };
 
-var deleteRequest = exports.deleteRequest = function deleteRequest(req, res) {
+exports.getRequestById = function (req, res) {
+    var request = requests.find(function (r) {
+        return r.id === parseInt(req.params.id);
+    });
+    if (!request) return res.status(404).send('the request with the given id does not exist');
+    res.send(request);
+};
+
+exports.deleteRequest = function (req, res) {
     var request = requests.find(function (c) {
         return c.id === parseInt(req.params.id);
     });
@@ -78,6 +73,7 @@ var deleteRequest = exports.deleteRequest = function deleteRequest(req, res) {
     res.send(request);
 };
 
+// function using the 'joi lib' for request validation
 var validateRequest = function validateRequest(request) {
     var schema = {
         name: _joi2.default.string().min(3).required()

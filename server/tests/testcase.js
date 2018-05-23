@@ -2,7 +2,7 @@
 const expect = require('expect');
 const request = require('supertest');
 
-const app = require('./../app');
+const app = require('./../../build/app');
 let requestId = 1;
 let requests ={
     title: "fix washer",

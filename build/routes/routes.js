@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _express = require('express');
@@ -12,16 +12,18 @@ var _controller = require('./../controller/controller');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var router = _express2.default.Router();
+var router = _express2.default.Router(); //imports from libraries and local files
 
-router.post('api/v1/users/requests', _controller.createRequest);
+// routers for the API endpoints
 
-router.get('api/v1/users/requests', _controller.getAllRequests);
+router.post('/users/requests', _controller.createRequest);
 
-router.get('api/v1/users/requests/:id', _controller.getRequest);
+router.get('/users/requests', _controller.getAllRequests);
 
-router.put('api/v1/users/requests/:id', _controller.putRequest);
+router.put('/users/requests/:id', _controller.putRequest);
 
-router.delete('api/v1/users/requests/:id', _controller.deleteRequest);
+router.get('/users/requests/:id', _controller.getRequestById);
 
-exports.requestRoute = router;
+router.delete('/users/requests/:id', _controller.deleteRequest);
+
+exports.default = router;
