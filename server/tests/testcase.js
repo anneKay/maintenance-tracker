@@ -35,8 +35,6 @@ describe('GET /api/v1/users/requests', () => {
                 expect(res.body.length).toBe(1);
                
             }).end(done);
-
-
 })
 });
 
@@ -71,8 +69,6 @@ describe('PUT /api/v1/users/requests/:id', () => {
 
 })
 });
-
-
 
 describe('DELETE /api/v1/users/requests/:id', () => {
     

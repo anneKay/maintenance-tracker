@@ -1,16 +1,16 @@
 import express from 'express'
 const router = express.Router();
 
-import { createRequest,  getAllRequests, getrequest, putRequest, deleteRequest} from './../controller/controller';
+import { createRequest,  getAllRequests, getrequest, putRequest, deleteRequest, getRequestById} from './../controller/controller';
 
 
 router.post('/users/requests', createRequest);
 
 router.get('/users/requests', getAllRequests);
 
-//router.get('/v1/users/requests/:id', getRequest);
-
 router.put('/users/requests/:id', putRequest);
+
+router.get('/users/requests/:id', getRequestById)
 
 router.delete('/users/requests/:id', deleteRequest);
 

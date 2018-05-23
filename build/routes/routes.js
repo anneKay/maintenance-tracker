@@ -18,7 +18,7 @@ router.post('api/v1/users/requests', _controller.createRequest);
 
 router.get('api/v1/users/requests', _controller.getAllRequests);
 
-router.get('api/v1/users/requests/:id', _controller.getRequest);
+//router.get('api/v1/users/requests/:id', _controller.getRequest);
 
 router.put('api/v1/users/requests/:id', _controller.putRequest);
 

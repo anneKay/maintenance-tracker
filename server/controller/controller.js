@@ -26,11 +26,6 @@ exports.getAllRequests = (req,res) => {
     res.send(requests);
 }
 
-exports.getRequest = (req,res) => {
-    const request = requests.find(c => c.id === parseInt(req.params.id));
-    if (!request) return res.status(404).send('the request with the given id does not exist');
-    res.send(request);
-}
 
 exports.putRequest = (req,res) => {
     const request = requests.find(r => r.id === parseInt(req.params.id));
@@ -47,6 +42,13 @@ request.description = req.body.description;
 
 res.send(request);
 }
+
+exports.getRequestById = (req,res) => {
+    const request = requests.find(r => r.id === parseInt(req.params.id));
+    if (!request) return res.status(404).send('the request with the given id does not exist');
+    res.send(request);
+}
+
 
 exports.deleteRequest = (req,res) => {
     const request = requests.find(c => c.id === parseInt(req.params.id));
