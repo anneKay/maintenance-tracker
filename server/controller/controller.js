@@ -1,8 +1,13 @@
 //import 'joi' for request validation
 import Joi from 'joi';
 
+import pool from '../database/config';
+
 // list of requests
 const requests = [];
+exports.signUp = (req, res) => {
+    console.log('signup');
+}
 
 //method calls for route handlers
 exports.createRequest = (req, res) =>{

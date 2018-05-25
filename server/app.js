@@ -5,6 +5,9 @@
 
  import bodyParser from 'body-parser';
 
+ import pool from './database/config';
+
+
  const app = express();
 
  app.use(bodyParser.json());
@@ -13,7 +16,12 @@
     extended: true
   }));
 
- const port = process.env.PORT || 3000;
+ pool.query("INSERT INTO requestLists(title, description, requestType, dateOfRequest) VALUES('fix dixwasher', 'found clog inside of machine', 'urgent', NOW())", (err, res) => {
+     console.log(err, res);
+     pool.end();
+ })
+
+  const port = process.env.PORT || 3000;
 
  app.use('/api/v1', routes);
 
