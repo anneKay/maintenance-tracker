@@ -17,15 +17,7 @@
     extended: true
   }));
 
-  // pool.query(“CREATE TABLE users(id SERIAL PRIMARY KEY, firstname VARCHAR(40) NOT NULL,
-  // lastName VARCHAR(40) NOT NULL)”, (err, res) => {
-  // console.log(err, res);
-  // pool.end();
-  // });
-// pool.query("CREATE TABLE requests(id SERIAL PRIMARY KEY, user_id INTEGER, title VARCHAR(25) NOT NULL, description VARCHAR(50) NOT NULL, requestType VARCHAR(15), requestdate TIMESTAMP NOT NULL)", (err, res) => {
-//   console.log(err, res);
-//   pool.end();
-// });
+  
 
 const port = process.env.PORT || 3000;
 
