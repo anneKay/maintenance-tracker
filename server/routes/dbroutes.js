@@ -3,12 +3,12 @@
 import express from 'express'
 const dbrouter = express.Router();
 
-import {createRequest} from './../controller/requestController'
+import {createRequest, getRequests} from './../controller/requestController'
 // routers for the API endpoints
 
 dbrouter.post('/users/requests', createRequest);
 
-// router.get('/users/requests', getAllRequests);
+dbrouter.get('/users/requests', getRequests);
 
 // router.put('/users/requests/:id', putRequest);
 

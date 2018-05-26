@@ -6,7 +6,7 @@
  import bodyParser from 'body-parser';
 
  import pool from './database/config';
- import {createRequest} from './controller/requestController';
+ import {createRequest, getRequests} from './controller/requestController';
 
 
  const app = express();

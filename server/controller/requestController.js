@@ -5,6 +5,15 @@ import { request } from 'http';
 
 
 //method calls for route handlers
+
+exports.getRequests = (req,res) => {
+    pool.query("SELECT * FROM requests", (err, result) => {
+        console.log(err, res);
+        pool.end();
+    })
+    res.send(result);
+}
+
 exports.createRequest = (req, res) =>{
     const {error} = requestsModel(req.body);
     
@@ -13,15 +22,12 @@ exports.createRequest = (req, res) =>{
         return;
     }
     pool.query("INSERT INTO requests(user_id, title, description, requestType, requestdate) VALUES(1, 'fixeitoo ', 'found', 'normal', 'NOW()')", (err, result) => {
-        console.log(err, res);
+        console.log(err, result);
         pool.end();
         res.send(result);
     })
 }    
 
-// exports.getAllRequests = (req,res) => {
-//     res.send(requests);
-// }
 
 
 // exports.putRequest = (req,res) => {
