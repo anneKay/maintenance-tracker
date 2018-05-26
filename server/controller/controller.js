@@ -5,9 +5,9 @@ import pool from '../database/config';
 
 // list of requests
 const requests = [];
-exports.signUp = (req, res) => {
-    console.log('signup');
-}
+// exports.signUp = (req, res) => {
+//     console.log('signup');
+// }
 
 //method calls for route handlers
 exports.createRequest = (req, res) =>{
