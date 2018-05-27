@@ -35,3 +35,12 @@ exports.getRequests = (req,res) => {
     
 }
 
+exports.getRequestById = (req, res) => {
+    const reqID = [parseInt(req.params.id)];
+
+    pool.query("SELECT * FROM requests WHERE id = $1", reqID) 
+  .then(result => res.status(200).send(result.rows))
+  .catch(error => setImmediate(() => { throw error }))
+  //pool.end().then(() => console.log('pool has ended'));
+
+}

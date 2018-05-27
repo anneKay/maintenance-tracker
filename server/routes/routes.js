@@ -15,7 +15,7 @@ router.get('/users/requests', getAllRequests);
 
 router.put('/users/requests/:id', putRequest);
 
-router.get('/users/requests/:id', getRequestById)
+router.get('/users/requests/:id', getRequestById);
 
 router.delete('/users/requests/:id', deleteRequest);
 
