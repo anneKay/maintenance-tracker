@@ -12,6 +12,17 @@ exports.signupUser = (req, res) => {
   
   // create user record
 
+
+  const text = 'INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *'
+  const values = ([req.body.name, req.body.email, req.body.password]);
+
+    pool.query(text, values)
+  
+  .then(result => res.status(200).send(result))
+  .catch(error => setImmediate(() => { throw error }))
+  pool.end().then(() => console.log('pool has ended'));
+    
+
   pool.query("INSERT INTO users(name, email, password) VALUES(req.body.name, req.body.email, req.body.password)", (err, result) => {
     if (err) {
         console.log("there was an error", err);
@@ -29,8 +40,21 @@ exports.signupUser = (req, res) => {
 
 exports.signinUser = (req, res) => {
   //validate username, password
-  //return error response if validation fails
+
+  const {error} = validateUser(req.body);
+  if(error) {
+    return res.status(400).send(error.details[0].message);
+  }
+
   //query database for email
+
+  pool.query(text, values)
+  
+  .then(result => res.status(200).send(result))
+  .catch(error => setImmediate(() => { throw error }))
+  pool.end().then(() => console.log('pool has ended'));
+    
+
   //check if email exists, check for password,
   //if email does not exist, return error
   //check if password matches, if it does sign in user

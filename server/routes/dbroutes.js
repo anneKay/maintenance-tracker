@@ -14,11 +14,6 @@ dbrouter.post('/users/requests', createRequest);
 
 dbrouter.get('/users/requests', getRequests);
 
-// router.put('/users/requests/:id', putRequest);
-
-// router.get('/users/requests/:id', getRequestById)
-
-// router.delete('/users/requests/:id', deleteRequest);
 
 export default dbrouter;
 
