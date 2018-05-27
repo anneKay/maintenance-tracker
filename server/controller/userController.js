@@ -10,7 +10,7 @@ exports.signupUser = (req, res) => {
     return res.status(400).send(error.details[0].message);
   }
   
-  // create user record
+  // create users record
 
 
   const text = 'INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *'

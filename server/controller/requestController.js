@@ -4,7 +4,7 @@ import pool from '../database/config';
 import {request} from 'http';
 
 
-//method calls for route handlers
+//method call for route handlers
 
 exports.createRequest = (req, res) =>{
     const {error} = requestsModel(req.body);
