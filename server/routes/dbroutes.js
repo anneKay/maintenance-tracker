@@ -5,10 +5,11 @@ const dbrouter = express.Router();
 
 import {createRequest, getRequests, getRequestById} from './../controller/requestController'
 import { signupUser } from './../controller/userController'
-// routers for the API endpoints
 
 // Auth routes
 dbrouter.post('/auth/signup', signupUser);
+
+// routers for the API endpoints
 
 dbrouter.post('/users/requests', createRequest);
 

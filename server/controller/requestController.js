@@ -35,6 +35,7 @@ exports.getRequests = (req,res) => {
     
 }
 
+//export function to get a user's request
 exports.getRequestById = (req, res) => {
     const reqID = [parseInt(req.params.id)];
 
