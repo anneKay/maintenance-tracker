@@ -18,6 +18,11 @@
   }));
 
   
+// pool.query("CREATE TABLE users(id SERIAL PRIMARY KEY, name VARCHAR(30) NOT NULL, email VARCHAR(40) NOT NULL, password VARCHAR(10) NOT NULL)", (err, result) => {
+//   console.log(err, result);
+//   pool.end();
+//   });
+  
 
 const port = process.env.PORT || 3000;
 

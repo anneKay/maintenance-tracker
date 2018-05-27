@@ -6,7 +6,7 @@ const requestModel = (request) => {
         title: Joi.string().min(3).required(),
         description: Joi.string().min(10).max(25).required(),
         requestType: Joi.string().min(3),
-        dateOfRequest: Joi.date().min(4)
+        requestdate: Joi.date().min(4)
     };
     return Joi.validate(request, schema);
 }

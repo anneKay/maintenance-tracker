@@ -1,18 +1,10 @@
 import requestsModel from './../model/requests';
 
 import pool from '../database/config';
-import { request } from 'http';
+import {request} from 'http';
 
 
 //method calls for route handlers
-
-exports.getRequests = (req,res) => {
-    pool.query("SELECT * FROM requests", (err, result) => {
-        console.log(err, res);
-        pool.end();
-    })
-    res.send(result);
-}
 
 exports.createRequest = (req, res) =>{
     const {error} = requestsModel(req.body);
@@ -21,14 +13,34 @@ exports.createRequest = (req, res) =>{
         res.status(400).send(error.details[0].message);
         return;
     }
-    pool.query("INSERT INTO requests(user_id, title, description, requestType, requestdate) VALUES(1, 'fixeitoo ', 'found', 'normal', 'NOW()')", (err, result) => {
+    pool.query("INSERT INTO requests(user_id, title, description, requestType, requestdate) VALUES(1, req.body.title, req.body.description, req.body.requestType, 'NOW()')", (err, result) => {
         console.log(err, result);
         pool.end();
-        res.send(result);
+        res.status(200).send({result});
+
     })
 }    
+exports.getRequests = (req,res) => {
+    pool.query("SELECT * FROM requests", (err, result) => {
+        console.log(err, result);
+        pool.end();
+        res.status(200).send(result.row);
 
+    })
+    
+}
 
+exports.getRequestById = (req, res) => {
+    let id = parseint(req.params.id);
+    pool.query('SELECT * FROM requests WHERE id = $1', id, (err, result) => {
+        if (err) {
+          throw err
+        }
+      
+        res.send(result.rows[0])
+      })
+
+}
 
 // exports.putRequest = (req,res) => {
 //     const request = requests.find(r => r.id === parseInt(req.params.id));

@@ -11,7 +11,8 @@
     "coverage": "babel-node ./node_modules/istanbul/lib/cli cover _mocha server/tests/testcase.js",
     "lint": "eslint server/app/js",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test | coveralls"
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test | coveralls",
+    "stop-process": "taskkill /F /IM node.exe"
   },
   "repository": {
     "type": "git",
@@ -41,8 +42,9 @@
     "supertest": "^2.0.1"
   },
   "dependencies": {
-    "express": "^4.16.3",
+    "express": "^4.16",
     "joi": "^13.3.0",
+    "jsonwebtoken": "^8.2.1",
     "pg": "^7.4.3"
   }
 }
