@@ -37,7 +37,7 @@ exports.getRequests = (req,res) => {
     
 }
 
-exports.getRequests = (req,res) => {
+exports.getUserRequests = (req,res) => {
 
   const reqID = [parseInt(req.params.id)];
 

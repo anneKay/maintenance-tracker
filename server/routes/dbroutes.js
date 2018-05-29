@@ -3,7 +3,7 @@
 import express from 'express'
 const dbrouter = express.Router();
 
-import {createRequest, getRequests, getRequestById, modifyRequest, approveRequest, resolveRequest, disapproveRequest} from './../controller/requestController'
+import {createRequest, getRequests, getRequestById, modifyRequest, approveRequest, resolveRequest, disapproveRequest, getUserRequests} from './../controller/requestController'
 import { signupUser } from './../controller/userController'
 
 // Auth routes
@@ -14,9 +14,11 @@ import { signupUser } from './../controller/userController'
 
 dbrouter.post('/users/requests', createRequest);
 
-dbrouter.get('/users/requests', getRequests);
+dbrouter.get('/requests', getRequests);
 
 dbrouter.get('/users/requests/:id', getRequestById);
+
+dbrouter.get('requests/:id', getUserRequests);
 
 dbrouter.put('/users/requests/:id', modifyRequest);
 
