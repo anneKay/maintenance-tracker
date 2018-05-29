@@ -24,6 +24,10 @@
 //   });
   
 
+// pool.query("CREATE TABLE requests(id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users, title VARCHAR(20) NOT NULL, description VARCHAR(50) NOT NULL, requestType VARCHAR(10) NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)", (err, result) => {
+//   console.log(err, result);
+//   pool.end();
+// })
 const port = process.env.PORT || 3000;
 
  app.use('/api/v1', dbroutes);

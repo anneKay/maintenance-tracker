@@ -11,7 +11,9 @@ exports.signupUser = (req, res) => {
   }
   
   // create user record
-
+ const user = {
+   email: ''
+ }
 
   const text = 'INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *'
   const values = ([req.body.name, req.body.email, req.body.password]);
