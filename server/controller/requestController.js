@@ -11,7 +11,7 @@ exports.createRequest = (req, res) => {
   const user = req.decodedUser;
   
   if (error) {
-    res.status(400).send(error.details[0].message);
+    res.status(400).send(error);
     return;
   }
 
@@ -50,7 +50,7 @@ exports.getRequestById = (req, res) => {
     pool.query("SELECT * FROM requests WHERE id = $1", [req.params.requestId]) 
   .then(result => res.status(200).send(result.rows))
   .catch(error => setImmediate(() => { throw error }))
-  //pool.end().then(() => console.log('pool has ended'));
+  
 }
 
 exports.modifyRequest = (req, res) => {
@@ -63,15 +63,14 @@ exports.modifyRequest = (req, res) => {
         return;
     }
 
-    const text = 'UPDATE requests SET title=($1), description=($2), requestType=($3) WHERE id=($4)'
-    const values = ([req.body.title, req.body.description, req.body.requestType, reqID]);
+    const text = 'UPDATE requests SET title=($1), description=($2), requestType=($3) WHERE id=($4) AND status=($5)'
+    const values = ([req.body.title, req.body.description, req.body.requestType, reqID, 'pending']);
   
     pool.query(text, values) 
-   .then(result => res.status(200).send(
+    .then(result => res.status(200).send(
       result
     ))
   .catch(error => setImmediate(() => { throw error }))
-  //pool.end().then(() => console.log('pool has ended'));
 
 }
   exports.approveRequest = (req, res) => {
@@ -100,6 +99,31 @@ exports.disapproveRequest = (req, res) => {
 .catch(error => setImmediate(() => { throw error }))
 }
 
+exports.undo = (req, res) => {
+  const reqID = parseInt(req.params.requestId);
+  const text = 'UPDATE requests SET title=($1), description=($2), requestType=($3), status=($4) WHERE id=($5)'
+    const values = ([req.body.title, req.body.description, req.body.requestType, 'pending', reqID]);
+
+  pool.query(text, values) 
+.then(result => res.status(200).send({
+    'result': result.rows,
+    'message': "Action has been successfully undone"
+  }))
+.catch(error => setImmediate(() => { throw error }))
+
+}
+
+exports.deleteRequest = (req, res) => {
+
+  const user = req.decodedUser;
+  const reqID = [user.id];
+ 
+  pool.query("DELETE FROM requests WHERE user_id = $1", reqID)
+  .then(result => res.status(200).send({message: 'successfully deleted'}))
+  .catch(error => setImmediate(() => { throw error }))
+
+
+}
 exports.resolveRequest = (req, res) => {
   const reqID = parseInt(req.params.requestId);
   const text = 'UPDATE requests SET title=($1), description=($2), requestType=($3), status=($4) WHERE id=($5)'
@@ -115,3 +139,12 @@ exports.resolveRequest = (req, res) => {
 }
 
 
+const validateUserInput = (req, res) => {
+  const validatedUser  = validUser(req.body);
+    if (!validatedUser ){
+      return res.status(400).send({
+        Error: 'Invalid Email or Password'
+      });
+    }
+  
+  }

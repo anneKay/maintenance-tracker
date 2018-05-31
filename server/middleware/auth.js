@@ -3,8 +3,13 @@ import pool from '../database/config';
 
 import { verifyToken } from '../helpers/auth'
 
+
 export default (req, res, next) => {
   const token = req.headers.authentication;
+
+  //  export const getToken = () => {
+  //   return token;
+  // }
 
   if (!token) {
     return res.send({

@@ -2,7 +2,8 @@
 
 import expect from 'expect';
 import request from 'supertest';
-import app from './../app'
+import app from './../app';
+import {token} from './../middleware/auth'
 
 describe ('POST auth/signup', () => {
   it('should create a user', (done) => {
@@ -47,4 +48,44 @@ it('should not create user if email in use', (done) => {
     .expect(404)
     .end(done);
 });
+
+
+describe ('POST auth/login', () => {
+  it('should successfully login user and return auth token', (done) => {
+    const email = 'nwanna@admin.com';
+    const password = 'yourpass';
+
+    request(app)
+      .post('/api/v2/users/auth/signin')
+      .send({email, password})
+      .expect(200)
+      .expect((res) => {
+        expect(res.headers['x-auth']).toExist();
+       
+      })
+      .end((err) => {
+        if (err) {
+          return done();
+        }
+      })
+  })
+
+  it('should reject invalid login', (done) => {
+    request(app)
+      .post('/api/v2/users/auth/signin')
+      .send({
+        email: 'nwannan@admin.com', 
+        password: 'password'
+      })
+      .expect(404)
+      .expect((res) => {
+        expect(res.headers['x-auth']).toNotExist();
+       
+      })
+      .end(done);
+  });
+});
+
+
+
 

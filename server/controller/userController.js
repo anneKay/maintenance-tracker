@@ -1,19 +1,14 @@
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
 
-import {validUser, validateEmail} from './../model/user';
+import {validUser} from './../model/user';
 import pool from "./../database/config";
 import { generateToken, validatePassword } from './../helpers/auth';
 
 
 exports.signupUser = (req, res) => {
-  const emailFormat = validateEmail(req.body);
-  const validatedUser  = validUser(req.body);
-  if (!validatedUser && !emailFormat){
-    return res.status(400).send({
-      Error: 'Invalid Email or Password'
-    });
-  }
+  //const emailFormat = validateEmail(req.body);
+  validateUserInput(req, res);
 
   const salt = bcrypt.genSaltSync(10);
   const passwordHash = bcrypt.hashSync(req.body.password, salt);
@@ -49,7 +44,7 @@ exports.signupUser = (req, res) => {
 
 exports.signinUser = (req, res) => {
   
-
+  validateUserInput(req, res);
   //query database for email
   const text = `SELECT * FROM users WHERE email=$1`
   const values = ([req.body.email]);
@@ -81,4 +76,13 @@ exports.signinUser = (req, res) => {
     })
   });
   
+}
+const validateUserInput = (req, res) => {
+const validatedUser  = validUser(req.body);
+  if (!validatedUser ){
+    return res.status(400).send({
+      Error: 'Invalid Email or Password'
+    });
+  }
+
 }
