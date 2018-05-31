@@ -10,17 +10,18 @@ import Joi from 'joi';
 //     };
 //     return Joi.validate(request, schema);
 
-// }
-
-const validUser = (user) => {
-   const emailregEx = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
-    const validEmail = typeof user.email == 'string' && user.email.trim() != '' && emailregEx.test(user.Email.trim()) === true;
+// 
+export const validUser = (user) => {
+   
+    const validEmail = typeof user.email == 'string' && user.email.trim() != '' && user.email.trim().length >= 7;
     const validPassword = typeof user.password == 'string' && user.password.trim() != '' && user.password.trim().length >= 7;
-  if (validEmail && validPassword) {
       return validEmail && validPassword;
   
   }
-}  
+
+  export const validateEmail = (body) => {
+    let validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return validEmail.test((body.email).toLowerCase());
+}
   
 
-export default validUser;

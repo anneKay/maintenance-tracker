@@ -1,16 +1,19 @@
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
 
-import validateUser from './../model/user';
+import {validUser, validateEmail} from './../model/user';
 import pool from "./../database/config";
 import { generateToken, validatePassword } from './../helpers/auth';
-import validUser from "./../model/user";
-
 
 
 exports.signupUser = (req, res) => {
-  
-  if(validUser(req.body)){
+  const emailFormat = validateEmail(req.body);
+  const validatedUser  = validUser(req.body);
+  if (!validatedUser && !emailFormat){
+    return res.status(400).send({
+      Error: 'Invalid Email or Password'
+    });
+  }
 
   const salt = bcrypt.genSaltSync(10);
   const passwordHash = bcrypt.hashSync(req.body.password, salt);
@@ -26,9 +29,13 @@ exports.signupUser = (req, res) => {
         authentication: token
       }).send({
         message: `Welcome to maintenance tracker, ${result.rows[0].name}`,
-        user: result.rows[0]
+        name: result.rows[0].name,
+        email: result.rows[0].email
+
       })
     })
+
+  
     .catch((error) => {
       console.log(error);
       res.status(500).send({
@@ -36,21 +43,12 @@ exports.signupUser = (req, res) => {
       })
     });
     
-  } else {
-     {
-       Error: 'invalid email or password'
-     }
-  }
+  
 }
    
 
 exports.signinUser = (req, res) => {
-  //validate username, password
-
-  const {error} = validateUser(req.body);
-  if(error) {
-    return res.status(400).send(error.details[0].message);
-  }
+  
 
   //query database for email
   const text = `SELECT * FROM users WHERE email=$1`
@@ -68,7 +66,13 @@ exports.signinUser = (req, res) => {
     const token = generateToken(result.rows[0]);
     res.status(200).header({
       authentication: token
-    }).send(result.rows[0])
+  }).send({ message: `Welcome to maintenance tracker, ${result.rows[0].name}`,
+    name: result.rows[0].name,
+    email: result.rows[0].email
+  
+  }
+  )
+
   })
   .catch((error) => {
     console.log(error);
