@@ -61,12 +61,14 @@ exports.signinUser = (req, res) => {
     const token = generateToken(result.rows[0]);
     res.status(200).header({
       authentication: token
-  }).send({ message: `Welcome to maintenance tracker, ${result.rows[0].name}`,
-    name: result.rows[0].name,
-    email: result.rows[0].email
-  
-  }
-  )
+  }).send({ 
+    message: `Welcome to maintenance tracker, ${result.rows[0].name}`,
+    user: {
+      id: result.rows[0].id,
+      name: result.rows[0].name,
+      email: result.rows[0].email
+    }
+  })
 
   })
   .catch((error) => {

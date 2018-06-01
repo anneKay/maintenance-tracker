@@ -31,9 +31,9 @@ exports.createRequest = (req, res) => {
 
 exports.getAllRequests = (req, res) => {
   pool.query("SELECT * FROM requests", (err, result) => {
-    console.log(err, result);
+   
     res.status(200).send({
-      result:result
+      result:result.rows
     });
   })
 }
@@ -62,7 +62,10 @@ exports.modifyRequest = (req, res) => {
     const {error} = requestsModel(req.body);
     
     if(error) {
-        res.status(400).send(error.details[0].message);
+        res.status(400).send({
+      Error: error.details[0].message,
+      status: '400 Bad Request'
+     });
         return;
     }
 

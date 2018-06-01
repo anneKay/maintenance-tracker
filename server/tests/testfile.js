@@ -3,7 +3,7 @@
 import expect from 'expect';
 import request from 'supertest';
 import app from './../app';
-import {token} from './../middleware/auth'
+//import {token} from './../middleware/auth'
 
 describe ('POST auth/signup', () => {
   it('should create a user', (done) => {

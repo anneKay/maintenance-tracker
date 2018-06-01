@@ -20,6 +20,10 @@ app.use(bodyParser.urlencoded({
 const port = process.env.PORT || 3000;
 
 app.use('/api/v2', dbroutes);
+app.all('*', (req, res) => res.status(404).send({
+  Error: 'page not found'
+}) )
+
 
 app.listen(port, () => {
    console.log(`listening on port ${port}`)

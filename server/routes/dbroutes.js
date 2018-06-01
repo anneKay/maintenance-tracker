@@ -3,7 +3,10 @@
 import express from 'express'
 const dbrouter = express.Router();
 
-import {createRequest, getAllRequests, getRequestById, modifyRequest, approveRequest, resolveRequest, disapproveRequest, getUserRequests} from './../controller/requestController'
+import {createRequest, getAllRequests,
+  getRequestById, modifyRequest,
+  approveRequest, resolveRequest,
+  disapproveRequest, getUserRequests} from './../controller/requestController'
 import { signupUser, signinUser } from './../controller/userController'
 import authenticateUser from './../middleware/auth'
 import isEmailUnique from './../middleware/checkEmail';
@@ -22,7 +25,7 @@ dbrouter.get('/users/requests', authenticateUser, getUserRequests);
 
 dbrouter.get('/users/requests/:requestId', authenticateUser, getRequestById);
 
-dbrouter.put('/users/requests/:requestId', authenticateUser, checkForAdmin, modifyRequest);
+dbrouter.put('/users/requests/:requestId/modify', authenticateUser, modifyRequest);
 
 //admin routes
 dbrouter.get('/requests', authenticateUser, checkForAdmin, getAllRequests);
