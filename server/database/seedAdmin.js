@@ -12,7 +12,7 @@ const values = ([process.env.ADMIN_NAME, process.env.ADMIN_EMAIL, passwordHash, 
 pool.query(text, values)
 .then((result) => {
   if (result.rows) {
-    console.log('Admin account successfully seeded');
+    console.log('Admin account successfully seeded', {admin: result.rows});
   }
 })
 .catch((error) => {

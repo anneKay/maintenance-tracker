@@ -7,10 +7,6 @@ import { verifyToken } from '../helpers/auth'
 export default (req, res, next) => {
   const token = req.headers.authentication;
 
-  //  export const getToken = () => {
-  //   return token;
-  // }
-
   if (!token) {
     return res.send({
       error: "Please signup or signin to continue"

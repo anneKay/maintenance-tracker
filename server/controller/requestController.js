@@ -6,7 +6,7 @@ import {request} from 'http';
 
 //method calls for route handlers
 
-exports.createRequest = (req, res) => {
+export const createRequest = (req, res) => {
   const {error} = requestsModel(req.body);
   const user = req.decodedUser;
  
@@ -22,115 +22,165 @@ exports.createRequest = (req, res) => {
   const values = ([user.id, req.body.title, req.body.description, req.body.requestType]);
 
   pool.query(text, values)
-    .then(result => res.status(200).send({
+    .then(result => res.status(201).send({
       message: "Request created successfully",
-      request: result.rows
+      request: result.rows[0]
     }))
     .catch(error => setImmediate(() => {throw error}));
 }
 
-exports.getAllRequests = (req, res) => {
+export const getAllRequests = (req, res) => {
   pool.query("SELECT * FROM requests", (err, result) => {
-    console.log(err, result);
     res.status(200).send({
-      result:result
+      allRequests: result.rows
     });
   })
 }
-exports.getUserRequests = (req,res) => {
+export const getUserRequests = (req,res) => {
   const user = req.decodedUser;
   const reqID = [user.id];
  
   pool.query("SELECT * FROM requests WHERE user_id = $1", reqID)
-  .then(result => res.status(200).send(result.rows))
+  .then(result => res.status(200).send({
+    requests: result.rows
+  }))
   .catch(error => setImmediate(() => { throw error }))
  
 }
 
 //export function to get a user's request
-exports.getRequestById = (req, res) => {
+export const getRequestById = (req, res) => {
  
     pool.query("SELECT * FROM requests WHERE id = $1", [req.params.requestId]) 
-  .then(result => res.status(200).send(result.rows))
+  .then(result => res.status(200).send({
+    request: result.rows
+  }))
   .catch(error => setImmediate(() => { throw error }))
-  
 }
 
-exports.modifyRequest = (req, res) => {
-    const reqID = parseInt(req.params.requestId);
-
-    const {error} = requestsModel(req.body);
-    
-    if(error) {
-        res.status(400).send(error.details[0].message);
-        return;
-    }
-
-    const text = 'UPDATE requests SET title=($1), description=($2), requestType=($3) WHERE id=($4) AND status=($5)'
-    const values = ([req.body.title, req.body.description, req.body.requestType, reqID, 'pending']);
+export const modifyRequest = (req, res) => {
+  const reqID = parseInt(req.params.requestId);
   
-    pool.query(text, values) 
-    .then(result => res.status(200).send(
-      result
-    ))
+  if (req.currentRequestStatus.toLowerCase() !== 'pending') {
+    return res.status(409).send({
+      error: 'You cannot modify this request as it has already been approved'
+    })
+  }
+
+  const {error} = requestsModel(req.body);
+  
+  if (error) {
+    return res.status(400).send({
+      error: error.details[0].message
+    });
+  }
+
+  let title = req.currentRequest.title;
+  let description = req.currentRequest.description;
+  let requestType = req.currentRequest.requestType;
+
+  if (req.body.title.trim()) {
+    title = req.body.title.trim();
+  }
+
+  if (req.body.description.trim()) {
+    description = req.body.description.trim();
+  }
+
+  if (req.body.requestType.trim()) {
+    requestType = req.body.requestType.trim();
+  }
+
+  const text = 'UPDATE requests SET title=($1), description=($2), requestType=($3) WHERE id=($4) RETURNING *'
+  const values = ([title, description, requestType, reqID]);
+
+  pool.query(text, values) 
+  .then(result => res.status(200).send({
+    message: 'Request successfully modified',
+    request: result.rows[0]
+  }))
   .catch(error => setImmediate(() => { throw error }))
-
 }
-  exports.approveRequest = (req, res) => {
-    const reqID = parseInt(req.params.requestId);
-    const text = 'UPDATE requests SET title=($1), description=($2), requestType=($3), status=($4) WHERE id=($5)'
-    const values = ([req.body.title, req.body.description, req.body.requestType, 'Approved', reqID]);
 
-    pool.query(text, values) 
+export const approveRequest = (req, res) => {
+  const reqID = parseInt(req.params.requestId);
+  if (req.currentRequestStatus.toLowerCase() !== 'pending') {
+    return res.status(409).send({
+      error: 'You can only approve a pending request'
+    })
+  }
+
+  const text = 'UPDATE requests SET status=($1) WHERE id=($2) RETURNING * '
+  const values = (['approved', reqID]);
+
+  pool.query(text, values) 
    .then(result => res.status(200).send({
-      'result': result.rows,
-      'message': "Approved"
+      message: "The request has been approved",
+      result: result.rows[0]
     }))
   .catch(error => setImmediate(() => { throw error }))
 
 }
-exports.disapproveRequest = (req, res) => {
+export const disapproveRequest = (req, res) => {
   const reqID = parseInt(req.params.requestId);
-  const text = 'UPDATE requests SET title=($1), description=($2), requestType=($3), status=($4) WHERE id=($5)'
-    const values = ([req.body.title, req.body.description, req.body.requestType, 'Disapproved', reqID]);
+  if (req.currentRequestStatus.toLowerCase() !== 'pending') {
+    return res.status(409).send({
+      error: 'You can only disapprove a pending request'
+    })
+  }
+
+  const text = 'UPDATE requests SET status=($1) WHERE id=($2) RETURNING * '
+  const values = (['disapproved', reqID]);
 
   pool.query(text, values) 
 .then(result => res.status(200).send({
-    'result': result.rows,
-    'message': "Disapproved"
+    'message': "The request has been disapproved",
+    'result': result.rows[0]
   }))
 .catch(error => setImmediate(() => { throw error }))
 }
 
-exports.undo = (req, res) => {
+export const resetRequest = (req, res) => {
   const reqID = parseInt(req.params.requestId);
-  const text = 'UPDATE requests SET title=($1), description=($2), requestType=($3), status=($4) WHERE id=($5)'
-    const values = ([req.body.title, req.body.description, req.body.requestType, 'pending', reqID]);
+  if (req.currentRequestStatus.toLowerCase() === 'pending') {
+    return res.status(409).send({
+      error: 'You cannot undo a pending request status'
+    })
+  }
+
+  const text = 'UPDATE requests SET status=($1) WHERE id=($2) RETURNING * '
+  const values = (['pending', reqID]);
 
   pool.query(text, values) 
 .then(result => res.status(200).send({
-    'result': result.rows,
-    'message': "Action has been successfully undone"
+    'message': "Request status has been successfully reset",
+    'result': result.rows[0]
   }))
 .catch(error => setImmediate(() => { throw error }))
 
 }
 
-exports.deleteRequest = (req, res) => {
+export const deleteRequest = (req, res) => {
 
   const user = req.decodedUser;
   const reqID = [user.id];
  
   pool.query("DELETE FROM requests WHERE user_id = $1", reqID)
-  .then(result => res.status(200).send({message: 'successfully deleted'}))
+  .then(result => res.status(204).send({message: 'successfully deleted'}))
   .catch(error => setImmediate(() => { throw error }))
 
 
 }
-exports.resolveRequest = (req, res) => {
+export const resolveRequest = (req, res) => {
   const reqID = parseInt(req.params.requestId);
-  const text = 'UPDATE requests SET title=($1), description=($2), requestType=($3), status=($4) WHERE id=($5)'
-  const values = ([req.body.title, req.body.description, req.body.requestType, 'Resolved', reqID]);
+  if (req.currentRequestStatus.toLowerCase() !== 'approved') {
+    return res.status(409).send({
+      error: 'You can only resolve an approved request'
+    })
+  }
+
+  const text = 'UPDATE requests SET status=($1) WHERE id=($2) RETURNING * '
+  const values = (['resolved', reqID]);
 
   pool.query(text, values) 
 .then(result => res.status(200).send({

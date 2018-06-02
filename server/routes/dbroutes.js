@@ -3,35 +3,39 @@
 import express from 'express'
 const dbrouter = express.Router();
 
-import {createRequest, getAllRequests, getRequestById, modifyRequest, approveRequest, resolveRequest, disapproveRequest, getUserRequests} from './../controller/requestController'
+import {createRequest, getAllRequests, getRequestById, modifyRequest, approveRequest, resolveRequest, disapproveRequest, getUserRequests, resetRequest} from './../controller/requestController'
 import { signupUser, signinUser } from './../controller/userController'
 import authenticateUser from './../middleware/auth'
 import isEmailUnique from './../middleware/checkEmail';
+import requestExists from './../middleware/requestExists';
+import { validateLogin, validateSignup } from './../middleware/validators';
 import checkForAdmin from '../middleware/userAdmin';
 // routers for the API endpoints
 
 // Auth routes
- dbrouter.post('/auth/signup', isEmailUnique, signupUser);
+ dbrouter.post('/auth/signup', validateSignup, isEmailUnique, signupUser);
 
- dbrouter.post('/auth/signin', signinUser);
+ dbrouter.post('/auth/login', signinUser);
 
 // user requests
 dbrouter.post('/users/requests', authenticateUser, createRequest);
 
 dbrouter.get('/users/requests', authenticateUser, getUserRequests);
 
-dbrouter.get('/users/requests/:requestId', authenticateUser, getRequestById);
+dbrouter.get('/users/requests/:requestId', authenticateUser, requestExists, getRequestById);
 
-dbrouter.put('/users/requests/:requestId', authenticateUser, checkForAdmin, modifyRequest);
+dbrouter.put('/users/requests/:requestId', authenticateUser, requestExists, modifyRequest);
 
 //admin routes
 dbrouter.get('/requests', authenticateUser, checkForAdmin, getAllRequests);
 
-dbrouter.put('/requests/:requestId/approve', authenticateUser, checkForAdmin, approveRequest);
+dbrouter.put('/requests/:requestId/approve', authenticateUser, checkForAdmin, requestExists, approveRequest);
 
-dbrouter.put('/requests/:requestId/resolve', authenticateUser, checkForAdmin, resolveRequest);
+dbrouter.put('/requests/:requestId/resolve', authenticateUser, checkForAdmin, requestExists, resolveRequest);
 
-dbrouter.put('/requests/:requestId/disapprove', authenticateUser, checkForAdmin, disapproveRequest)
+dbrouter.put('/requests/:requestId/disapprove', authenticateUser, checkForAdmin, requestExists, disapproveRequest);
+
+dbrouter.put('/requests/:requestId/reset', authenticateUser, checkForAdmin, requestExists, resetRequest);
 
 export default dbrouter;
 

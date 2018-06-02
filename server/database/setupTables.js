@@ -6,6 +6,5 @@ pool.query("CREATE TABLE IF NOT EXISTS users(id SERIAL PRIMARY KEY, name VARCHAR
 
 pool.query("CREATE TABLE IF NOT EXISTS requests(id SERIAL PRIMARY KEY, title VARCHAR(30) NOT NULL, description VARCHAR(450) NOT NULL, requestType VARCHAR(10) NOT NULL, user_id INTEGER REFERENCES users(id), status VARCHAR(32) DEFAULT 'pending', created_at TIMESTAMP DEFAULT NOW())", (err, result) => {
   console.log(err, result);
-  pool.end();
 });
   

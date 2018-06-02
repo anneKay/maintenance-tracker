@@ -6,9 +6,9 @@ import pool from "./../database/config";
 import { generateToken, validatePassword } from './../helpers/auth';
 
 
-exports.signupUser = (req, res) => {
+export const signupUser = (req, res) => {
   //const emailFormat = validateEmail(req.body);
-  validateUserInput(req, res);
+  // validateUserInput(req, res);
 
   const salt = bcrypt.genSaltSync(10);
   const passwordHash = bcrypt.hashSync(req.body.password, salt);
@@ -20,13 +20,14 @@ exports.signupUser = (req, res) => {
     .then((result) => {
       // generate authentication token and send in response header
       const token = generateToken(result.rows[0]);
+      const { id, name, email, admin, created_at} = result.rows[0];
       return res.status(201).header({
         authentication: token
       }).send({
         message: `Welcome to maintenance tracker, ${result.rows[0].name}`,
-        name: result.rows[0].name,
-        email: result.rows[0].email
-
+        user: { 
+          id, name, email, admin, created_at
+        }
       })
     })
 
@@ -37,14 +38,12 @@ exports.signupUser = (req, res) => {
         error: 'Server error. Failed to signup user'
       })
     });
-    
   
 }
-   
 
-exports.signinUser = (req, res) => {
+export const signinUser = (req, res) => {
   
-  validateUserInput(req, res);
+  // validateUserInput(req, res);
   //query database for email
   const text = `SELECT * FROM users WHERE email=$1`
   const values = ([req.body.email]);
@@ -52,24 +51,23 @@ exports.signinUser = (req, res) => {
   pool.query(text, values)
   .then((result) => {
     const user = result.rows[0];
-    if (!user || !validatePassword(user, req.body.password)) {
+    const authValid = user ? validatePassword(user, req.body.password) : false;
+    if (!authValid) {
       return res.status(401).send({
         error: 'email or password is incorrect'
       })
     }
 
+    const { id, name, email, created_at, admin } = result.rows[0];
     const token = generateToken(result.rows[0]);
     res.status(200).header({
       authentication: token
-  }).send({ message: `Welcome to maintenance tracker, ${result.rows[0].name}`,
-    name: result.rows[0].name,
-    email: result.rows[0].email
-  
-  }
-  )
-
-  })
-  .catch((error) => {
+    }).send({ message: `Welcome back, ${result.rows[0].name}`,
+      user: {
+        id, name, email, admin, created_at
+      }
+    })
+  }).catch((error) => {
     console.log(error);
     res.status(500).send({
       error: 'Server error. Cannot sign in at the moment'
