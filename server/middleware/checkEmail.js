@@ -6,7 +6,7 @@ const isEmailUnique = (req, res, next) => {
     const user = result.rows[0];
     if (user) {
       return res.status(401).send({
-        error: 'Email Already Exists'
+        error: 'Sorry, email already taken'
       })
     } 
     next();
