@@ -12,7 +12,7 @@ export const signupUser = (req, res) => {
 
   const salt = bcrypt.genSaltSync(10);
   const passwordHash = bcrypt.hashSync(req.body.password, salt);
-
+  console.log(`${req.body.name} ${req.body.email} ${req.body.password}`);
  // create user record
     const text = 'INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *'
     const values = ([req.body.name, req.body.email, passwordHash]);

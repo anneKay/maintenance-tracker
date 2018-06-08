@@ -4,20 +4,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maintenance Tracker</title>
     <link rel="stylesheet" href="../css/styles.css" type="text/css">
-    <script type="text/javascript" src="../js/scripts.js"></script>
+    
   </head>
   <body>
       <main class="container">
           <a href="../../index.html"><img src="../img/mt-logo.png" class="logo-bg" alt="app logo"></a>
           <h3 class="app-title">Maintenance Tracker</h3>
 		  <div class="form-container">
-			  <form onsubmit="validateLogin()">
-			  	<label for="username">Email</label>
-			  	<input type="text" class="username" id="username" name="username" placeholder="Enter Your Email">
-			  	<div><h4 id="error-username"></h4></div>
+			  <form onsubmit="validateLogin()" id= "loginUser">
+			  	<label for="email">Email</label>
+			  	<input type="text" class="email" id="email" name="email" placeholder="Enter Your Email">
+			  	<div><h4  class="error-text" id="error-email"></h4></div>
 			  	<label for="password">Password</label>
 			  	<input type="text" class="password" id="password" name="password" placeholder="Enter Your Password..">
-			  	<div><h4 id="error-password"></h4></div>
+			  	<div><h4 class="error-text" id="error-password"></h4></div>
 			  	<div>
 			  		<h4>forgot password? <a>Click here</a></h4>
 			  	</div>
@@ -30,6 +30,7 @@
 		  	</div>
 		  </div>
 
-      </main>
+			</main>
+			<script type="text/javascript" src="../js/login.js"></script>
   </body>
 </html>
