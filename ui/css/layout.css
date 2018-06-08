@@ -37,7 +37,7 @@ h2#id {
 }
 
 
-#error-username, #error-password {
+.error-text {
 	color: red;
 }
 div.request > h2{
