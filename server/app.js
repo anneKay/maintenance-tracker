@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 
 const port = process.env.PORT || 3000;
 
-app.use('/api/v2', dbroutes);
+
 app.use('/api/v2', express.static('ui'));
 
 //check for wrong url input
