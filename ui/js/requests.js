@@ -12,6 +12,7 @@ function getRequests(){
   var message = document.getElementById('welcome').innerHTML = 'Welcome ' + capitalizeName(userSession.name);
   return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests', {
       method: 'GET',
+      mode: 'no-cors',
       headers: new Headers({
           'authentication': userSession.token
       }),

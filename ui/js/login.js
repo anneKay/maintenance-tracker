@@ -51,6 +51,7 @@ function login(email, password){
 
   return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/auth/login', {
       method: 'POST',
+      mode: 'no-cors',
       redirect: 'follow',
       headers: new Headers({
           'Accept': 'application/json, text/plain, */*',
