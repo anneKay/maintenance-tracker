@@ -12,6 +12,14 @@ div.new-request{
 	background : #eee;
 	
 }
+#create{
+  background:green;
+  color: white;
+  
+  padding: 0.5em;
+ font-family: 'Times New Roman', Times, serif;
+ font-size: 20px;
+}
 #new-request{
   font-family: cursive;
   color: rgb(63, 99, 198);
@@ -236,7 +244,14 @@ header.profile a  {
 		width:76px;
 		height: 60px;
 	}
-
+  #create{
+    background:green;
+    color: white;
+    margin-right: 2em;
+    padding: 0.3em;
+   font-family: 'Times New Roman', Times, serif;
+   font-size: 17px;
+  }
 	#details-admin {
 		background: #eee;
 		margin: -1.25em 0em;
