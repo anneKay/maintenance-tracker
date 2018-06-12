@@ -7,9 +7,9 @@ function validateInput(){
   
   var titleError = document.getElementById('title-error');
   var describeError = document.getElementById('describe-error');
-  var reqError = document.getElementById('req-type');
+  var reqError = document.getElementById('req-type-error');
 
-  if (typeof title == 'string' && title.trim() == '' && title.trim().length == 0) {
+  if (typeof title == 'string' && title.trim() == '' && title.trim().length <= 4) {
    
     document.getElementById('title').focus();
     titleError.innerHTML = "title cannot be empty";
@@ -23,7 +23,7 @@ function validateInput(){
     titleError.innerHTML = "";
     
     document.getElementById('req-type').focus();
-    reqError.innerHTML = "select your request type";
+    reqError.innerHTML = "Input your request type";
     
   } else {
     console.log("done")
@@ -55,7 +55,7 @@ function jsonResponse(res) {
   console.log(res);
        if (res.status == 200 || res.status == 201) {
          
-    }  else if(res.status == 401) {
+    }  else if(res.status == 400) {
       document.getElementById('req-error').innerHTML = "There was a problem creating your request";
      
 }
