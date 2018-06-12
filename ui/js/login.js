@@ -45,12 +45,12 @@ function displayPage(){
   }
 }
 
-//var usersignup = document.getElementById('signupuser').addEventListener('submit', validateSubmit);
+
 var userLogin = document.getElementById('loginUser').addEventListener('submit', validateSubmit);
 
 function login(email, password){
 
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/auth/login', {
+  return fetch('http://localhost:3000/api/v2/auth/login', {
       method: 'POST',
       redirect: 'follow',
       headers: new Headers({

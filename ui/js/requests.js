@@ -10,7 +10,7 @@ function getRequests(){
   
   var ul = document.getElementById('get-req'); // Get the list where we will place our authors
   var message = document.getElementById('welcome').innerHTML = 'Welcome ' + capitalizeName(userSession.name);
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests', {
+  return fetch('http://localhost:3000/api/v2/users/requests', {
       method: 'GET',
       headers: new Headers({
           'authentication': userSession.token
@@ -48,7 +48,7 @@ var userSession = {
   }
  
 function addReq(title, status) {
-  //var li = document.getElementById("get-req");
+  
   var li = document.createElement("li");
   var link = document.createElement("a");
   var span = document.createElement("span");
