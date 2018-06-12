@@ -12,7 +12,7 @@
         <div>
                 <a href="#" class="logo ">
 
-                        <h3> Welcome User</h3>
+                    <h3 id="welcome"> Welcome User</h3>
                 </a>
 
         <nav class="nav nav-primary">
@@ -25,40 +25,33 @@
         </div>
     </header>
     <main>
-
-		<section class="container">
-			<div class="request">
-				<h2> Requests List</h2>
-			</div>
-			<div class="request-div">
-				<a href="newrequest.html"><h3 class="new-request">Add Request</h3></a>
-
-				<div id="requests">
-				<ul onload="getRequests()">
-
-					<li><a href="#" id="first-req" class="">Fix Dishwasher <span id="first-status" class="pull-right-sm accepted"> accepted</span></a></li>
-					<li><a href="#"id="sec-req" class="">Install Air Conditioner <span id="sec-status" class="pull-right-sm accepted"> accepted</span></a></li>
-					<li><a href="#" id="third-req" class="">Fix Washing Machine <span id="third-status" class="pull-right-sm  rejected"> rejected</span></a></li>
-					<li><a href="#" id="fourth-req" class="">Fix Drilling Equipment <span id="fourth-status" class="pull-right-sm progress"> pending</span></a></li>
-					<li><a href="#" id="fifth-req" class="">Fix Deep Freezer<span id="fifth-status" class="pull-right-sm rejected"> rejected</span></a></li>
-
-				</ul>
-				<button onclick="getRequests()"></button>
-				<ul id="get-req"></ul>
-
-				</div>
-				
-				<div class="pagination">
-					<a href="#">&laquo;</a>
-					<a href="#" class="active">1</a>
-					<a href="#">2</a>
-					<a href="#">3</a>
-					<a href="#">&raquo;</a>
-				</div>
-			</div>
-		</section>
-
-        
+				<section class="container">
+						<div class="request">
+							<h2> Requests List</h2>
+						</div>
+						<div class="request-div">
+							<a href="newrequest.html"><h3 class="new-request">Add Request</h3></a>
+			
+							<div id="requests">
+							<div class="req-container">
+							<ul id="get-req">
+			
+								
+							</ul>
+						
+						</div>
+							</div>
+							
+							<div class="pagination">
+								<a href="#">&laquo;</a>
+								<a href="#" class="active">1</a>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">&raquo;</a>
+							</div>
+						</div>
+					</section>
+	
 		</main>
 		<script type="text/javascript" src="../js/requests.js"></script>
 </body>

@@ -75,10 +75,6 @@ img.logo-bg{
 div.signup a, div.login a{
     text-decoration: none;
 }
-.signup {
-
-}
-
 div.signup a:hover div.login a:hover{
     text-decoration: none;
     color: #45a049;
@@ -156,7 +152,7 @@ footer h1{
 	}
 
 	input#cancel {
-		background-color: red;
+		background-color:#ccc;
 		text-align: center;
 		color: white;
 		padding: 14px;
@@ -424,7 +420,7 @@ input[type=text].search:hover {
 		box-sizing: border-box;
 	}
 	input#cancel {
-		background-color: red;
+        background-color:#ccc;
 		text-align: center;
 		color: white;
 		padding: 14px;

@@ -14,8 +14,9 @@ div.new-request{
 }
 #new-request{
   font-family: cursive;
-  margin-right: 2em;
-  padding-top:1em;
+  color: rgb(63, 99, 198);
+  margin-left: 25%;
+  padding-top:0.5em;
  
 }
   .app-title{
@@ -41,7 +42,7 @@ h2#id {
 	color: red;
 }
 div.request > h2{
-   margin-top: 1.5em;
+   margin-top: 1em;
    font-family: cursive;
    font-weight: bold;
    margin-left: 2.2em;
@@ -85,12 +86,6 @@ button#reject{
 .admin-div > h2 {
   padding-top: 2em;
   font-family: cursive;
-}
-.request-list{
-  padding-top:0.5em;
-  padding-bottom: 2em;
-  margin-top: -1em;
-  background: #eee;
 }
 .header-request{
   padding:1em 0em 1em 1em;
