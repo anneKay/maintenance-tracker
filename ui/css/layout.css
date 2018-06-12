@@ -19,6 +19,12 @@ div.new-request{
   padding-top:0.5em;
  
 }
+.request-list{
+  padding-top:0.5em;
+  padding-bottom: 2em;
+  margin-top: -1em;
+  background: #eee;
+}
   .app-title{
     display: block;
     padding-left: 20px;
