@@ -45,11 +45,12 @@ function displayPage(){
   }
 }
 
+//var usersignup = document.getElementById('signupuser').addEventListener('submit', validateSubmit);
 var userLogin = document.getElementById('loginUser').addEventListener('submit', validateSubmit);
 
 function login(email, password){
 
-  return fetch('http://localhost:3000/api/v2/auth/signup', {
+  return fetch('http://localhost:3000/api/v2/auth/login', {
       method: 'POST',
       redirect: 'follow',
       headers: new Headers({
@@ -91,4 +92,7 @@ function logError (err) {
   return console.log(err);
 }
 
- 
+  var userSession = {
+  token: localStorage.getItem('authentication'),
+  name: name
+  }
