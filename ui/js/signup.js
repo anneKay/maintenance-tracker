@@ -44,8 +44,11 @@ function validateSubmit(){
 }
 
 var usersignup = document.getElementById('signupuser').addEventListener('submit', validateSubmit);
-function signUp(name, email, password){
 
+
+function signUp(name, email, password){
+  
+  
   console.log(`${name} ${email} ${password}`);
 
   return fetch('http://localhost:3000/api/v2/auth/signup', {
