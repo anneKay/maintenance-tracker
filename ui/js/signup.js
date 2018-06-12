@@ -44,16 +44,12 @@ function validateSubmit(){
 }
 
 var usersignup = document.getElementById('signupuser').addEventListener('submit', validateSubmit);
-
-
 function signUp(name, email, password){
-  
-  
+
   console.log(`${name} ${email} ${password}`);
 
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/auth/signup', {
+  return fetch('http://localhost:3000/api/v2/auth/signup', {
       method: 'POST',
-      mode: 'no-cors',
       redirect: 'follow',
       headers: new Headers({
           'Accept': 'application/json, text/plain, */*',
