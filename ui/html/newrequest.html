@@ -1,0 +1,56 @@
+﻿<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>New Request Page</title>
+	<link rel="stylesheet" href="../css/styles.css" type="text/css">
+</head>
+<body>
+		<header class="header-primary profile">
+				<div>
+					<a href="#" class="logo ">
+	
+						<h3> Dashboard</h3>
+					</a>
+	
+				<nav class="nav nav-primary">
+					<a href="admin.html" class="btn btn-nav">Home</a>
+	
+					<a href="#" class="btn btn-nav">Report Issue</a>
+					<a href="../../index.html" class="btn btn-primar">log Out</a>
+				</nav>
+				</div>
+			</header>
+	<main>
+		<section>
+				<h2 id="new-request">Place New Request</h2>
+			<div class="form-container new-request">
+			
+				<form id="create-req" >
+					<label for="title">Title</label>
+					<input type="text" id="title" name="title" placeholder="Enter Your Task Title">
+					<div><h4  class="error-text" id="title-error"></h4></div>
+					<label for="description">Description</label>
+					<input type="text" id="describe" name="description" placeholder="Describe Your Request..">
+					<div><h4  class="error-text" id="describe-error"></h4></div>
+					<label for="requesttype">Request Type</label>
+					<input type="text" id="req-type" name="requesttype" placeholder="Enter your request type">
+					<!-- <select id="req-type" name="requesttype">
+						<option value="urgent">Urgent</option>
+						<option value="average">Normal</option>
+						<option value="not-urgent">Not Urgent</option>
+					</select> -->
+
+					<div><h4  class="error-text" id="req-type-error"></h4></div>
+					<label for="date">Pick Up Date</label>
+					<input type="date" id="date" name="date">
+					<input type="submit" value="Submit">
+					<a href="profile.html"><input value="Cancel" id="cancel"></a>
+					<div><h4  class="error-text" id="req-error"></h4></div>
+				</form>
+			</div>
+		</section>
+	</main>
+	<script type="text/javascript" src="../js/newRequest.js"></script>
+</body>
+</html>
