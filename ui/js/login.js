@@ -50,7 +50,7 @@ var userLogin = document.getElementById('loginUser').addEventListener('submit', 
 
 function login(email, password){
 
-  return fetch('https://mtracker-nwanna.herokuapp.com/auth/login', {
+  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/auth/login', {
       method: 'POST',
       redirect: 'follow',
       headers: new Headers({
