@@ -12,7 +12,7 @@ div.new-request{
 	background : #eee;
 	
 }
-.user-div > h2 {
+.user-div > h2, .user-div >h3 {
   color: teal;
 }
 .user-container {
@@ -98,19 +98,37 @@ div.request > h2{
   color:green;
 }
 
-button#accept{
-  background: green;
+button#approve{
+  background: yellowgreen;
+  font-size: 16px;
   color:white;
-  padding: 0.7em;
-  margin-left: 6em;
+  margin-left: -0.7em;
+  margin-top: 1em;
+  padding: 0.6em 0.2em;
+  
+}
+#admin-cont{
+  margin-bottom: 2em;
 }
 button#reject{
   background: red;
-  padding: 0.7em;
+  margin-top: 1em;
+  padding: 0.6em 0.2em;
+  font-size: 16px;
+  margin-left: 0.5em;
   color:white;
-  margin-left: 2em;
+ 
 }
 
+button#resolve{
+  background: green;
+  margin-top: 1em;
+  color:white;
+  font-size: 16px;
+  margin-left: 0.5em;
+  padding: 0.6em 0.2em;
+  
+}
 .admin-requests>h4{
   color: green;
   margin: 0;
@@ -273,7 +291,51 @@ header.profile a  {
 	img.logo {
 		width:76px;
 		height: 60px;
-	}
+  }
+  .user-container {
+    margin-right: auto;
+      margin-left: auto;
+      width: 60%;
+      background: #eee;
+      padding-top: 1em;
+      padding-left: 1em;
+      margin-bottom: 1em;
+      padding-right: 1em;
+      padding-bottom: 3.5em
+  }
+  
+  
+button#approve{
+  background: yellowgreen;
+  font-size: 13px;
+  color:white;
+  margin-left: -0.7em;
+  margin-top: 1em;
+  padding: 0.6em 0.2em;
+  
+}
+#admin-cont{
+  margin-bottom: 2em;
+}
+button#reject{
+  background: red;
+  margin-top: 1em;
+  padding: 0.6em 0.2em;
+  font-size: 13px;
+  margin-left: 0.5em;
+  color:white;
+ 
+}
+
+button#resolve{
+  background: green;
+  margin-top: 1em;
+  color:white;
+  font-size: 13px;
+  margin-left: 0.5em;
+  padding: 0.6em 0.2em;
+  
+}
   #create{
     background:green;
     color: white;
