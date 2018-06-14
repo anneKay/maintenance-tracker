@@ -78,7 +78,6 @@ function jsonResponse(res) {
 return res.json();
 }
 
-
 function logData (data) {
   localStorage.setItem('name', data.user.name);
   if(data.user.admin){
