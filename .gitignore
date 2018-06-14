@@ -5,7 +5,8 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+obj
+coverage
 # Runtime data
 pids
 *.pid
@@ -20,7 +21,7 @@ coverage
 
 # nyc test coverage
 .nyc_output
-
+.vs
 
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
