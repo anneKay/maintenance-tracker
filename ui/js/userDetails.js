@@ -34,7 +34,6 @@ function getSingleRequest(){
 queryString = queryString.substring(1);
 var queries = queryString.split("=");
 requestId = (queries[1]);
-console.log(typeof (new Date().toISOString()))
 
   return fetch('http://localhost:3000/api/v2/users/requests/'+requestId, {
       method: 'GET',
@@ -51,7 +50,7 @@ console.log(typeof (new Date().toISOString()))
       
       title = userRequest[0].title;
        description = userRequest[0].description;
-      createdAt = userRequest[0].created_at;
+      createdAt = showTime(userRequest[0].created_at);
       console.log(title, description, createdAt)
       addRequest(title, description, createdAt);
      
@@ -154,9 +153,4 @@ var userSession = {
 
   }
 
-  function showTime(dbTime, date){
-    //slash strings to show only numbers in date
-    //separete numbers
-    //compare numbers and return appropriate value
-
-  }
+ 

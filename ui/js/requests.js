@@ -29,6 +29,9 @@ function getRequests(){
       var status = userRequests[i].status;
       var id = userRequests[i].id;
       var request =  addReq(title, status, id);
+      userSession.reqArray.push(userRequests.title);
+      userSession.reqArray.push(userRequests.status);
+      localStorage.setItem('requestArray', userSession.reqArray);
       document.getElementById('get-req').appendChild(request);
   }
     
@@ -44,7 +47,8 @@ function capitalizeName(string) {
 }
 var userSession = {
   token: localStorage.getItem('authentication'),
-  name: localStorage.getItem('name')
+  name: localStorage.getItem('name'),
+  reqArray: []
   }
  
 function addReq(title, status, id) {
@@ -62,6 +66,9 @@ function addReq(title, status, id) {
   link.appendChild(span)
   li.appendChild(link);
   return li;
+}
+function filterRequests(){
+
 }
 
 function statusBackground(status, span){

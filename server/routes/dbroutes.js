@@ -3,7 +3,7 @@
 import express from 'express'
 const dbrouter = express.Router();
 
-import {createRequest, getAllRequests, getRequestById, modifyRequest, approveRequest, resolveRequest, disapproveRequest, getUserRequests, resetRequest} from './../controller/requestController'
+import {createRequest, getAllRequests, getRequestById, modifyRequest, approveRequest, resolveRequest, disapproveRequest, getUserRequests, resetRequest, deleteRequest} from './../controller/requestController'
 import { signupUser, signinUser } from './../controller/userController'
 import authenticateUser from './../middleware/auth'
 import isEmailUnique from './../middleware/checkEmail';
@@ -25,6 +25,7 @@ dbrouter.get('/users/requests', authenticateUser, getUserRequests);
 dbrouter.get('/users/requests/:requestId', authenticateUser, requestExists, getRequestById);
 
 dbrouter.put('/users/requests/:requestId', authenticateUser, requestExists, modifyRequest);
+dbrouter.delete('users/requests/:requestId', authenticateUser, requestExists, deleteRequest);
 
 //admin routes
 dbrouter.get('/requests', authenticateUser, checkForAdmin, getAllRequests);
@@ -36,6 +37,8 @@ dbrouter.put('/requests/:requestId/resolve', authenticateUser, checkForAdmin, re
 dbrouter.put('/requests/:requestId/disapprove', authenticateUser, checkForAdmin, requestExists, disapproveRequest);
 
 dbrouter.put('/requests/:requestId/reset', authenticateUser, checkForAdmin, requestExists, resetRequest);
+
+dbrouter.delete('/requests/:requestId/delete', authenticateUser, checkForAdmin, requestExists, deleteRequest);
 
 export default dbrouter;
 
