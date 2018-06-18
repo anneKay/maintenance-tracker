@@ -7,7 +7,7 @@ window.onload = function() {
  function getAllRequests(){
    
    var message = document.getElementById('user').innerHTML = 'Welcome ' ;
-   return fetch('http://localhost:3000/api/v2/requests', {
+   return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests', {
        method: 'GET',
        headers: new Headers({
            'authentication': userSession.token
