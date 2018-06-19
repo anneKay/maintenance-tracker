@@ -26,7 +26,7 @@ function validateInput(){
     reqError.innerHTML = "Input your request type";
     
   } else {
-    console.log("done")
+    
     createReq(title, description, requestType);
     
   }
@@ -64,7 +64,7 @@ return res.json();
 
 
 function loadProfile (data) {
-  window.location.href = "../html/profile.html";
+ window.location.href = "../html/profile.html";
   return console.log(data);
 }
 function logError (err) {
@@ -75,4 +75,3 @@ var userSession = {
   token: localStorage.getItem('authentication'),
   name: localStorage.getItem('name')
   }
- 

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="../css/styles.css" type="text/css">
+    
+  </head>
+  <body>
+
+    <header class="header-primary profile">
+        <div>
+                <a href="#" class="logo ">
+
+                    <h3 id="welcome"> Dashboard</h3>
+                </a>
+
+        <nav class="nav nav-primary">
+               
+           
+            <a href="../html/profile.html" class="btn btn-nav">Home</a>
+                <a href="../html/index.html"  onclick="logoutUser()"class="btn btn-primar">Logout</a>    
+        </nav>
+        </div>
+    </header>
+    <main>
+        <div class="details" >
+            <h2 id="details" > Request Detail </h2>
+          </div>
+      <section class="container user-container">
+        <div id="detail-div">
+        
+        <div class="user-div">
+          <h2>Title</h2>
+          <p id="title">Fix DishWasher</p>
+        </div>
+        <hr />
+       
+        <div class="user-div">
+          <h2>Description </h2>
+          <p id="describe"> DishWasher broke down because of clog</p>
+
+        </div>
+        <hr>
+        <div class="user-div">
+          <h2> Time Of Request</h2>
+          <p id="time">May 4th, 2018</p>
+        </div>
+        <hr>
+
+        <input id="edit" type="button" onclick='inputNewRequest()' value="Edit Request"> </input>
+      </div>
+        <form id="modify-req" >
+            <label for="title">Title</label>
+            <input  type="text" id="title-text" name="title" placeholder="Enter Your Task Title">
+            <div><h4  class="error-text" id="title-error"></h4></div>
+            <label for="description">Description</label>
+            <input type="text" id="describe-text" name="description" placeholder="Describe Your Request..">
+            <div><h4  class="error-text" id="describe-error"></h4></div>
+            <label for="requesttype">Request Type</label>
+            <input type="text" id="req-type" name="requesttype" placeholder="Enter your request type">
+  
+            <div><h4  class="error-text" id="req-type-error"></h4></div>
+            <label for="date">Pick Up Date</label>
+            <input type="date" id="date" name="date">
+            <input type="submit" onclick="validateInput()" value="Submit">
+            <a href="profile.html"><input value="Cancel" id="cancel"></a>
+            <div><h4  class="error-text" id="req-error"></h4></div>
+          </form>
+            
+      </section>
+    </main>
+    <script type="text/javascript" src="../js/helper.js"></script>
+		<script type="text/javascript" src="../js/userDetails.js"></script>
+</body>
+
+</html>

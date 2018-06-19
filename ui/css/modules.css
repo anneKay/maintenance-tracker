@@ -48,8 +48,11 @@ img.logo-bg{
 	margin-left: auto;
 	margin-right: auto;
 	width: 14em;
-	margin-bottom:2em !important;
+	margin-bottom:3em !important;
 
+}
+.paginate{
+    margin-bottom: -2em;
 }
 
 	.pagination a {

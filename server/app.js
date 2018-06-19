@@ -22,7 +22,6 @@ const port = process.env.PORT || 3000;
 app.use('/api/v2', dbroutes);
 app.use('', express.static('ui'));
 
-//check for wrong url input
 app.all('*', (req, res) => res.status(404).send({
   Error: 'page not found'
 }) )

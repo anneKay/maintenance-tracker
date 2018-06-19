@@ -1,4 +1,3 @@
-
 function validateSubmit(){
   event.preventDefault();
   var emailRegex = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/
@@ -77,7 +76,6 @@ function jsonResponse(res) {
 }
 return res.json();
 }
-
 
 function logData (data) {
   localStorage.setItem('name', data.user.name);

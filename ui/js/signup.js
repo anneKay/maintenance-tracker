@@ -16,9 +16,12 @@ function validateSubmit(){
     emailError.innerHTML = "";
     cPasswordError.innerHTML = "";
     document.getElementById('name').focus();
-    nameError.innerHTML = "name is too short";
+    nameError.innerHTML = "name is cannot be empty";
   
-  } else if (typeof email == 'string' && email.trim() == '' && email.trim().length == 0) {
+  } else if (typeof name == 'string' && name.trim().length <= 5){
+    nameError.innerHTML = "name is too short";
+  }
+  else if (typeof email == 'string' && email.trim() == '' && email.trim().length == 0) {
     nameError.innerHTML = "";
     document.getElementById('email').focus();
     emailError.innerHTML = "email cannot be empty";
@@ -90,4 +93,4 @@ function logError (err) {
   token: localStorage.getItem('authentication'),
   name: name
   }
- 
+  
