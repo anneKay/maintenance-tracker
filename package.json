@@ -10,7 +10,7 @@
     "start": "babel-node --presets=es2015 server/app.js",
     "dev-start": "nodemon --exec babel-node --presets=es2015 server/app.js",
     "coverage": "babel-node ./node_modules/istanbul/lib/cli cover _mocha server/tests/test.js",
-    "lint": "eslint server/app/js",
+    "lint": "eslint server/app.js",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test | coveralls",
     "stop-process": "taskkill /F /IM node.exe",

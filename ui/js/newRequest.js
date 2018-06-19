@@ -75,4 +75,3 @@ var userSession = {
   token: localStorage.getItem('authentication'),
   name: localStorage.getItem('name')
   }
- 

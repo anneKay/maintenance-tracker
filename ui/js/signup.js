@@ -93,4 +93,4 @@ function logError (err) {
   token: localStorage.getItem('authentication'),
   name: name
   }
- 
+  

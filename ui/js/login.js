@@ -1,4 +1,3 @@
-
 function validateSubmit(){
   event.preventDefault();
   var emailRegex = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/
