@@ -4,7 +4,8 @@ function logoutUser () {
   return;
 }
 var userSession = {
-  token: localStorage.getItem('authentication')
+  token: localStorage.getItem('authentication'),
+  requests: localStorage.getItem('requests')
 }
 function showTime (dbdate) {
   var time = new Date().toString();
@@ -75,4 +76,9 @@ switch(monthVal) {
   default:
     return 'No date found';
 }
+}
+
+
+function capitalizeName(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }

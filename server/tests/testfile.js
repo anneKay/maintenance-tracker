@@ -5,9 +5,11 @@ import request from 'supertest';
 import app from './../app';
 //import {token} from './../middleware/auth'
 
+
+
 describe ('POST auth/signup', () => {
   it('should create a user', (done) => {
-    const email = 'nill@example.com';
+    const email = 'nill@examplcom';
     const password = '123456';
 
     request(app)
@@ -15,7 +17,7 @@ describe ('POST auth/signup', () => {
       .send({email, password})
       .expect(200)
       .expect((res) => {
-        expect(res.headers['x-auth']).toExist();
+        expect(res.headers['authentication']).toExist();
         expect(res.body._id).toExist();
         expect(res.body.email).toBe(email);
       })
@@ -60,7 +62,7 @@ describe ('POST auth/login', () => {
       .send({email, password})
       .expect(200)
       .expect((res) => {
-        expect(res.headers['x-auth']).toExist();
+        expect(res.headers['authentication']).toExist();
        
       })
       .end((err) => {
