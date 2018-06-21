@@ -68,7 +68,7 @@ function addReq(title, status, id) {
   link.href ="../html/userRequest.html" + queryString;
     
   link.innerText = capitalizeName(title) ;
-  span.innerText = status;
+  span.innerText = status.toLowerCase();
   
   link.appendChild(span)
   li.appendChild(link);

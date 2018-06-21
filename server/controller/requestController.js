@@ -19,7 +19,7 @@ export const createRequest = (req, res) => {
   }
 
   const reqTitle = capitalizeString(req.body.title);
-  const reqStatus = req.body.status.toLowerCase();
+  const reqStatus = req.body.status
   const reqType = capitalizeString(req.body.requestType);
 
   const text = 'INSERT INTO requests(user_id, title, description, requestType) VALUES($1, $2, $3, $4) RETURNING *'
