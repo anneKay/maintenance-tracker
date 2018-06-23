@@ -202,4 +202,3 @@ const validateUserInput = (req, res) => {
   
   }
   
-const capitalizeString = (string) => string.charAt(0).toUpperCase() + string.slice(1);

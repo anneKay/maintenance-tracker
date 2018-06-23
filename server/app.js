@@ -21,6 +21,8 @@ const port = process.env.PORT || 3000;
 
 app.use('/api/v2', dbroutes);
 app.use('', express.static('ui'));
+app.use('', express.static('api_doc'));
+
 
 app.all('*', (req, res) => res.status(404).send({
   Error: 'page not found'

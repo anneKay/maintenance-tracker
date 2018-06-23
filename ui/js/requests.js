@@ -23,7 +23,7 @@ function getRequests(){
     var userRequests = data.requests;
     console.log(userRequests.length);
     
-    for (var i = 0; i < userRequests.length ; i++) {
+    for (var i = 0; i < userRequests.length ; ++i) {
       var newArray = {};
       var title = userRequests[i].title;
       var status = userRequests[i].status;
@@ -50,6 +50,7 @@ function capitalizeName(string) {
 return newString = (string.charAt(0).toUpperCase() + string.slice(1)).split(" ")[0];
 
 }
+const capitalizeString = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
 var userSession = {
   token: localStorage.getItem('authentication'),
@@ -67,7 +68,7 @@ function addReq(title, status, id) {
   var queryString = "?id=" + id;
   link.href ="../html/userRequest.html" + queryString;
     
-  link.innerText = capitalizeName(title) ;
+  link.innerText = capitalizeString(title) ;
   span.innerText = status.toLowerCase();
   
   link.appendChild(span)

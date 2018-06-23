@@ -25,11 +25,11 @@ window.onload = function() {
        
        var title = userRequests[i].title;
        var status = userRequests[i].status;
-       var requesttype = userRequests[i].requesttype;
+       var createdAt = showTime(userRequests[i].created_at);
        var id = userRequests[i].id;
        var requests = userRequests;
        
-       var adminReq = addReq(title, status, requesttype, id);
+       var adminReq = addReq(title, status, createdAt, id);
        document.getElementById('row').appendChild(adminReq);
    }
      

@@ -33,7 +33,10 @@ function showTime (dbdate) {
   }  else if (dateArray.year == dateArray.year2 && dateArray.month == dateArray.month2 && (dateArray.day2 - dateArray.day) > 1){
   
    return ('' + dateArray.month + ' ' + dateArray.day);
-  } else {
+  } else if (dateArray.year == dateArray.year2 && dateArray.month !== dateArray.month2){
+    return ('' + dateArray.month + ' ' + dateArray.day);
+  } 
+  else {
    return ('' + dateArray.month + ' ' + dateArray.day + ', ' + dateArray.year);
   }
   
