@@ -25,7 +25,7 @@ dbrouter.get('/users/requests', authenticateUser, getUserRequests);
 dbrouter.get('/users/requests/:requestId', authenticateUser, requestExists, getRequestById);
 
 dbrouter.put('/users/requests/:requestId', authenticateUser, requestExists, modifyRequest);
-dbrouter.delete('users/requests/:requestId', authenticateUser, requestExists, deleteRequest);
+dbrouter.delete('/users/requests/:requestId', authenticateUser, requestExists, deleteRequest);
 
 //admin routes
 dbrouter.get('/requests', authenticateUser, checkForAdmin, getAllRequests);

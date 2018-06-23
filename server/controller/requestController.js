@@ -18,12 +18,8 @@ export const createRequest = (req, res) => {
     return;
   }
 
-  const reqTitle = capitalizeString(req.body.title);
-  const reqStatus = req.body.status
-  const reqType = capitalizeString(req.body.requestType);
-
   const text = 'INSERT INTO requests(user_id, title, description, requestType) VALUES($1, $2, $3, $4) RETURNING *'
-  const values = ([user.id, reqTitle, reqStatus, req.body.requestType]);
+  const values = ([user.id, req.body.title, req.body.description, req.body.requestType]);
 
   pool.query(text, values)
     .then(result => res.status(201).send({
