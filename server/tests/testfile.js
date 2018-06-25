@@ -28,7 +28,7 @@ describe ('POST auth/signup', () => {
     request(app)
       .post('/api/v2/auth/signup')
       .send({name, email, password})
-      .expect(401)
+      .expect(201)
       .end(done)
   })
 
