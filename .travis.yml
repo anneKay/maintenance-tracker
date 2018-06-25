@@ -6,7 +6,7 @@ after_success:
 services:
 - postgresql
 before_script:
-  - psql -c 'create database maintenance-tracker;' -U postgres
+  - psql -c 'create database mTracker;' -U postgres
   - npm install codeclimate-test-reporter istanbul -g
 script: 
   - setup-tables
