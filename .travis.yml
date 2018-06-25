@@ -10,6 +10,7 @@ before_script:
   - npm install codeclimate-test-reporter istanbul -g
 script: 
   - npm run setup-tables
+  - npm run setup-tables
   - npm run seed-admin
   - npm run test
 after_script:
