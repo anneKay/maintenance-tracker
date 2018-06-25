@@ -4,7 +4,8 @@ function logoutUser () {
   return;
 }
 var userSession = {
-  token: localStorage.getItem('authentication')
+  token: localStorage.getItem('authentication'),
+  requests: localStorage.getItem('requests')
 }
 function showTime (dbdate) {
   var time = new Date().toString();
@@ -32,7 +33,10 @@ function showTime (dbdate) {
   }  else if (dateArray.year == dateArray.year2 && dateArray.month == dateArray.month2 && (dateArray.day2 - dateArray.day) > 1){
   
    return ('' + dateArray.month + ' ' + dateArray.day);
-  } else {
+  } else if (dateArray.year == dateArray.year2 && dateArray.month !== dateArray.month2){
+    return ('' + dateArray.month + ' ' + dateArray.day);
+  } 
+  else {
    return ('' + dateArray.month + ' ' + dateArray.day + ', ' + dateArray.year);
   }
   
@@ -75,4 +79,9 @@ switch(monthVal) {
   default:
     return 'No date found';
 }
+}
+
+
+function capitalizeName(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }

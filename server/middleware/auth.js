@@ -8,7 +8,7 @@ export default (req, res, next) => {
   const token = req.headers.authentication;
 
   if (!token) {
-    return res.send({
+    return res.status(401).send({
       error: "Please signup or signin to continue"
     })
   }
@@ -16,7 +16,7 @@ export default (req, res, next) => {
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
       console.log(err);
-      return res.send({
+      return res.status(401).send({
         error: 'Invalid authentication. Please signup or sign in'
       })
     }

@@ -304,7 +304,9 @@ header.profile a  {
       padding-bottom: 3.5em
   }
   
-  
+  .hide{
+    display:none;  
+  }
 button#approve{
   background: yellowgreen;
   font-size: 13px;

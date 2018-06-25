@@ -7,8 +7,6 @@ import { generateToken, validatePassword } from './../helpers/auth';
 
 
 export const signupUser = (req, res) => {
-  //const emailFormat = validateEmail(req.body);
-  // validateUserInput(req, res);
 
   const salt = bcrypt.genSaltSync(10);
   const passwordHash = bcrypt.hashSync(req.body.password, salt);

@@ -3,8 +3,15 @@ node_js:
   - "stable"
 after_success:
 - npm run coveralls
-
+services:
+- postgresql
 before_script:
+  - psql -c 'create database maintenance_tracker;' -U postgres
   - npm install codeclimate-test-reporter istanbul -g
+script: 
+  - npm run setup-tables
+  - npm run setup-tables
+  - npm run seed-admin
+  - npm run test
 after_script:
   - codeclimate-test-reporter < ./coverage/lcov.info

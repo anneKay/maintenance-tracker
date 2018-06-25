@@ -10,7 +10,7 @@ queryString = queryString.substring(1);
 var queries = queryString.split("=");
 requestId = (queries[1]);
 
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests/'+requestId, {
+  return fetch('http://localhost:3000/api/v2/users/requests/'+requestId, {
       method: 'GET',
       headers: new Headers({
           'authentication': userSession.token
@@ -43,7 +43,7 @@ requestId = (queries[1]);
 var errorMessage;
 function approveRequest(){
  
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests/'+requestId+'/approve', {
+  return fetch('http://localhost:3000/api/v2/requests/'+requestId+'/approve', {
     method: 'PUT',
     headers: new Headers({
         'Accept': 'application/json, text/plain, */*',
@@ -59,7 +59,7 @@ function approveRequest(){
 
 function disapproveRequest(){
  
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests/'+requestId+'/disapprove', {
+  return fetch('http://localhost:3000/api/v2/requests/'+requestId+'/disapprove', {
     method: 'PUT',
     headers: new Headers({
         'Accept': 'application/json, text/plain, */*',
@@ -75,7 +75,7 @@ function disapproveRequest(){
 
 function resolveRequest(){
  
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests/'+requestId+'/resolve', {
+  return fetch('http://localhost:3000/api/v2/requests/'+requestId+'/resolve', {
     method: 'PUT',
     headers: new Headers({
         'Accept': 'application/json, text/plain, */*',
@@ -94,8 +94,7 @@ function jsonResponse(res) {
        if (res.status == 200 || res.status == 201) {
          
     }  else if(res.status == 409) {
-      //document.getElementById('admin-error').innerHTML = "Incorrect Email or Password";
-     
+      
 }
 var err = document.getElementById('admin-error').innerHtml = 'error';
  

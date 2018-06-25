@@ -6,8 +6,8 @@ window.onload = function() {
  
  function getAllRequests(){
    
-   var message = document.getElementById('user').innerHTML = 'Welcome ' ;
-   return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests', {
+   var message = document.getElementById('user').innerHTML = 'Welcome Admin' ;
+   return fetch('http://localhost:3000/api/v2/requests', {
        method: 'GET',
        headers: new Headers({
            'authentication': userSession.token
@@ -25,11 +25,11 @@ window.onload = function() {
        
        var title = userRequests[i].title;
        var status = userRequests[i].status;
-       var requesttype = userRequests[i].requesttype;
+       var createdAt = showTime(userRequests[i].created_at);
        var id = userRequests[i].id;
+       var requests = userRequests;
        
-       
-       var adminReq = addReq(title, status, requesttype, id);
+       var adminReq = addReq(title, status, createdAt, id);
        document.getElementById('row').appendChild(adminReq);
    }
      
@@ -45,7 +45,8 @@ window.onload = function() {
  }
  var userSession = {
    token: localStorage.getItem('authentication'),
-   name: localStorage.getItem('name')
+   name: localStorage.getItem('name'),
+   
    }
  
  
@@ -59,8 +60,8 @@ function addReq(title, status, requesttype, id) {
   var h5 = document.createElement("h5");
   var hr = document.createElement("hr");
   var h4 = document.createElement('h4');
-  h3.innerHTML = title;
-  h5.innerHTML = status;
+  h3.innerHTML = capitalizeName(title);
+  h5.innerHTML = status.toLowerCase();
   h4.innerHTML = requesttype;
   var queryString = "?id=" + id;
   link.href ="../html/requestdetails.html" + queryString;
@@ -74,6 +75,23 @@ function addReq(title, status, requesttype, id) {
   return div;
 }
 
- 
+function filterRequest() {
+  var input, ul, li, h5, i;
+  var searchValue = document.getElementById("search").value.toLowerCase();
+  
+ // ul = document.getElementById("get-req");
+ divRow = document.getElementById('row');
+ divCol = divRow.getElementsByTagName('DIV');
+  //li = ul.getElementsByTagName("li");
+  for (i = 0; i < divCol.length; i++) {
+      h5 = divCol[i].getElementsByTagName("h5")[0];
+      if (h5.innerHTML.indexOf(searchValue) > -1) {
+          divCol[i].style.display = "";
+      } else {
+          divCol[i].style.display = "none";
+
+      }
+  }
+}
  
  
