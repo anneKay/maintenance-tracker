@@ -9,8 +9,8 @@ before_script:
   - psql -c 'create database mTracker;' -U postgres
   - npm install codeclimate-test-reporter istanbul -g
 script: 
-  - setup-tables
-  - seed-admin
-  - test
+  - npm run setup-tables
+  - npm run seed-admin
+  - npm run test
 after_script:
   - codeclimate-test-reporter < ./coverage/lcov.info
