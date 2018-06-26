@@ -59,7 +59,14 @@ export const getRequestById = (req, res) => {
 }
 
 export const modifyRequest = (req, res) => {
+
   const reqID = parseInt(req.params.requestId);
+ // const user = req.decodedUser;
+  if(req.user.admin){ 
+    return res.status(403).send({
+      error: 'You are not permitted to modify this request'
+    })
+  }
   
   if (req.currentRequestStatus.toLowerCase() !== 'pending') {
     return res.status(409).send({
@@ -184,7 +191,7 @@ export const resolveRequest = (req, res) => {
 
   pool.query(text, values) 
 .then(result => res.status(200).send({
-  'result': result.rows,
+  'result': result.rows[0],
   'message': "Resolved"
 }))
 .catch(error => setImmediate(() => { throw error }))

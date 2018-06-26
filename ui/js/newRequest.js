@@ -14,10 +14,15 @@ function validateInput(){
     document.getElementById('title').focus();
     titleError.innerHTML = "title cannot be empty";
 
-  } else if (typeof description == 'string' && description.trim() == '' && description.trim().length < 10){
+  } else if (typeof description == 'string' && description.trim() == '' ){
     
     document.getElementById('describe').focus();
-    describeError.innerHTML = "Text too short";
+    describeError.innerHTML = "Please describe your request";
+
+  }  else if (typeof description == 'string' && description.trim().length <= 10 ){
+    
+    document.getElementById('describe').focus();
+    describeError.innerHTML = "Text is too short";
 
   } else if (typeof requestType == 'string' && requestType.trim().length == 0) {
     titleError.innerHTML = "";
@@ -36,7 +41,7 @@ var newReq = document.getElementById('create-req').addEventListener('submit', va
 
 function createReq(title, description, requestType){
 
-  return fetch('http://localhost:3000/api/v2/users/requests', {
+  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests', {
       method: 'POST',
       headers: new Headers({
           'Accept': 'application/json, text/plain, */*',

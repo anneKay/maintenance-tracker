@@ -2,6 +2,7 @@ import pool from '../database/config';
 import { requestIdValid } from '../helpers/validateInput'
 
 const requestExists = (req, res, next) => {
+ req.user = req.decodedUser;
   const id = req.params.requestId;
   if (!requestIdValid(id)) {
     return res.status(400).send({
@@ -17,7 +18,13 @@ const requestExists = (req, res, next) => {
         error: 'Specified request was not found'
       })
     }
-
+    req.user_id = request.user_id;
+    
+    if (!req.user.admin && req.user.id !== req.user_id){
+      return res.status(403).send({
+        error: 'Not enough permission to perform this operation'
+      })
+    }
     req.currentRequestStatus = request.status;
     req.currentRequest = request;
     next();
