@@ -10,7 +10,7 @@ function getRequests(){
   
   var ul = document.getElementById('get-req'); 
   var message = document.getElementById('welcome').innerHTML = 'Welcome ' + capitalizeName(userSession.name);
-  return fetch('http://localhost:3000/api/v2/users/requests', {
+  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests', {
       method: 'GET',
       headers: new Headers({
           'authentication': userSession.token
