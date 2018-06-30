@@ -55,7 +55,6 @@ function createReq(title, description, requestType){
   .catch(logError);
 }
 
-
 function jsonResponse(res) {
   console.log(res);
        if (res.status == 200 || res.status == 201) {
@@ -64,9 +63,9 @@ function jsonResponse(res) {
       document.getElementById('req-error').innerHTML = "There was a problem creating your request";
      
 }
+redirectUser(res);
 return res.json();
 }
-
 
 function loadProfile (data) {
  window.location.href = "../html/profile.html";

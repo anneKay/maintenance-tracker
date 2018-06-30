@@ -36,15 +36,6 @@ function clickDiv() {
   window.location.href = "../html/requestdetails.html"
 }
 
-function displayPage(){
-  if(document.getElementById('email').value === "admin@admin.com"){
-      window.location.href = "../html/admin.html";
-  } else{
-      window.location.href = "../html/profile.html";
-  }
-}
-
-
 var userLogin = document.getElementById('loginUser').addEventListener('submit', validateSubmit);
 
 function login(email, password){

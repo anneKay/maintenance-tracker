@@ -8,9 +8,26 @@
 		
   </head>
   <body>
+		
+			<header id="login-header" class="header-primary">
+					<div class="">
+					<a href="#" class="logo logo-primary">
+	
+									<img class="logo" src="../img/mt-logo.png">
+							
+					</a>
+					<nav class="nav nav-primary">
+							
+								 
+									<a href="#" class="btn btn-nav">Contact</a>
+									<a href="../html/login.html" class="btn btn-nav">Login</a>
+									<a href="../html/signup.html" class="btn btn-nav">Signup</a>
+							
+					</nav>
+					</div>
+			</header>
       <main class="container">
-		  <a href="../html/index.html"><img src="../img/mt-logo.png " class="logo-bg" alt="app logo"></a>
-		  	<h3 class="app-title">Maintenance Tracker</h3>
+		
 		  	<div class="form-container">
 		  		<form id= "signupuser">
 		  			<label for="name">Name</label>
@@ -25,7 +42,9 @@
 		  			<label for="cpassword">Confirm Password</label>
 		  			<input type="password" id="c-password" name="cpassword" placeholder="Enter Your Password Again..">
 						<div><h4  class="error-text" id="c-password-error"></h4></div>
-		  			<input type="submit" value="Submit">
+						<div><h4  class="error-text" id="signup-error"></h4></div>
+						<input type="submit" value="Submit">
+						
 		  		</form>
 
 		  		<div class="login">
@@ -35,6 +54,7 @@
 
 
 </main>
+
 <script type="text/javascript" src="../js/signup.js"></script>
   </body>
 </html>

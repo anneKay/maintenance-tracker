@@ -2,6 +2,11 @@ window.onload = function() {
   getSingleRequest();
  };
  var requestId;
+ var reset = document.getElementById('reset');
+ var approve = document.getElementById('approve');
+ var reject = document.getElementById('reject');
+ 
+ // fetch a single request by id
 function getSingleRequest(){
  
   var queryString = decodeURIComponent(window.location.search);
@@ -17,22 +22,29 @@ requestId = (queries[1]);
       }),
      
   }).then(function (res) {
+    redirectUser(res);
     return res.json();
   })
   .then(function(data) {
-   console.log(data);
+   
     var userRequest = data.request;
       
       title = userRequest[0].title;
        description = userRequest[0].description;
-       console.log(userRequest[0].created_at);
+       
       createdAt = showTime(userRequest[0].created_at);
-      console.log(createdAt)
+     
       status = userRequest[0].status;
       requesttype = userRequest[0].requesttype;
-      console.log(title, description, createdAt)
+     
       addRequest(title, description, createdAt, status, requesttype);
-   
+   if (status === 'pending'){
+     reset.style.display = 'none';
+   } else {
+     approve.style.display = 'none';
+     reset.style.display = 'block';
+
+   }
      
   })
   .catch(function(error) {
@@ -41,6 +53,8 @@ requestId = (queries[1]);
 
 }
 var errorMessage;
+
+//approve a single request by a user
 function approveRequest(){
  
   return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests/'+requestId+'/approve', {
@@ -57,6 +71,7 @@ function approveRequest(){
 .catch(logError);
 }
 
+//disapprove a single request by a user
 function disapproveRequest(){
  
   return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests/'+requestId+'/disapprove', {
@@ -73,9 +88,26 @@ function disapproveRequest(){
 .catch(logError);
 }
 
+//resolve a single request made by a user
 function resolveRequest(){
  
   return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests/'+requestId+'/resolve', {
+    method: 'PUT',
+    headers: new Headers({
+        'Accept': 'application/json, text/plain, */*',
+        'Content-type': 'application/json',
+        'authentication': userSession.token
+    }),
+    
+}).then(jsonResponse)
+  .then(logData)
+.catch(logError);
+}
+
+//reset a request's status
+function resetRequest(){
+
+  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests/'+requestId+'/reset', {
     method: 'PUT',
     headers: new Headers({
         'Accept': 'application/json, text/plain, */*',
@@ -88,16 +120,9 @@ function resolveRequest(){
   .then(logData)
 .catch(logError);
 }
-
 function jsonResponse(res) {
-  console.log(res);
-       if (res.status == 200 || res.status == 201) {
-         
-    }  else if(res.status == 409) {
-      
-}
-var err = document.getElementById('admin-error').innerHtml = 'error';
- 
+      redirectUser(res);
+
 return res.json();
 }
 
@@ -107,7 +132,19 @@ function logData (data) {
   document.getElementById('admin-error').innerHTML = data.error;
   } else {
     document.getElementById('status').innerHTML = data.result.status;
-    console.log(data.result.status)
+    if(data.result.status === 'approved'){
+      approve.style.display = 'none';
+     reset.style.display = 'block';
+      reset.style.marginLeft = "-0.7em";
+    } else if (data.result.status === 'disapproved') {
+      reject.style.display = 'none';
+     reset.style.display = 'block';
+     reset.style.marginLeft = "0.5em";
+    } else if (data.result.status === 'pending'){
+      reset.style.display = 'none';
+      approve.style.display = 'block';
+      reject.style.display = 'block'
+    }
   }
   return console.log(data);
 }
@@ -119,7 +156,6 @@ var userSession = {
   token: localStorage.getItem('authentication'),
 
   }
-
   
 function addRequest(title, description, createdAt,status, requesttype){
   var titleEl = document.getElementById('title');

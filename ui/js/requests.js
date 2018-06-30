@@ -1,14 +1,17 @@
 
 window.onload = function() {
  getRequests();
+ 
 };
 
 var firstRequest = document.getElementById('first-req');
 var status = document.getElementById('status');
+var userRequests;
 
 function getRequests(){
   
   var ul = document.getElementById('get-req'); 
+  var page = document.getElementById('paginate');
   var message = document.getElementById('welcome').innerHTML = 'Welcome ' + capitalizeName(userSession.name);
   return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests', {
       method: 'GET',
@@ -17,27 +20,21 @@ function getRequests(){
       }),
      
   }).then(function (res) {
+    redirectUser(res);
     return res.json();
   })
   .then(function(data) {
-    var userRequests = data.requests;
-    console.log(userRequests.length);
+    userRequests = data.requests;
     
-    for (var i = 0; i < userRequests.length ; ++i) {
-      var newArray = {};
-      var title = userRequests[i].title;
-      var status = userRequests[i].status;
-      var id = userRequests[i].id;
-      var request =  addReq(title, status, id);
-      newArray.title = title
-      newArray.status = status;
-      newArray.id = id;
-      userSession.reqArray.push(newArray);
-      
+    if (!userRequests.length > 0){
+   document.getElementById('req-header').innerHTML = 'No Request Yet';
+  page.style.display = 'none';
+    }
+    if (userRequests.length > 10) {
+      page.style.display = 'block';
      
-      document.getElementById('get-req').appendChild(request);
-  }
-  
+    }
+    changePage(1);
   
   })
   .catch(function(error) {
@@ -83,13 +80,13 @@ function statusBackground(status, span){
 switch (status) {
 
   case 'pending':
-    span.className = 'pull-right-sm progress';
+    span.className = 'pull-right progress';
     break;
   case 'rejected':
-    span.className = 'pull-right-sm rejected';
+    span.className = 'pull-right rejected';
     break;
   case 'approved':
-    span.className = 'pull-right-sm accepted';
+    span.className = 'pull-right accepted';
 }
 
 }
@@ -109,4 +106,41 @@ function filterRequest() {
 
       }
   }
+}
+
+function changePage(page)
+{
+    var btn_next = document.getElementById("next");
+    var btn_prev = document.getElementById("prev");
+    var ul = document.getElementById("get-req");
+   
+    console.log(userRequests.length)
+ 
+    // Validate page
+    if (page < 1) page = 1;
+    if (page > numPages()) page = numPages();
+
+    ul.innerHTML = "";
+
+    for (var i = (page-1) * records_per_page; i < (page * records_per_page) && i < userRequests.length; i++) {
+        
+        var title = userRequests[i].title;
+        var status = userRequests[i].status;
+        var id = userRequests[i].id;
+        var request =  addReq(title, status, id);
+       
+      ul.appendChild(request);
+    }
+   
+    if (page == 1) {
+        btn_prev.style.visibility = "hidden";
+    } else {
+        btn_prev.style.display = "visible";
+    }
+
+    if (page == numPages()) {
+        btn_next.style.visibility = "hidden";
+    } else {
+        btn_next.style.visibility = "visible";
+    }
 }

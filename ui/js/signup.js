@@ -76,16 +76,23 @@ function jsonResponse(res) {
         var authentication = res.headers.get("authentication");
         localStorage.setItem('authentication', authentication);
         
-        window.location.href = "../html/profile.html";
+      } else {
+        document.getElementById('signup-error').innerHTML = 'Email already exists';
       }
+     
       return res.json();
 }
 
 function logData (data) {
+  if(data.user) {
   localStorage.setItem('name', data.user.name);
+  window.location.href = "../html/profile.html";
+  }
+ 
   return console.log(data);
 }
 function logError (err) {
+  
   return console.log(err);
 }
 

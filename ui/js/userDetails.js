@@ -12,12 +12,17 @@ var queries = queryString.split("=");
 console.log(queries[1]);
 
 }
-var formEl = document.getElementById('modify-req');
+
 var detailDiv = document.getElementById('detail-div');
 var detailEl = document.getElementById('details');
-var formTitle = document.getElementById('title-text');
-var formDescribe = document.getElementById('describe-text');
+
 var reqType = document.getElementById('req-type');
+var titleEl = document.getElementById('title');
+var describeEl = document.getElementById('describe');
+var timeEl = document.getElementById('time');
+var editBox = document.getElementById('edit-box');
+var detailBox = document.getElementById('detail-box');
+
 var requestId;
 var title;
 var description;
@@ -25,7 +30,8 @@ var createdAt;
 
 function getSingleRequest(){
  
-  formEl.style.display = 'none';
+ 
+  editBox.style.display = 'none';
   detailEl.innerHTML = "Request Details"
   detailDiv.style.display="block";
 
@@ -42,16 +48,17 @@ requestId = (queries[1]);
       }),
      
   }).then(function (res) {
+    redirectUser(res);
     return res.json();
   })
   .then(function(data) {
-   console.log(data);
+  
     var userRequest = data.request;
       
       title = userRequest[0].title;
        description = userRequest[0].description;
       createdAt = showTime(userRequest[0].created_at);
-      console.log(title, description, createdAt)
+    
       addRequest(title, description, createdAt);
      
   })
@@ -64,9 +71,9 @@ requestId = (queries[1]);
 function validateInput(){
   event.preventDefault();
   
-  var title = formTitle.value;
-  var description = formDescribe.value;
-  var requestType = reqType.value;
+  var title = titleEl.textContent;
+  var description =describeEl.textContent;
+  var requestType = document.getElementById('req-type').value;
   
   var titleError = document.getElementById('title-error');
   var describeError = document.getElementById('describe-error');
@@ -86,7 +93,7 @@ function validateInput(){
     titleError.innerHTML = "";
     
     document.getElementById('req-type').focus();
-    reqError.innerHTML = "Input your request type";
+    reqError.innerHTML = "Select a request type";
     
   } else {
     
@@ -95,12 +102,19 @@ function validateInput(){
   }
 }
 
-function inputNewRequest() {
+function editNewRequest() {
   detailEl.innerHTML = 'Edit Request';
-  detailDiv.style.display="none";
-  formEl.style.display = 'block';
-  formDescribe.placeholder = description;
-  formTitle.placeholder = title;
+  detailDiv.style.display="block";
+  
+  editBox.style.display = 'block';
+  detailBox.style.display = 'none';
+ 
+  
+  titleEl.setAttribute("contenteditable", true);
+  titleEl.focus();
+  describeEl.setAttribute("contenteditable", true);
+  
+  document.getElementById('time').style.display= "none";
   
 }
 function editRequest(title, description, requestType){
@@ -118,6 +132,27 @@ function editRequest(title, description, requestType){
 }).then(jsonResponse)
   .then(loadProfile)
 .catch(logError);
+}
+
+function deleteRequest(){
+ 
+  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests/'+requestId, {
+    method: 'DELETE',
+    headers: new Headers({
+       
+        'authentication': userSession.token
+    }),
+   
+}).then(function (res) {
+ if (res.status == 204) window.location.href = "../html/profile.html";
+  return res.json();
+})
+.then(function(data) {
+  return data;
+})
+.catch(function(error) {
+  return error;
+});
 }
 
 function jsonResponse(res) {
