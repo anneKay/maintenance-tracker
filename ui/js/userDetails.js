@@ -144,7 +144,7 @@ function deleteRequest(){
     }),
    
 }).then(function (res) {
- if (res.status == 200) window.location.href = "../html/profile.html";
+ if (res.status == 204) window.location.href = "../html/profile.html";
   return res.json();
 })
 .then(function(data) {
