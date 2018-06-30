@@ -143,9 +143,16 @@ function deleteRequest(){
         'authentication': userSession.token
     }),
    
-}).then(jsonResponse)
-  .then(loadProfile)
-.catch(logError);
+}).then(function (res) {
+ if (res.status == 200) window.location.href = "../html/profile.html";
+  return res.json();
+})
+.then(function(data) {
+  return data;
+})
+.catch(function(error) {
+  return error;
+});
 }
 
 function jsonResponse(res) {
