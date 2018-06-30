@@ -3,13 +3,15 @@ function logoutUser () {
   window.location.href="../html/index.html";
   return;
 }
+
+// object variable to store a users' session
 var userSession = {
   token: localStorage.getItem('authentication'),
   requests: localStorage.getItem('requests')
 }
+//display time in a readable format
 function showTime (dbdate) {
   var time = new Date().toString();
- 
  
    var dateArr = (dbdate.substring(0, dbdate.indexOf("T")).split('-'));
   var currDateArr = (time.split(' '));
@@ -41,6 +43,7 @@ function showTime (dbdate) {
   }
   
 }
+
 function showMonth(monthVal){
 
 switch(monthVal) {
@@ -77,7 +80,7 @@ switch(monthVal) {
 
   default:
     return 'No date found';
-}
+  }
 }
 
 function redirectUser(res){
@@ -110,9 +113,7 @@ function nextPage()
         changePage(current_page);
     }
 }
-    
-
-
+   
 function numPages()
 {
     return Math.ceil(userRequests.length / records_per_page);

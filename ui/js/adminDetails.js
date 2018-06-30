@@ -6,6 +6,7 @@ window.onload = function() {
  var approve = document.getElementById('approve');
  var reject = document.getElementById('reject');
  
+ // fetch a single request by id
 function getSingleRequest(){
  
   var queryString = decodeURIComponent(window.location.search);
@@ -25,17 +26,17 @@ requestId = (queries[1]);
     return res.json();
   })
   .then(function(data) {
-   console.log(data);
+   
     var userRequest = data.request;
       
       title = userRequest[0].title;
        description = userRequest[0].description;
-       console.log(userRequest[0].created_at);
+       
       createdAt = showTime(userRequest[0].created_at);
-      console.log(createdAt)
+     
       status = userRequest[0].status;
       requesttype = userRequest[0].requesttype;
-      console.log(title, description, createdAt)
+     
       addRequest(title, description, createdAt, status, requesttype);
    if (status === 'pending'){
      reset.style.display = 'none';
@@ -52,6 +53,7 @@ requestId = (queries[1]);
 
 }
 var errorMessage;
+//approve a single request by a user
 function approveRequest(){
  
   return fetch('http://localhost:3000/api/v2/requests/'+requestId+'/approve', {
@@ -68,6 +70,7 @@ function approveRequest(){
 .catch(logError);
 }
 
+//disapprove a single request by a user
 function disapproveRequest(){
  
   return fetch('http://localhost:3000/api/v2/requests/'+requestId+'/disapprove', {
@@ -84,6 +87,7 @@ function disapproveRequest(){
 .catch(logError);
 }
 
+//resolve a single request made by a user
 function resolveRequest(){
  
   return fetch('http://localhost:3000/api/v2/requests/'+requestId+'/resolve', {
@@ -94,13 +98,14 @@ function resolveRequest(){
         'authentication': userSession.token
     }),
     
-   
 }).then(jsonResponse)
   .then(logData)
 .catch(logError);
 }
+
+//reset a request's status
 function resetRequest(){
- 
+
   return fetch('http://localhost:3000/api/v2/requests/'+requestId+'/reset', {
     method: 'PUT',
     headers: new Headers({
@@ -115,10 +120,8 @@ function resetRequest(){
 .catch(logError);
 }
 function jsonResponse(res) {
-  console.log(res);
       redirectUser(res);
 
- 
 return res.json();
 }
 
@@ -141,7 +144,6 @@ function logData (data) {
       approve.style.display = 'block';
       reject.style.display = 'block'
     }
-    console.log(data.result.status)
   }
   return console.log(data);
 }
@@ -153,7 +155,6 @@ var userSession = {
   token: localStorage.getItem('authentication'),
 
   }
-
   
 function addRequest(title, description, createdAt,status, requesttype){
   var titleEl = document.getElementById('title');

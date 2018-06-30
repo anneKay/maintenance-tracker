@@ -12,11 +12,10 @@ var queries = queryString.split("=");
 console.log(queries[1]);
 
 }
-//var formEl = document.getElementById('modify-req');
+
 var detailDiv = document.getElementById('detail-div');
 var detailEl = document.getElementById('details');
-//var formTitle = document.getElementById('title-text');
-//var formDescribe = document.getElementById('describe-text');
+
 var reqType = document.getElementById('req-type');
 var titleEl = document.getElementById('title');
 var describeEl = document.getElementById('describe');
@@ -53,13 +52,13 @@ requestId = (queries[1]);
     return res.json();
   })
   .then(function(data) {
-   console.log(data);
+  
     var userRequest = data.request;
       
       title = userRequest[0].title;
        description = userRequest[0].description;
       createdAt = showTime(userRequest[0].created_at);
-      console.log(title, description, createdAt)
+    
       addRequest(title, description, createdAt);
      
   })
@@ -106,7 +105,7 @@ function validateInput(){
 function editNewRequest() {
   detailEl.innerHTML = 'Edit Request';
   detailDiv.style.display="block";
-  //formEl.style.display = 'block';
+  
   editBox.style.display = 'block';
   detailBox.style.display = 'none';
  

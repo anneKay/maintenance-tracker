@@ -129,12 +129,9 @@ function changePage(page)
         var id = userRequests[i].id;
         var request =  addReq(title, status, id);
        
-       
-       
       ul.appendChild(request);
     }
    
-
     if (page == 1) {
         btn_prev.style.visibility = "hidden";
     } else {

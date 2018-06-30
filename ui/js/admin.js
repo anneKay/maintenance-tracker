@@ -1,9 +1,10 @@
-
 window.onload = function() {
   getAllRequests();
  };
  
  var userRequests;
+
+ //get all users requests
  function getAllRequests(){
    
    var message = document.getElementById('user').innerHTML = 'Welcome Admin' ;
@@ -19,21 +20,15 @@ window.onload = function() {
      return res.json();
    })
    .then(function(data) {
-     console.log(data)
       userRequests = data.allRequests;
-      if (userRequests.length > 10) {
-        page.style.display = "block";
-        
-      }
+      if (userRequests.length > 10) page.style.display = "block";
       
       if (!userRequests.length > 0){
-     document.getElementById('req-header').innerHTML = 'No Request Found';
-     
+
+        document.getElementById('req-header').innerHTML = 'No Request Found';
         page.style.visibility = "hidden";
       }
-    changePage(1);
-   //}
-     
+    changePage(1);  
    })
    .catch(function(error) {
      return console.log(error);
@@ -41,20 +36,11 @@ window.onload = function() {
  
  }
  
- function capitalizeName(string) {
-   return string.charAt(0).toUpperCase() + string.slice(1);
- }
- var userSession = {
-   token: localStorage.getItem('authentication'),
-   name: localStorage.getItem('name'),
-   
-   }
  
- 
-function addReq(title, status, requesttype, id) {
+function addReq (title, status, requesttype, id) {
  
   var div = document.createElement("DIV");
-  div.className = 'col-1-3  remove-gutter-xs admin-requests';
+  div.className = 'col-1-3 remove-gutter-xs admin-requests';
   div.id = 'col-1-3';
   var link = document.createElement('a');
   var h3 = document.createElement("h3");
@@ -67,7 +53,7 @@ function addReq(title, status, requesttype, id) {
   var queryString = "?id=" + id;
   link.href ="../html/requestdetails.html" + queryString;
   link.appendChild(h3);
- link.style.color = "black";
+  link.style.color = "black";
   div.appendChild(link);
   div.appendChild(h5);
   div.appendChild(hr);
@@ -76,14 +62,14 @@ function addReq(title, status, requesttype, id) {
   return div;
 }
 
+// filter or search request by status of the request
 function filterRequest() {
   var input, ul, li, h5, i;
   var searchValue = document.getElementById("search").value.toLowerCase();
   
- // ul = document.getElementById("get-req");
  divRow = document.getElementById('row');
  divCol = divRow.getElementsByTagName('DIV');
-  //li = ul.getElementsByTagName("li");
+ 
   for (i = 0; i < divCol.length; i++) {
       h5 = divCol[i].getElementsByTagName("h5")[0];
       if (h5.innerHTML.indexOf(searchValue) > -1) {
@@ -98,8 +84,8 @@ function filterRequest() {
  
 function changePage(page)
 {
-    var btn_next = document.getElementById("next");
-    var btn_prev = document.getElementById("prev");
+    var nextBtn = document.getElementById("next");
+    var prevBtn = document.getElementById("prev");
     var row = document.getElementById("row");
   
  
@@ -123,14 +109,14 @@ function changePage(page)
     }
    
     if (page == 1) {
-        btn_prev.style.visibility = "hidden";
+        prevBtn.style.visibility = "hidden";
     } else {
-        btn_prev.style.visibility = "visible";
+        prevBtn.style.visibility = "visible";
     }
 
     if (page == numPages()) {
-        btn_next.style.visibility = "hidden";
+        nextBtn.style.visibility = "hidden";
     } else {
-        btn_next.style.visibility = "visible";
+       nextBtn.style.visibility = "visible";
     }
 }
