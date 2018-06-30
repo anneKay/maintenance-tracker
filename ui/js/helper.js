@@ -75,13 +75,45 @@ switch(monthVal) {
   case 12 :
     return 'Dec';
 
-  
   default:
     return 'No date found';
 }
 }
 
+function redirectUser(res){
+  if (res.status == 401 || res.status == 403) {
+    window.location.href="../html/login.html";
+  return;
+  }
+}
 
 function capitalizeName(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+var current_page = 1;
+var records_per_page = 10;
+
+
+function prevPage()
+{
+    if (current_page > 1) {
+        current_page--;
+        changePage(current_page);
+    }
+}
+
+function nextPage()
+{
+    if (current_page < numPages()) {
+        current_page++;
+        changePage(current_page);
+    }
+}
+    
+
+
+function numPages()
+{
+    return Math.ceil(userRequests.length / records_per_page);
 }

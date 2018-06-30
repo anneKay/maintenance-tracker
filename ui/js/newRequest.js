@@ -41,7 +41,7 @@ var newReq = document.getElementById('create-req').addEventListener('submit', va
 
 function createReq(title, description, requestType){
 
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests', {
+  return fetch('http://localhost:3000/api/v2/users/requests', {
       method: 'POST',
       headers: new Headers({
           'Accept': 'application/json, text/plain, */*',
@@ -64,6 +64,7 @@ function jsonResponse(res) {
       document.getElementById('req-error').innerHTML = "There was a problem creating your request";
      
 }
+redirectUser(res);
 return res.json();
 }
 

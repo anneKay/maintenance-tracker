@@ -35,6 +35,7 @@
           <h2>Title</h2>
           <p id="title"></p>
         </div>
+        <div><h4  class="error-text" id="title-error"></h4></div>
         <hr />
        
         <div class="user-div">
@@ -42,32 +43,36 @@
           <p id="describe"> </p>
 
         </div>
+        <div><h4 class="error-text" id="describe-error"></h4></div>
         <hr>
+        <div id="detail-box">
         <div class="user-div">
           <h2> Time Of Request</h2>
           <p id="time"></p>
         </div>
         <hr>
+        <div><h4  class="error-text" id="req-type-error"></h4></div>
+        <div>
 
-        <input id="edit" type="button" onclick='inputNewRequest()' value="Edit Request"> </input>
+        <input id="edit" type="button" onclick='editNewRequest()' value="Edit Request"> </input>
+        <input id="delete" type="button" onclick='deleteRequest()' value="Delete"> </input>
       </div>
-        <form id="modify-req" >
-            <label for="title">Title</label>
-            <input  type="text" id="title-text" name="title" placeholder="Enter Your Task Title">
-            <div><h4  class="error-text" id="title-error"></h4></div>
-            <label for="description">Description</label>
-            <input type="text" id="describe-text" name="description" placeholder="Describe Your Request..">
-            <div><h4  class="error-text" id="describe-error"></h4></div>
-            <label for="requesttype">Request Type</label>
-            <input type="text" id="req-type" name="requesttype" placeholder="Enter your request type">
-  
-            <div><h4  class="error-text" id="req-type-error"></h4></div>
-            <label for="date">Pick Up Date</label>
-            <input type="date" id="date" name="date">
-            <input type="submit" onclick="validateInput()" value="Submit">
-            <a href="profile.html"><input value="Cancel" id="cancel"></a>
-            <div><h4  class="error-text" id="req-error"></h4></div>
-          </form>
+     </div>
+      </div>
+      <div id="edit-box" class="user-div">
+        
+				<h2>Request Type</h2>
+					<select id="req-type" name="requesttype">
+						<option value="urgent">Urgent</option>
+						<option value="average">Normal</option>
+						<option value="not-urgent">Not Urgent</option>
+          </select>
+          <div><h4  class="error-text" id="req-error"></h4></div>
+          <input type="submit" onclick="validateInput()" value="Submit">
+          <a href="profile.html"><input value="Cancel" id="cancel"></a>
+          <div><h4  class="error-text" id="req-error"></h4></div>
+      </div>
+       
             
       </section>
     </main>

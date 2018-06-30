@@ -26,8 +26,9 @@
     </header>
     <main>
 				<section class="container">
-						<div class="request">
-							<h2> Requests List  <a href="newrequest.html"><span  class="pull-right-sm"  id="create"> Add Request</span></a></h2>
+						<div class="request req-layout">
+							<h2 id="req-header"> Request List  </h2>
+							<a href="newrequest.html"><input class="pull-right-sm"  type="button" value="Add Request" id="create"></a>
 						</div>
 						<div class="request-div">
 							
@@ -41,12 +42,10 @@
 						</div>
 							</div>
 							
-							<div class="pagination">
-								<a href="#">&laquo;</a>
-								<a href="#" class="active">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#">&raquo;</a>
+							<div id="paginate" class="pagination">
+								<a onclick="prevPage()" id="prev">PREV &laquo;</a>
+								
+								<a onclick="nextPage()" id="next">NEXT &raquo;</a>
 							</div>
 						</div>
 					</section>

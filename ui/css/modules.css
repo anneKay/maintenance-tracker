@@ -30,7 +30,16 @@ section.body-section > div.container{
 .body-section button:hover{
     color:#fafafa;
 }
-
+/* Header Modules */
+#login-header{
+    background: rgb(58, 100, 58);
+    color: white;
+    margin-bottom: 4em;
+}
+#login-header a {
+    color: white;
+    
+}
 /* image modules*/
 img.logo-bg{
     width: 120px;
@@ -44,16 +53,15 @@ img.logo-bg{
 /*pagination modules*/
 
 .pagination {
-	display: block;
+	
 	margin-left: auto;
 	margin-right: auto;
 	width: 14em;
-	margin-bottom:3em !important;
+    margin-bottom:6em !important;
+    display: none;
 
 }
-.paginate{
-    margin-bottom: -2em;
-}
+
 
 	.pagination a {
 		color: black;
@@ -129,7 +137,7 @@ footer h1{
 	input[type=text].search {
 		width: 300px;
 		padding: 12px 20px;
-		margin-top: 0.5em;
+		margin-top: 1em;
 		margin-right: 1em;
 		float: left;
 		font-size: 1em;
@@ -150,9 +158,26 @@ footer h1{
 		border: 1px solid #ccc;
 		border-radius: 4px;
 		box-sizing: border-box;
+    }
+    input#edit{
+		background-color:rgb(60, 117, 60);
+		text-align: center;
+        color: white;
+        margin-bottom: 1.5em;
+        margin-top: 1.5em;
+		padding: 14px;
+		margin-right: auto;
+		margin-left: auto;
+		width: 100%;
+		display: block;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-weight: bold;
+		font-size: 20px;
 	}
 
-	input#cancel {
+	input#cancel, input#delete {
 		background-color:#ccc;
 		text-align: center;
 		color: white;
@@ -358,18 +383,20 @@ span.progress{
 
 @media only screen and (max-width : 47.9375em) {
     /* Header Modules*/
+
 .header-primary{
     background: #eee;
 text-align: center;
 padding-top: 18px;
 padding-bottom: 18px;
 }
+
 /*input module*/
 
 input[type=text].search {
     width: 100%;
     padding: 12px 20px;
-    margin-top: 0.5em;
+    margin-top: 0.3em !important;
     margin-right: auto;
     margin-left: auto;
     width:250px;
@@ -382,12 +409,30 @@ input[type=text].search {
 input[type=text].search:hover {
  border-color: green;
 }
+input#edit{
+    background-color:rgb(60, 117, 60);
+    text-align: center;
+    color: white;
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+    padding: 14px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    display: block;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+}
+
 
 	/* InputText Modules*/
 	input[type=text], select {
 		width: 100%;
 		padding: 17px 20px;
-		margin: 15px 0;
+		margin-top: 15px ;
 		display: inline-block;
 		border: 1px solid #ccc;
 		border-radius: 4px;
@@ -404,10 +449,14 @@ input[type=text].search:hover {
 		box-sizing: border-box;
 	}
 
-	.form-container {
-	margin:2em;
-	background:#eee;
-	padding:2em;
+	
+    div.form-container {
+		margin-left: 15%;
+		margin-right: 15%;
+		border-radius: 5px;
+		background-color: #f2f2f2;
+		padding: 2em 5em;
+		margin-bottom: 2em;
 	}
 	
 
@@ -420,7 +469,7 @@ input[type=text].search:hover {
 		border-radius: 4px;
 		box-sizing: border-box;
 	}
-	input#cancel {
+	input#cancel, input#delete {
         background-color:#ccc;
 		text-align: center;
 		color: white;

@@ -12,12 +12,18 @@ var queries = queryString.split("=");
 console.log(queries[1]);
 
 }
-var formEl = document.getElementById('modify-req');
+//var formEl = document.getElementById('modify-req');
 var detailDiv = document.getElementById('detail-div');
 var detailEl = document.getElementById('details');
-var formTitle = document.getElementById('title-text');
-var formDescribe = document.getElementById('describe-text');
+//var formTitle = document.getElementById('title-text');
+//var formDescribe = document.getElementById('describe-text');
 var reqType = document.getElementById('req-type');
+var titleEl = document.getElementById('title');
+var describeEl = document.getElementById('describe');
+var timeEl = document.getElementById('time');
+var editBox = document.getElementById('edit-box');
+var detailBox = document.getElementById('detail-box');
+
 var requestId;
 var title;
 var description;
@@ -25,7 +31,8 @@ var createdAt;
 
 function getSingleRequest(){
  
-  formEl.style.display = 'none';
+ //formEl.style.display = 'none';
+  editBox.style.display = 'none';
   detailEl.innerHTML = "Request Details"
   detailDiv.style.display="block";
 
@@ -35,13 +42,14 @@ queryString = queryString.substring(1);
 var queries = queryString.split("=");
 requestId = (queries[1]);
 
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests/'+requestId, {
+  return fetch('http://localhost:3000/api/v2/users/requests/'+requestId, {
       method: 'GET',
       headers: new Headers({
           'authentication': userSession.token
       }),
      
   }).then(function (res) {
+    redirectUser(res);
     return res.json();
   })
   .then(function(data) {
@@ -64,9 +72,9 @@ requestId = (queries[1]);
 function validateInput(){
   event.preventDefault();
   
-  var title = formTitle.value;
-  var description = formDescribe.value;
-  var requestType = reqType.value;
+  var title = titleEl.textContent;
+  var description =describeEl.textContent;
+  var requestType = document.getElementById('req-type').value;
   
   var titleError = document.getElementById('title-error');
   var describeError = document.getElementById('describe-error');
@@ -86,27 +94,34 @@ function validateInput(){
     titleError.innerHTML = "";
     
     document.getElementById('req-type').focus();
-    reqError.innerHTML = "Input your request type";
+    reqError.innerHTML = "Select a request type";
     
   } else {
-    
+    console.log('title:' + title + 'describe: ' + description)
     editRequest(title, description, requestType);
     
   }
 }
 
-function inputNewRequest() {
+function editNewRequest() {
   detailEl.innerHTML = 'Edit Request';
-  detailDiv.style.display="none";
-  formEl.style.display = 'block';
-  formDescribe.placeholder = description;
-  formTitle.placeholder = title;
+  detailDiv.style.display="block";
+  //formEl.style.display = 'block';
+  editBox.style.display = 'block';
+  detailBox.style.display = 'none';
+ 
+  
+  titleEl.setAttribute("contenteditable", true);
+  titleEl.focus();
+  describeEl.setAttribute("contenteditable", true);
+  
+  document.getElementById('time').style.display= "none";
   
 }
 function editRequest(title, description, requestType){
   console.log(requestId);
   
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests/'+requestId, {
+  return fetch('http://localhost:3000/api/v2/users/requests/'+requestId, {
     method: 'PUT',
     headers: new Headers({
         'Accept': 'application/json, text/plain, */*',
@@ -114,6 +129,21 @@ function editRequest(title, description, requestType){
         'authentication': userSession.token
     }),
     body: JSON.stringify({title: title, description: description, requestType: requestType})
+   
+}).then(jsonResponse)
+  .then(loadProfile)
+.catch(logError);
+}
+
+function deleteRequest(){
+  console.log(requestId);
+  
+  return fetch('http://localhost:3000/api/v2/users/requests/'+requestId, {
+    method: 'DELETE',
+    headers: new Headers({
+       
+        'authentication': userSession.token
+    }),
    
 }).then(jsonResponse)
   .then(loadProfile)

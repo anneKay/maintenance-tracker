@@ -12,35 +12,36 @@ div.new-request{
 	background : #eee;
 	
 }
+.req-layout {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+.pull-right {
+  float: right;
+}
+
 .user-div > h2, .user-div >h3 {
   color: teal;
 }
 .user-container {
   margin-right: auto;
     margin-left: auto;
-    width: 60%;
+    width: 50%;
     background: #eee;
     padding-top: 1em;
     padding-bottom: 3.5em
 }
 
 .details{
-  margin-left: 20%;
+  margin-left: 40%;
   font-family: cursive;
 }
-#edit {
-  font-size: 16px;
-  padding: 0.5em;
-  background-color: green;
-  color: whitesmoke;
-  margin-bottom: 1em;
-  float: right;
- 
-}
+
 #create{
   background:green;
   color: white;
-  
+  margin-top: 0.5em;
   padding: 0.5em;
  font-family: 'Times New Roman', Times, serif;
  font-size: 20px;
@@ -100,8 +101,17 @@ div.request > h2{
 
 button#approve{
   background: yellowgreen;
-  font-size: 16px;
+  font-size: 15px;
   color:white;
+  margin-left: -0.7em;
+  margin-top: 1em;
+  padding: 0.6em 0.2em;
+  
+}
+button#reset{
+  background: rgb(219, 211, 211);
+  font-size: 15px;
+  color: black;
   margin-left: -0.7em;
   margin-top: 1em;
   padding: 0.6em 0.2em;
@@ -114,7 +124,7 @@ button#reject{
   background: red;
   margin-top: 1em;
   padding: 0.6em 0.2em;
-  font-size: 16px;
+  font-size: 15px;
   margin-left: 0.5em;
   color:white;
  
@@ -124,7 +134,7 @@ button#resolve{
   background: green;
   margin-top: 1em;
   color:white;
-  font-size: 16px;
+  font-size: 15px;
   margin-left: 0.5em;
   padding: 0.6em 0.2em;
   
@@ -153,10 +163,14 @@ button#resolve{
   margin-top:0.5em;
   color: rgb(4, 31, 4);
 }
+.user-div > p:focus {
+    outline: none;
+
+}
 
 
   header.profile{
-    background: rgb(117, 117, 190);
+    background: rgb(41, 63, 41);
   }
 header.profile a  {
   color:white;
@@ -205,6 +219,17 @@ header.profile a  {
       width: 32.33%;
       padding-left: 10em;
        
+    }
+    #req-header{
+      display: inline-block;
+    }
+    #create{
+      background:green;
+      color: white;
+      margin-top: 0.9em;
+      padding: 0.5em;
+     font-family: 'Times New Roman', Times, serif;
+     font-size: 20px;
     }
 	#details-admin {
 		background: #eee;
@@ -274,8 +299,10 @@ header.profile a  {
   @media only screen and (max-width : 47.9375em) {
    
     .pull-right-sm {
-      float:right;
+      
+      margin-left: 3em !important;
     }
+   
 	.admin-div > h2, h4 {
 		padding-left:2em !important;
 		padding-top: 1em !important;
@@ -295,13 +322,17 @@ header.profile a  {
   .user-container {
     margin-right: auto;
       margin-left: auto;
-      width: 60%;
+      width: 70%;
       background: #eee;
       padding-top: 1em;
-      padding-left: 1em;
+      padding-left: 2em;
       margin-bottom: 1em;
-      padding-right: 1em;
+      padding-right: 2em;
       padding-bottom: 3.5em
+  }
+  .details{
+    margin-left: 20%;
+    font-family: cursive;
   }
   
   .hide{

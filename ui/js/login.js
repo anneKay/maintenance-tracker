@@ -36,20 +36,20 @@ function clickDiv() {
   window.location.href = "../html/requestdetails.html"
 }
 
-function displayPage(){
-  if(document.getElementById('email').value === "admin@admin.com"){
-      window.location.href = "../html/admin.html";
-  } else{
-      window.location.href = "../html/profile.html";
-  }
-}
+// function displayPage(){
+//   if(document.getElementById('email').value === "admin@admin.com"){
+//       window.location.href = "../html/admin.html";
+//   } else{
+//       window.location.href = "../html/profile.html";
+//   }
+// }
 
 
 var userLogin = document.getElementById('loginUser').addEventListener('submit', validateSubmit);
 
 function login(email, password){
 
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/auth/login', {
+  return fetch('http://localhost:3000/api/v2/auth/login', {
       method: 'POST',
       redirect: 'follow',
       headers: new Headers({
