@@ -30,7 +30,7 @@ var createdAt;
 
 function getSingleRequest(){
  
- //formEl.style.display = 'none';
+ 
   editBox.style.display = 'none';
   detailEl.innerHTML = "Request Details"
   detailDiv.style.display="block";
@@ -41,7 +41,7 @@ queryString = queryString.substring(1);
 var queries = queryString.split("=");
 requestId = (queries[1]);
 
-  return fetch('http://localhost:3000/api/v2/users/requests/'+requestId, {
+  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests/'+requestId, {
       method: 'GET',
       headers: new Headers({
           'authentication': userSession.token
@@ -96,7 +96,7 @@ function validateInput(){
     reqError.innerHTML = "Select a request type";
     
   } else {
-    console.log('title:' + title + 'describe: ' + description)
+    
     editRequest(title, description, requestType);
     
   }
@@ -120,7 +120,7 @@ function editNewRequest() {
 function editRequest(title, description, requestType){
   console.log(requestId);
   
-  return fetch('http://localhost:3000/api/v2/users/requests/'+requestId, {
+  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests/'+requestId, {
     method: 'PUT',
     headers: new Headers({
         'Accept': 'application/json, text/plain, */*',
@@ -135,9 +135,8 @@ function editRequest(title, description, requestType){
 }
 
 function deleteRequest(){
-  console.log(requestId);
-  
-  return fetch('http://localhost:3000/api/v2/users/requests/'+requestId, {
+ 
+  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests/'+requestId, {
     method: 'DELETE',
     headers: new Headers({
        
