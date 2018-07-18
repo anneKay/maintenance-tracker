@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="githubViewer"> 
+
+  <head>
+    <script data-require="angular.js@1.3.0-beta.5" data-semver="1.3.0-beta.5" src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
+    
+    <script src="./js/script.js"></script>
+    <script src="./js/github.js"></script>
+  </head>
+
+  <body ng-controller= "MainController">
+    <h1>Hello Angular</h1>
+
+    <div>
+      {{ username }}
+      {{error}}
+      {{ countdown }}
+      <form name="extract" ng-submit="search(username)">
+      
+        <input type="search" required placeholder="add name" ng-model="username"/>
+        <input type="submit" value="search" >
+      </form>
+    </div>
+    {{100 * 2.5}}
+    <div ng-include="'./html/userDetails.html'" ng-show="user">
+      
+    </div>
+
+  </body>
+
+</html>

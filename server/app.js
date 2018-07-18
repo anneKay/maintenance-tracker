@@ -18,7 +18,7 @@
  app.use('/api/v1', routes);
 
 app.listen(port, () => {
-    console.log(`listening on port ${port}`)
+    console.log(`listening on, maintain ${port}`)
 });
 
 export default app;
