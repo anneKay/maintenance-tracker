@@ -322,3 +322,27 @@ describe('DELETE /api/v2/users/requests/:requestId', () => {
       .end(done);
   });
 });
+
+describe ('POST api/articles', () => {
+  const article = {
+    title: 'the title',
+    body: '',
+    description: 'the description',
+    images: 'https://image.jpg'
+  }
+  it('should not create an article if body field is empty', (done) => {
+    request(app)
+    .post('api/articles')
+    .set('authentication', 'JWTtoken')
+    .send(article)
+    .expect(400)
+    .expect((res, err) => {
+      expect(res.body.error).toExist();
+      expect(res.body.error[0]).toBe('body field can not be empty');
+      if (err){
+        throw err
+      }
+    })
+    .end(done);
+  });
+});

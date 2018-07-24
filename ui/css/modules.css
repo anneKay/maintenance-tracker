@@ -651,11 +651,12 @@ text-decoration: none;
 
     footer{
         background: rgb(238, 236, 236);
-        margin-top: 1em ;
+        margin-top: 0em ;
         width: 100%;
            /* Height of the footer */
         
     }
+   
         
         
 }

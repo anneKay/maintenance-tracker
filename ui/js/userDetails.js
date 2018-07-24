@@ -41,7 +41,7 @@ queryString = queryString.substring(1);
 var queries = queryString.split("=");
 requestId = (queries[1]);
 
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests/'+requestId, {
+  return fetch('http://localhost:3000/api/v2/users/requests/'+requestId, {
       method: 'GET',
       headers: new Headers({
           'authentication': userSession.token
@@ -120,7 +120,7 @@ function editNewRequest() {
 function editRequest(title, description, requestType){
   console.log(requestId);
   
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests/'+requestId, {
+  return fetch('http://localhost:3000/api/v2/users/requests/'+requestId, {
     method: 'PUT',
     headers: new Headers({
         'Accept': 'application/json, text/plain, */*',
@@ -136,7 +136,7 @@ function editRequest(title, description, requestType){
 
 function deleteRequest(){
  
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests/'+requestId, {
+  return fetch('http://localhost:3000/api/v2/users/requests/'+requestId, {
     method: 'DELETE',
     headers: new Headers({
        

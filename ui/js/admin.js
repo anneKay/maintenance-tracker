@@ -9,7 +9,7 @@ window.onload = function() {
    
    var message = document.getElementById('user').innerHTML = 'Welcome Admin' ;
    var page = document.getElementById('paginate');
-   return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests', {
+   return fetch('http://localhost:3000/api/v2/requests', {
        method: 'GET',
        headers: new Headers({
            'authentication': userSession.token

@@ -413,4 +413,6 @@ button#resolve{
       padding-right: 0px;
     }
   }
-  
+  .is-active{
+    font-weight: bold;
+}

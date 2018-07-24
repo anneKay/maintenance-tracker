@@ -27,6 +27,7 @@ const requestExists = (req, res, next) => {
     }
     req.currentRequestStatus = request.status;
     req.currentRequest = request;
+    req.requestId = id;
     next();
   })
   .catch(error => setImmediate(() => { throw error }));

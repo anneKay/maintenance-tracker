@@ -15,7 +15,7 @@ queryString = queryString.substring(1);
 var queries = queryString.split("=");
 requestId = (queries[1]);
 
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/users/requests/'+requestId, {
+  return fetch('http://localhost:3000/api/v2/users/requests/'+requestId, {
       method: 'GET',
       headers: new Headers({
           'authentication': userSession.token
@@ -57,7 +57,7 @@ var errorMessage;
 //approve a single request by a user
 function approveRequest(){
  
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests/'+requestId+'/approve', {
+  return fetch('http://localhost:3000/api/v2/requests/'+requestId+'/approve', {
     method: 'PUT',
     headers: new Headers({
         'Accept': 'application/json, text/plain, */*',
@@ -74,7 +74,7 @@ function approveRequest(){
 //disapprove a single request by a user
 function disapproveRequest(){
  
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests/'+requestId+'/disapprove', {
+  return fetch('http://localhost:3000/api/v2/requests/'+requestId+'/disapprove', {
     method: 'PUT',
     headers: new Headers({
         'Accept': 'application/json, text/plain, */*',
@@ -91,7 +91,7 @@ function disapproveRequest(){
 //resolve a single request made by a user
 function resolveRequest(){
  
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests/'+requestId+'/resolve', {
+  return fetch('http://localhost:3000/api/v2/requests/'+requestId+'/resolve', {
     method: 'PUT',
     headers: new Headers({
         'Accept': 'application/json, text/plain, */*',
@@ -107,7 +107,7 @@ function resolveRequest(){
 //reset a request's status
 function resetRequest(){
 
-  return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests/'+requestId+'/reset', {
+  return fetch('http://localhost:3000/api/v2/requests/'+requestId+'/reset', {
     method: 'PUT',
     headers: new Headers({
         'Accept': 'application/json, text/plain, */*',
