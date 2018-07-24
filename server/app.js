@@ -34,12 +34,7 @@ app.all('*', (req, res) => res.status(404).send({
 
 
 app.listen(port, () => {
-  console.log(`listening on port ${port}`)
+  console.log(`listening on port ${port}`);
 });
 
 export default app;
-
-
-
-
-
