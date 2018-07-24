@@ -5,11 +5,19 @@ import dbroutes from './routes/dbroutes';
 
 import bodyParser from 'body-parser';
 
+import cors from 'cors';
+
 import pool from './database/config';
 import { createRequest, getRequests } from './controller/requestController';
 
 
 const app = express();
+
+const corsOptions = {
+  exposedHeaders: 'authentication',
+};
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
