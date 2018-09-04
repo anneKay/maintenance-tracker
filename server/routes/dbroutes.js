@@ -13,9 +13,9 @@ import checkForAdmin from '../middleware/userAdmin';
 // routers for the API endpoints
 
 // Auth routes
- dbrouter.post('/auth/signup', validateSignup, isEmailUnique, signupUser);
+dbrouter.post('/auth/signup', validateSignup, isEmailUnique, signupUser);
 
- dbrouter.post('/auth/login', signinUser);
+dbrouter.post('/auth/login', signinUser);
 
 // user requests
 dbrouter.post('/users/requests', authenticateUser, createRequest);
@@ -41,4 +41,3 @@ dbrouter.put('/requests/:requestId/reset', authenticateUser, checkForAdmin, requ
 dbrouter.delete('/requests/:requestId/delete', authenticateUser, checkForAdmin, requestExists, deleteRequest);
 
 export default dbrouter;
-

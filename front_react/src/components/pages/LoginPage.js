@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import UserForm from '../form/Form';
+import UserForm from '../form/LoginForm';
 
 
 export default class LoginPage extends React.Component{
@@ -21,4 +21,5 @@ export default class LoginPage extends React.Component{
     );
   }
 }
+
 

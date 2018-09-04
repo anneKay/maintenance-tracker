@@ -1,5 +1,4 @@
-import {request} from 'http';
-import requestsModel from './../model/request';
+import requestsModel from '../model/request';
 
 import pool from '../database/config';
 
@@ -26,7 +25,7 @@ export const createRequest = (req, res) => {
       message: 'Request created successfully',
       request: result.rows[0],
     }))
-    .catch(error => setImmediate(() => { throw error; }));
+    .catch(err => setImmediate(() => { throw err; }));
 };
 
 export const getAllRequests = (req, res) => {
@@ -79,9 +78,8 @@ export const modifyRequest = (req, res) => {
     });
   }
 
-  let title = req.currentRequest.title;
-  let description = req.currentRequest.description;
-  let requestType = req.currentRequest.requestType;
+  let { title, description, requestType } = req.currentRequest;
+
 
   if (req.body.title.trim()) {
     title = req.body.title.trim();

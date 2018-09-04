@@ -1,6 +1,7 @@
 const path = require('path')
+
 module.exports = {
-    entry: './extensify-react/redux.js',
+    entry: './front_react/index.js',
     output: {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
@@ -37,7 +38,7 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
     devServer: {
         contentBase: path.join(__dirname, 'public'),
-        historyApiFallback: true
+        historyApiFallback: true,
     
     }
 };
