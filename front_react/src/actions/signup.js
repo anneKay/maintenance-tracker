@@ -1,21 +1,41 @@
-import SIGN_UP from './index';
+import actionTypes from './index';
+import history from '../history';
+import { APIPOST } from '../helpers/helper';
 
-export default (name, email, password) => dispatch => fetch('https://mtracker-nwanna.herokuapp.com/api/v2/auth/signup', {
-  method: 'POST',
-  headers: new Headers({
-    Accept: 'application/json, text/plain, */*',
-    'Content-type': 'application/json',
-  }),
-  body: JSON.stringify({ name, email, password }),
+const { SIGN_UP_SUCCESS, SIGN_UP_FAILURE } = actionTypes;
 
-})
-  .then(res => res.json())
+// export default (name, email, password) => dispatch => axios.post('https://mtracker-nwanna.herokuapp.com/api/v2/auth/signup', {
+//   name,
+//   email,
+//   password,
+// })
+//   .then((user) => {
+//     if (user.data) localStorage.setItem('name', user.data.name);
+//     dispatch({
+//       type: SIGN_UP_SUCCESS,
+//       payload: user.data.user,
+//     });
+//     history.push('/profile');
+//   })
+
+//   .catch(error => dispatch({
+//     type: SIGN_UP_FAILURE,
+//     payload: error.response.data,
+//   }));
+
+
+export default (name, email, password) => dispatch => APIPOST({ name, email, password }, '/auth/signup')
   .then((user) => {
-    console.log('>>>>>>>>>>user', user);
-    if (user.user) { localStorage.setItem('name', user.user.name); }
+    console.log(user);
+    if (user.data) localStorage.setItem('name', user.data.name);
     dispatch({
-      type: SIGN_UP,
-      payload: user.user,
+      type: SIGN_UP_SUCCESS,
+      payload: user.data.user,
     });
+    history.push('/profile');
   })
-  .catch();
+
+  .catch(error => dispatch({
+    type: SIGN_UP_FAILURE,
+    payload: error.response.data,
+  }));

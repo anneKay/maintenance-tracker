@@ -1,11 +1,10 @@
 //imports from libraries and local files
 import express from 'express';
 
-import dbroutes from './routes/dbroutes';
-
 import bodyParser from 'body-parser';
 
 import cors from 'cors';
+import dbroutes from './routes/dbroutes';
 
 import pool from './database/config';
 import { createRequest, getRequests } from './controller/requestController';
@@ -18,7 +17,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: true,
 }));
 
 const port = process.env.PORT || 4000;
