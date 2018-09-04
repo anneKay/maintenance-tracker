@@ -13,26 +13,8 @@ class Signup extends Component {
     this.props.signup(data.name, data.email, data.password);
     return data;
   }
-  static getDerivedStateFromProps(props) {
-    console.log('>>>>>>>>>>>props', props);
-    
-  }
-  componentDidMount() {
-    //console.log('>>>>>>>>>this.submit.name', this.submit.name)
-    //this.props.signup(this.submit.name, this.submit.email, this.submit.password);
-  }
 
   render() {
-    //console.log('>>>>>>>>>>>this.props', this.props.signup().payload);
-  //   const userArray = this.props.signup().payload;
-  //   if(userArray) {
-  //    const itemsArray = userArray.map(user => (
-  //     <div>
-  //       <h3>{user}</h3>
-     
-  //      </div>
-  //   ))
-  // }
     return (
       <div>
         <Header id="login-header"/>

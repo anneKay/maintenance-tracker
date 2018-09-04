@@ -1,11 +1,16 @@
 import React from 'react';
 import Header from './Header';
+import { connect } from 'react-redux';
 import UserForm from '../form/LoginForm';
+import login from '../../actions/login';
+import PropTypes from 'prop-types';
 
 
-export default class LoginPage extends React.Component{
+class LoginPage extends React.Component{
 	submit = data => {
-		console.log(data);
+    this.props.login(data.email, data.password);
+    console.log(data);
+    return data;
 	}
   render() {
     return (
@@ -22,4 +27,21 @@ export default class LoginPage extends React.Component{
   }
 }
 
+
+
+LoginPage.PropTypes = {
+  login: PropTypes.func.isRequired,
+  login: PropTypes.object.isRequired
+}
+ 
+
+const mapStateToProps = ({ signupReducer }) => {
+  const { user } = signupReducer;
+  return user;
+};
+
+const mapActionToProps = {
+  login,
+};
+export default connect(mapStateToProps, mapActionToProps)(LoginPage);
 
