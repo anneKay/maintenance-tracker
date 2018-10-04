@@ -8,8 +8,6 @@ export const generateToken = (user) => {
   return token;
 };
 
-export const verifyToken = token => jwt.verify(token, process.env.JWT_SECRET)
+export const verifyToken = token => jwt.verify(token, process.env.JWT_SECRET);
 
-export const validatePassword = (user, password) => {
-  return bcrypt.compareSync(password, user.password);
-};
+export const validatePassword = (user, password) => bcrypt.compareSync(password, user.password);
