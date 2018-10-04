@@ -28,8 +28,12 @@
       }],
       "react/no-did-update-set-state": "error",
       "react/no-unknown-property": "error",
+      "import/no-unresolved": [0, { "commonjs": false }],
       "react/no-unused-prop-types": "error",
       "react/prop-types": "error",
-      "react/react-in-jsx-scope": "error"
-  }
+      "react/react-in-jsx-scope": "error",
+      "no-nested-ternary": 0,
+      "no-param-reassign": 0,
+      "no-plusplus": 0
+    }
 }

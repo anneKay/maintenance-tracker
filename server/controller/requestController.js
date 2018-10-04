@@ -55,7 +55,6 @@ export const getRequestById = (req, res) => {
     }))
     .catch(error => setImmediate(() => { throw error; }));
 };
-
 export const modifyRequest = (req, res) => {
   const reqID = parseInt(req.params.requestId);
   // const user = req.decodedUser;
