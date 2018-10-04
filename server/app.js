@@ -1,13 +1,9 @@
-//imports from libraries and local files
 import express from 'express';
 
 import bodyParser from 'body-parser';
 
 import cors from 'cors';
 import dbroutes from './routes/dbroutes';
-
-import pool from './database/config';
-import { createRequest, getRequests } from './controller/requestController';
 
 
 const app = express();
@@ -28,8 +24,8 @@ app.use('', express.static('api_doc'));
 
 
 app.all('*', (req, res) => res.status(404).send({
-  Error: 'page not found'
-}) )
+  Error: 'page not found',
+}));
 
 
 app.listen(port, () => {

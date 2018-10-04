@@ -3,7 +3,6 @@ import { Form, Button } from 'semantic-ui-react';
 import validator from 'validator';
 import InlineError from '../messages/InlineError';
 import propTypes from 'prop-types';
-
 class UserForm extends React.Component {
     state = {
       loading: false,
@@ -28,11 +27,12 @@ class UserForm extends React.Component {
 
 		onSubmit = () => {
 			const errors = this.validate(this.state.data);
+			const { submit, history} = this.props;
 			this.setState({
 				errors,
 			})
 			if(Object.keys(errors).length === 0 ){
-				this.props.submit(this.state.data);
+				submit(this.state.data, history);
 			}
 		}
 

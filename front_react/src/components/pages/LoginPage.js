@@ -7,18 +7,21 @@ import PropTypes from 'prop-types';
 
 
 class LoginPage extends React.Component{
-	submit = data => {
-    this.props.login(data.email, data.password);
-    console.log(data);
+
+	submit = (data, history) => {
+    this.props.login(data.email, data.password, history);
     return data;
 	}
   render() {
+    const { history } = this.props;
     return (
       <div>
-        <Header id="login-header" />
+        <Header id="login-header" className="header-primary"
+         pathOne="/signup" pathTwo="/login" pathThree="/signup" 
+         navOne="Contact" navTwo="Login" navThree="Signup" pathname="/login"/>
         <main className="container">
           <div className="form-container">
-            <UserForm submit={this.submit} />
+            <UserForm submit={this.submit} history={history}/>
           </div>
 
         </main>

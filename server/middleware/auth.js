@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import pool from '../database/config';
 
-import { verifyToken } from '../helpers/auth'
+import { verifyToken } from '../helpers/auth';
 
 
 export default (req, res, next) => {
@@ -9,16 +9,15 @@ export default (req, res, next) => {
 
   if (!token) {
     return res.status(401).send({
-      error: "Please signup or signin to continue"
-    })
+      error: 'Please signup or signin to continue',
+    });
   }
 
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
-      console.log(err);
       return res.status(401).send({
-        error: 'Invalid authentication. Please signup or sign in'
-      })
+        error: 'Invalid authentication. Please signup or sign in',
+      });
     }
 
     pool.query(`SELECT * FROM users WHERE id=$1`, ([decoded.id]))
@@ -26,16 +25,16 @@ export default (req, res, next) => {
         const user = result.rows[0];
         if (!user) {
           return res.status(401).send({
-            error: 'Cannot verify user. Try a signin or signup first'
-          })
+            error: 'Cannot verify user. Try a signin or signup first',
+          });
         }
         req.decodedUser = user;
         next();
       })
       .catch(() => {
         res.status(500).send({
-          error: 'Server error. Cannot verify user'
-        })
+          error: 'Server error. Cannot verify user',
+        });
       });
-  })
-}
+  });
+};

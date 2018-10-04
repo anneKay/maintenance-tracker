@@ -15,15 +15,17 @@ class Signup extends Component {
   }
 
   render() {
+    const { history } = this.props;
     return (
       <div>
-        <Header id="login-header"/>
+        <Header id="login-header" className="header-primary" pathOne="/signup"
+         pathTwo="/login" pathThree="/signup" navOne="Contact" 
+         navTwo="Login" navThree="Signup" pathname="/signup"/>
         <div className="container">
         <div className="form-container">
-          <SignupForm submit={this.submit}/> 
+          <SignupForm submit={this.submit} history={history}/> 
         </div> 
         </div>
-      {/* <p>{itemsArray}</p>  */}
       </div>
     )
   }
@@ -37,6 +39,7 @@ Signup.PropTypes = {
 
 const mapStateToProps = ({ signupReducer }) => {
   const { user } = signupReducer;
+  console.log('user', user)
   return user;
 };
 
