@@ -10,8 +10,9 @@ import Profile from '../components/pages/Profile';
 import { setCurrentUser } from '../helpers/helper';
 import Request from '../components/pages/Request';
 import EditRequest from '../components/pages/EditRequest';
+import Admin from '../components/pages/Admin';
 
-//setCurrentUser();
+setCurrentUser();
 const AppRouter = () => (
   <Provider store={store}>
     <BrowserRouter>
@@ -23,6 +24,7 @@ const AppRouter = () => (
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/request/:id" component={Request} />
         <Route exact path="/edit/:id" component={EditRequest} />
+        <Route path="/admin" component={Admin} />
       </Switch>
     </BrowserRouter>
   </Provider>

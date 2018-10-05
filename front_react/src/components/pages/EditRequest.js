@@ -8,20 +8,18 @@ import PropTypes from 'prop-types';
 
 class EditRequest extends React.Component{
 	submit = (data, requestType, history) => {
-    //editRequest(data.title, data.description, requestType, history.location.pathname.substring(9));
+    editRequest(data.title, data.description, requestType, history.location.pathname.substring(6), history);
     return data;
 	}
   render() {
     const { history, request } = this.props;
-    console.log('>>>>>>request', request);
-    console.log('>>>>>>history', history);
     return (
       <div>
         <Header id="login-header" className="header-primary profile" pathOne="/" pathTwo="/create" pathThree="/logout" navOne="Home" navTwo="Report Issue" navThree="log Out" />
         <main className="container">
         <h2 id="new-request">Edit Your Request</h2>
           <div className="form-container new-request">
-            <SendRequest request={request} submit={this.submit} history={history}/>
+            <SendRequest userRequest={request} submit={this.submit} history={history}/>
           </div>
         </main>
       </div>

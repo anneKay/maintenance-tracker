@@ -305,14 +305,16 @@ ul a {
 }
 span.accepted{
    
-    color:green;
+    background:green;
+    color: white;
     padding:0.3em;
     font-size: 0.6em;
     font-family: cursive;
     margin-top: 0.1em;
 }
 span.rejected{
-	color: red;
+    background: red;
+    color: white;
    
     padding:0.3em;
     font-size: 0.6em;
@@ -320,8 +322,8 @@ span.rejected{
     margin-top: 0.1em;
 }
 span.progress{
-    color: rgb(114, 114, 31);
-  
+    background: rgb(114, 114, 31);
+  color: white;
     padding:0.3em;
     font-size: 0.6em;
     font-family: cursive;

@@ -6,6 +6,9 @@ const {
   GET_USER_REQUESTS_FAILURE,
   GET_SINGLE_REQUEST_FAILURE,
   GET_SINGLE_REQUEST_SUCCESS,
+  GET_REQUESTS_SUCCESS,
+  GET_REQUESTS_FAILURE,
+
 } = actionTypes;
 
 export const getUserRequests = () => dispatch => APIGET('/users/requests')
@@ -32,6 +35,15 @@ export const getSingleRequest = requestId => dispatch => APIGET(`/users/requests
     payload: error,
   }));
 
-export const getAllRequests = () => dispatch => APIGET('requests')
+export const getAllRequests = () => dispatch => APIGET('/requests')
   .then((requests) => {
-  });
+    dispatch({
+      type: GET_REQUESTS_SUCCESS,
+      payload: requests.data.allRequests,
+    });
+    return requests;
+  })
+  .catch(error => dispatch({
+    type: GET_REQUESTS_FAILURE,
+    payload: error,
+  }));

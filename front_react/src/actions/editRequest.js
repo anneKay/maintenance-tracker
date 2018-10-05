@@ -1,13 +1,8 @@
-import actionTypes from './index';
 import { APIPUT } from '../helpers/helper';
 
-const { CREATE_REQUEST_SUCCESS, CREATE_REQUEST_FAILURE } = actionTypes;
-
-
-export default (title, description, requestType, requestId) => APIPUT(`/users/requests/${requestId}`)
-  .then((request) => {
-    console.log('>>>>>request', request);
+export default (title, description, requestType, requestId, history) => APIPUT(`/users/requests/${requestId}`, { title, description, requestType })
+  .then(() => {
+    history.push('/profile');
   })
-  .catch((error) => {
-    console.log('>>>>error', error);
+  .catch(() => {
   });

@@ -94,7 +94,7 @@ div.new-request{
   .request-list{
     padding-top:0.5em;
     padding-bottom: 2em;
-    margin-top: -1em;
+    margin-top: -0em;
     background: #eee;
   }
     .app-title{
@@ -323,16 +323,22 @@ div.new-request{
           width: auto;
     
       }
-      .btn-primary:hover {
-        background: none;
-    border-color: white;
-    text-decoration: none;
+    .btn-primary:hover {
+      background: none;
+      border-color: white;
+      text-decoration: none;
     }
-    }
+  }
     
     @media (min-width: 48em) {
       .pull-right-sm {
         float:right;
+      }
+      #user-reqs {
+        font-size: 1.5rem;
+        font-family: cursive;
+        color:  teal;
+        padding: 0.5em;
       }
     }
     
@@ -433,10 +439,9 @@ div.new-request{
         margin-top: -0.5em;
       }
       #header-request {
-          margin-left: 2em;
-          
-          
+          margin-left: 2em;    
       }
+
       .footer-content{
         padding-top: 2em;
         margin-bottom: -0.5em;
@@ -455,3 +460,4 @@ div.new-request{
     .is-active{
       font-weight: bold;
   }
+  

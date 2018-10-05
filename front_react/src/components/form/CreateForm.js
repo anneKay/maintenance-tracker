@@ -9,7 +9,7 @@ import FormField from './InputFormField';
 import { options } from '../../helpers/helper';
 
 export const CreateForm = ({
-  onChange, onSubmit, state, request,
+  onChange, onSubmit, state, request, userRequest,
 }) => {
   const {
     loading,
@@ -52,8 +52,8 @@ export const CreateForm = ({
               placeholder="Describe your request"
               onChange={onChange}
             >
-              DefultValue
-              </textarea>
+              {userRequest && userRequest[0] ? userRequest[0].description : null}
+            </textarea>
             {errors.description && (
               <Label color="red" pointing>
                 {errors.description}

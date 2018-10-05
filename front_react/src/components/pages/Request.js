@@ -5,9 +5,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Header from './Header';
-import { ReqDiv } from '../../helpers/helper';
 import { getSingleRequest } from '../../actions/getAllRequests';
-import UserForm from '../form/LoginForm';
+import deleteReq from '../../actions/deleteRequest';
 
 
 class Request extends Component {
@@ -17,6 +16,10 @@ class Request extends Component {
     userReq(requestId);
   }
 
+  deleteAction() {
+    const { history } = this.props;
+    deleteReq(history.location.pathname.substring(9), history);
+  }
 
   render() {
     const { request, history } = this.props;
@@ -33,7 +36,7 @@ class Request extends Component {
               <h4>{request.request.length > 0 && request.request[0].description}</h4>
             </Card.Description>
             <Card.Meta>
-              {request.length > 0 && request[0].status}
+              {request.request.length > 0 && request.request[0].status}
               <span className="pull-right">
                 {moment(request.request.length > 0 && request.request[0].created_at).fromNow()}
               </span>
@@ -49,7 +52,7 @@ class Request extends Component {
               </Link>
             </div>
             <div>
-              <Button basic color="red">
+              <Button onClick={deleteReq(history.location.pathname.substring(9), history)} basic color="red">
             Delete
               </Button>
             </div>

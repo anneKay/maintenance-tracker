@@ -1,0 +1,35 @@
+#profile-card {
+  .card {
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+    max-width: 30%;
+    margin-top: 2em;
+    margin-left: 2em;
+    float: left;
+  }
+ .admin-button{
+  margin: 0 auto;
+  width: 80%;
+ }
+ .ui.buttons{
+  .button:first-child {
+    background: rgb(14, 126, 79);
+    color: white
+  }
+  .button:first-child:hover {
+    background: rgb(118, 180, 118)
+  }
+
+ }
+  @media(max-width: 425px) {
+    
+  }
+  @media (min-width: 48em) and (max-width: 63.0em) {
+   
+  }
+  @media (max-width: 320px) {
+    div.header {
+    font-size: 1rem;
+    margin-left: 0.5em;
+    }
+  }
+}

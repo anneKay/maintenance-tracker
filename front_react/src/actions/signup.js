@@ -10,7 +10,11 @@ export default (name, email, password, history) => dispatch => APIPOST({ name, e
       type: SIGN_UP_SUCCESS,
       payload: user.data.user,
     });
-    history.push('/profile');
+    if (user.data.user.admin) {
+      history.push('/admin/profile');
+    } else {
+      history.push('/profile');
+    }
   })
 
   .catch(error => dispatch({
