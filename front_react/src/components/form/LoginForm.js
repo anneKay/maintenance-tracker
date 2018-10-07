@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import validator from 'validator';
 import InlineError from '../messages/InlineError';
 import propTypes from 'prop-types';
@@ -69,6 +70,9 @@ class UserForm extends React.Component {
 					</Form.Field>
 					<input type="submit"  value="Login"/>
         </Form>
+				<div class="signup">
+		  		<h3>New to Maintenance Tracker? <Link to="/signup">Sign Up</Link></h3>
+		  	</div>
       </main>
 		</div>
 			)

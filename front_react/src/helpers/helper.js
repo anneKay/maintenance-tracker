@@ -2,15 +2,30 @@ import React from 'react';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
+import { List } from 'semantic-ui-react';
 import store from '../store/store';
 import { setUser } from '../actions/login';
 
 const BASE_URL = 'https://mtracker-nwanna.herokuapp.com/api/v2';
-
+// const BASE_URL = `${window.location.origin}/api/v2`;
 export const APIPOST = (body, path) => axios.post(`${BASE_URL}${path}`, body, {
 });
 
 export const APIGET = path => axios.get(`${BASE_URL}${path}`);
+
+export const APIPUT = (path, body) => axios.put(`${BASE_URL}${path}`, body, {});
+
+export const APIDELETE = path => axios.delete(`${BASE_URL}${path}`);
+
+export const ReqDiv = ({ reqText, text }) => (
+  <div className="user-div">
+    <h2>{text}</h2>
+    <h3>
+      {reqText}
+    </h3>
+  </div>
+);
 
 export const setToken = (user) => {
   if (user) {
@@ -22,19 +37,26 @@ export const setToken = (user) => {
 };
 
 export const logoutUser = () => localStorage.clear();
+const handleLogout = () => (
+  <Redirect to="/login" />
+);
 
 export const setCurrentUser = () => {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
-  const { exp } = jwtDecode(token);
-  const currentTime = Math.floor(Date.now() / 1000);
-  if (exp > currentTime) {
-    store.dispatch(setUser(user));
-    axios.defaults.headers.common.Authentication = token;
-  } else {
-    logoutUser();
+  if (token) {
+    const { exp } = jwtDecode(token);
+    const currentTime = Math.floor(Date.now() / 1000);
+    if (exp > currentTime) {
+      store.dispatch(setUser(user));
+      axios.defaults.headers.common.Authentication = token;
+    } else {
+      logoutUser();
+    }
   }
+  return handleLogout();
 };
+
 
 export const numberOfPages = requests => Math.ceil(requests.length / 10);
 
@@ -57,12 +79,12 @@ const statusClass = (status) => {
 };
 
 export const displayReq = request => (
-  <li key={request.id}>
-    <Link to={`/request/:${request.id}`}>
+  <Link key={request.id} to={`/request/${request.id}`}>
+    <li>
       {request.title}
       <span className={statusClass(request.status)}>{request.status}</span>
-    </Link>
-  </li>
+    </li>
+  </Link>
 );
 
 const singleReq = (requests, i) => (
@@ -100,7 +122,7 @@ const changePage = (page, requests, prevPage, nextPage) => {
     );
   }
   return reqArray;
-    //displayButton: displayButton(page, requests, prevPage, nextPage),
+  // displayButton: displayButton(page, requests, prevPage, nextPage),
 };
 
 

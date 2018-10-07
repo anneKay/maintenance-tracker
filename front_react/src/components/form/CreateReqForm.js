@@ -96,7 +96,7 @@ class CreateReq extends React.Component {
                   type="text" 
                   id="description" 
                   name="description" 
-                  placeholder="Descibe your request"
+                  placeholder="Describe your request"
                   onChange={this.onChange}>
                   </textarea>
                   {errors.description && (

@@ -1,14 +1,19 @@
 import actionTypes from '../actions/index';
 
 const {
+
   GET_USER_REQUESTS_SUCCESS,
   GET_USER_REQUESTS_FAILURE,
   GET_SINGLE_REQUEST_FAILURE,
   GET_SINGLE_REQUEST_SUCCESS,
+  GET_REQUESTS_FAILURE,
+  GET_REQUESTS_SUCCESS,
+
 } = actionTypes;
 
 const initialState = {
   requests: [],
+  allRequests: [],
   request: {},
   error: {},
 };
@@ -31,6 +36,16 @@ export default (state = initialState, action) => {
         request: action.payload,
       };
     case GET_SINGLE_REQUEST_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case GET_REQUESTS_SUCCESS:
+      return {
+        ...state,
+        allRequests: action.payload,
+      };
+    case GET_REQUESTS_FAILURE:
       return {
         ...state,
         error: action.payload,

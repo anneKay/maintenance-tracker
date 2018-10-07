@@ -9,8 +9,8 @@ class Signup extends Component {
   state = {
     user: [],
   }
-  submit = data => {
-    this.props.signup(data.name, data.email, data.password);
+  submit = (data, history) => {
+    this.props.signup(data.name, data.email, data.password, history);
     return data;
   }
 

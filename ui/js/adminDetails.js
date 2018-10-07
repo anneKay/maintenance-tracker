@@ -55,7 +55,6 @@ var errorMessage;
 
 //approve a single request by a user
 function approveRequest(){
- 
   return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/requests/'+requestId+'/approve', {
     method: 'PUT',
     headers: new Headers({

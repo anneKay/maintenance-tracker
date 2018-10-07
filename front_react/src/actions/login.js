@@ -12,7 +12,11 @@ export default (email, password, history) => dispatch => APIPOST({ email, passwo
   .then((user) => {
     setToken(user);
     dispatch(setUser(user.data.user));
-    history.push('/profile');
+    if (user.data.user.admin) {
+      history.push('/admin');
+    } else {
+      history.push('/profile');
+    }
   })
   .catch(error => dispatch({
     type: LOG_IN_FAILURE,

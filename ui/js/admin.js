@@ -58,7 +58,6 @@ function addReq (title, status, requesttype, id) {
   div.appendChild(h5);
   div.appendChild(hr);
   div.appendChild(h4);
-  
   return div;
 }
 

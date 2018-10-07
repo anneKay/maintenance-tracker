@@ -13,14 +13,19 @@ const Header = ({
           <img alt="" className="logo" src={logo} />
         </NavLink>
       ) : (pathname === '/profile') ? (
-        <Link to="/profile" className="logo">
+        <Link to={pathname} className="logo">
 
           <h3>
             Welcome &nbsp;&nbsp;
             {headerName}
           </h3>
         </Link>
-      ) : <Link to="/profile"><h3>Dashboard</h3></Link>}
+      ) : (pathname === '/admin') ? (
+        <Link to={pathname} className="logo">
+
+          <h2 className="welcome" id="user"> Welcome Admin</h2>
+        </Link>
+      ) : <Link to="/profile"><h3>Dashboard</h3></Link> }
       <nav className="nav nav-primary">
         {pathOne ? <NavLink to={pathOne} activeClassName="is-active" className="btn btn-nav" exact>{navOne}</NavLink> : <input className="search" id="search" type="text" placeholder="Search by status" name="search" /> }
         <NavLink to={pathTwo} activeClassName="is-active" className="btn btn-nav">{navTwo}</NavLink>

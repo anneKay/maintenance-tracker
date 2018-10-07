@@ -31,19 +31,18 @@ class SignupForm extends React.Component {
       if (!data.name || data.name.length <= 2) errors.name = 'invalid name';
 			if (!data.password) errors.password = 'password cannot be blank';
 			if (!validator.isEmail(data.email)) errors.email = 'invalid email';
-			console.log('>>>>>', data.password)
 			if (data.password !== data.confirmPassword) errors.confirmPassword = 'your passwords do not match';
-			console.log('>>>>>>>>>>', data.confirmPassword)
 			return errors;
 		}
 
 		onSubmit = () => {
 			const errors = this.validate(this.state.data);
+			const { submit, history } = this.props;
 			this.setState({
 				errors,
 			})
 			if(Object.keys(errors).length === 0 ){
-				this.props.submit(this.state.data, history);
+				submit(this.state.data, history);
 			}
 		}
 
