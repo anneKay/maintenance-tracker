@@ -7,7 +7,7 @@ import { getUserRequests } from '../../actions/getAllRequests';
 import { displayReq } from '../../helpers/helper';
 
 
-class Profile extends Component {
+export class Profile extends Component {
   componentDidMount() {
     const { getReq } = this.props;
     getReq();
@@ -55,7 +55,7 @@ Profile.propTypes = {
   getReq: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ signupReducer, getReqReducer }) => (
+export const mapStateToProps = ({ signupReducer, getReqReducer }) => (
   {
     user: signupReducer,
     requests: getReqReducer,

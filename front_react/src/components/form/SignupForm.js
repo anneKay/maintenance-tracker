@@ -1,116 +1,82 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import validator from 'validator';
-import InlineError from '../messages/InlineError';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import FormField from './InputFormField';
 
 class SignupForm extends React.Component {
     state = {
       loading: false,
-			data:{
+      data: {
         name: '',
-				email: '',
+        email: '',
         password: '',
         confirmPassword: '',
-			},
-			errors:{}
-		};
-		
-		onChange = (event) => 
-		this.setState({ 
-			data: { 
-        name:this.state.data.name,
-        email:this.state.data.email, 
-        password:this.state.data.password, 
-        confirmPassword:this.state.data.confirmPassword, 
-        [event.target.name] : event.target.value }
-		})
+      },
+      errors: {},
+    };
 
-		validate = (data) => {
-      const errors = {};
-      if (!data.name || data.name.length <= 2) errors.name = 'invalid name';
-			if (!data.password) errors.password = 'password cannot be blank';
-			if (!validator.isEmail(data.email)) errors.email = 'invalid email';
-			if (data.password !== data.confirmPassword) errors.confirmPassword = 'your passwords do not match';
-			return errors;
-		}
+onChange = (event) => {
+  const { data } = this.state;
+  this.setState({
+    ddata: {
+      ...data,
+      [event.target.name]: event.target.value,
+    },
+    errors: {},
+  });
+}
 
-		onSubmit = () => {
-			const errors = this.validate(this.state.data);
-			const { submit, history } = this.props;
-			this.setState({
-				errors,
-			})
-			if(Object.keys(errors).length === 0 ){
-				submit(this.state.data, history);
-			}
-		}
+validate = (data) => {
+  const errors = {};
+  if (!data.name || data.name.length <= 2) errors.name = 'invalid name';
+  if (!data.password) errors.password = 'password cannot be blank';
+  if (!validator.isEmail(data.email)) errors.email = 'invalid email';
+  if (data.password !== data.confirmPassword) errors.confirmPassword = 'your passwords do not match';
+  return errors;
+}
 
- 
-    render () {
-			const {data, errors} = this.state;
-			return (
-      <div>
+onSubmit = () => {
+  const { data } = this.state;
+  const errors = this.validate(data);
+  const { submit, history } = this.props;
+  this.setState({
+    errors,
+  });
+  if (Object.keys(errors).length === 0) {
+    submit(data, history);
+  }
+}
+
+render() {
+  const { data, errors } = this.state;
+  return (
+    <div>
       <main>
         <Form onSubmit={this.onSubmit}>
-        <Form.Field error={!!errors.email}>
-							<label htmlFor="name">Name</label>
-							<input
-							 type="text" 
-							 id="name" 
-							 name="name" 
-							 placeholder="Full name"
-							 value={data.name}
-							 onChange={this.onChange}
-							 />
-							{errors.name && <InlineError text={errors.name} />}
-					</Form.Field>
-					<Form.Field error={!!errors.email}>
-							<label htmlFor="email">Email</label>
-							<input
-							 type="text" 
-							 id="email" 
-							 name="email" 
-							 placeholder="email@email.com"
-							 value={data.email}
-							 onChange={this.onChange}
-							 />
-							{errors.email && <InlineError text={errors.email} />}
-					</Form.Field>
-					<Form.Field error={!!errors.email}> 
-							<label htmlFor="password">password</label>
-							<input
-							 type="password" 
-							 id="password" 
-							 name="password" 
-							 placeholder="Make it secure"
-							 value={data.password}
-							 onChange={this.onChange}
-							 />
-							{errors.password && <InlineError text={errors.password} />}
-					</Form.Field>
-          <Form.Field error={!!errors.email}> 
-							<label htmlFor="confirmPassword">confirm password</label>
-							<input
-							 type="password" 
-							 id="confirmPassword" 
-							 name="confirmPassword" 
-							 placeholder="Enter password again"
-							 value={data.confirmPassword}
-							 onChange={this.onChange}
-							 />
-							{errors.confirmPassword && <InlineError text={errors.confirmPassword} />}
-					</Form.Field>
-					<input type="submit"  value="Login"/>
+          {FormField('text', 'name', this.onChange, data.name, 'Full name', 'Name', errors.name)}
+          {FormField('text', 'email', this.onChange, data.email, 'Enter email address', 'Email:', errors.email)}
+          {FormField('password', 'password', this.onChange, data.password, 'Enter your password', 'Password:', errors.password)}
+          {FormField('password', 'confirmPassword', this.onChange, data.confirmPassword, 'Enter password again', 'Confirm Password:', errors.confirmPassword)}
+          <input type="submit" value="Submit" />
         </Form>
+        <div className="login">
+          <h3>
+            Already a User?
+            <Link to="/login">Login</Link>
+          </h3>
+        </div>
       </main>
-		</div>
-			)
-    }
-    
+    </div>
+  );
 }
+}
+
 SignupForm.propTypes = {
-	submit: propTypes.func.isRequired
+  submit: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+  }).isRequired,
 };
 
- export default SignupForm;
+export default SignupForm;

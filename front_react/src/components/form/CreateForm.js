@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  Form, Message, Dropdown, Label 
+  Form, Dropdown, Label,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -9,10 +9,9 @@ import FormField from './InputFormField';
 import { options } from '../../helpers/helper';
 
 export const CreateForm = ({
-  onChange, onSubmit, state, request, userRequest,
+  onChange, onSubmit, state, userRequest,
 }) => {
   const {
-    loading,
     data: {
       title,
     },
@@ -21,7 +20,6 @@ export const CreateForm = ({
 
   return (
     <div>
-      {request && console.log('>>>>>>>requesssinedit', request)}
       <main>
         <Form onSubmit={onSubmit}>
           {FormField('text', 'title', onChange, title, 'Enter your request title', 'Title:', errors.title)}
@@ -71,9 +69,9 @@ CreateForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   state: PropTypes.shape({
-
   }).isRequired,
-
+  userRequest: PropTypes.shape({
+  }).isRequired,
 };
 
 export default sendRequest(CreateForm);

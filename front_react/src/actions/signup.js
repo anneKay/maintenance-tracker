@@ -17,7 +17,11 @@ export default (name, email, password, history) => dispatch => APIPOST({ name, e
     }
   })
 
-  .catch(error => dispatch({
-    type: SIGN_UP_FAILURE,
-    payload: error.response.data,
-  }));
+  .catch((error) => {
+    if (error.response) {
+      dispatch({
+        type: SIGN_UP_FAILURE,
+        payload: error.response.data,
+      });
+    }
+  });

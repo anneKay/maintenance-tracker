@@ -6,14 +6,14 @@ import login from '../../actions/login';
 import PropTypes from 'prop-types';
 
 
-class LoginPage extends React.Component{
+export class LoginPage extends React.Component{
 
 	submit = (data, history) => {
     this.props.login(data.email, data.password, history);
     return data;
 	}
   render() {
-    const { history } = this.props;
+    const { history, error } = this.props;
     return (
       <div>
         <Header id="login-header" className="header-primary"
@@ -21,7 +21,7 @@ class LoginPage extends React.Component{
          navOne="Contact" navTwo="Login" navThree="Signup" pathname="/login"/>
         <main className="container">
           <div className="form-container">
-            <UserForm submit={this.submit} history={history}/>
+            <UserForm submit={this.submit} error={error} history={history}/>
           </div>
 
         </main>
@@ -30,17 +30,14 @@ class LoginPage extends React.Component{
   }
 }
 
-
-
-LoginPage.PropTypes = {
+LoginPage.propTypes = {
   login: PropTypes.func.isRequired,
-  login: PropTypes.object.isRequired
 }
  
 
-const mapStateToProps = ({ signupReducer }) => {
-  const { user } = signupReducer;
-  return user;
+export const mapStateToProps = ({ signupReducer }) => {
+  const { error } = signupReducer;
+    return error;
 };
 
 const mapActionToProps = {

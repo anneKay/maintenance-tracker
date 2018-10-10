@@ -5,12 +5,17 @@ Layout Styles
 ****************************
 ***************************/
 div.new-request{
-    background: #eee;
-    
+    background: #eee; 
+  }
+  #forgot {
+    margin-bottom: 1em;
   }
   .request-div {
       background : #eee;
       
+  }
+  #user {
+    margin: 0em !important;
   }
   .req-layout {
     margin-left: auto;
@@ -196,14 +201,12 @@ div.new-request{
     
   }
   #user{
-    margin-top:0.5em;
     color: rgb(4, 31, 4);
   }
   .user-div > p:focus {
       outline: none;
   
   }
-  
   
   header.profile{
     background: rgb(41, 63, 41);

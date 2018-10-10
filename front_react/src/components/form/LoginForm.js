@@ -1,86 +1,83 @@
 import React from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import validator from 'validator';
-import InlineError from '../messages/InlineError';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import FormField from './InputFormField';
+
 class UserForm extends React.Component {
     state = {
       loading: false,
-			data:{
-				email: '',
-				password: ''
-			},
-			errors:{}
-		};
-		
-		onChange = (event) => 
-		this.setState({ 
-			data: { email:this.state.data.email, password:this.state.data.password, [event.target.name] : event.target.value }
-		})
+      data: {
+        email: '',
+        password: '',
+      },
+      errors: {},
+    };
 
-		validate = (data) => {
-			const errors = {};
-			if (!data.password) errors.password = 'password cannot be blank';
-			if (!validator.isEmail(data.email)) errors.email = 'invalid email';
-			return errors;
-		}
-
-		onSubmit = () => {
-			const errors = this.validate(this.state.data);
-			const { submit, history} = this.props;
-			this.setState({
-				errors,
-			})
-			if(Object.keys(errors).length === 0 ){
-				submit(this.state.data, history);
-			}
-		}
-
- 
-    render () {
-			const {data, errors} = this.state;
-			return (
-        <div>
-      <main>
-        <Form onSubmit={this.onSubmit}>
-					<Form.Field error={!!errors.email}>
-							<label htmlFor="email">Email</label>
-							<input
-							 type="text" 
-							 id="email" 
-							 name="email" 
-							 placeholder="email@email.com"
-							 value={data.email}
-							 onChange={this.onChange}
-							 />
-							{errors.email && <InlineError text={errors.email} />}
-					</Form.Field>
-					<Form.Field error={!!errors.email}> 
-							<label htmlFor="password">password</label>
-							<input
-							 type="password" 
-							 id="password" 
-							 name="password" 
-							 placeholder="Make it secure"
-							 value={data.password}
-							 onChange={this.onChange}
-							 />
-							{errors.password && <InlineError text={errors.password} />}
-					</Form.Field>
-					<input type="submit"  value="Login"/>
-        </Form>
-				<div class="signup">
-		  		<h3>New to Maintenance Tracker? <Link to="/signup">Sign Up</Link></h3>
-		  	</div>
-      </main>
-		</div>
-			)
-    }
-    
+onChange = (event) => {
+  const { data } = this.state;
+  this.setState({
+    data: {
+      ...data,
+      [event.target.name]: event.target.value,
+    },
+    errors: {},
+  });
 }
-UserForm.propTypes = {
-	submit: propTypes.func.isRequired
+
+validate = (data) => {
+  const errors = {};
+  if (data.password && data.password.length < 5) errors.password = 'password must not be less than 5 letters';
+  if (!validator.isEmail(data.email)) errors.email = 'invalid email';
+  return errors;
+}
+
+onSubmit = () => {
+  const { data } = this.state;
+  const errors = this.validate(data);
+  const { submit, history } = this.props;
+  this.setState({
+    errors,
+  });
+  if (Object.keys(errors).length === 0) {
+    submit(data, history);
+  }
+}
+
+render() {
+  const { data, errors } = this.state;
+  const { error } = this.props;
+  return (
+    <div>
+      <main>
+        {error && <Message negative>{error}</Message>}
+        <Form onSubmit={this.onSubmit}>
+          {FormField('text', 'email', this.onChange, data.email, 'Enter email address', 'Email:', errors.email)}
+          {FormField('password', 'password', this.onChange, data.password, 'Enter your password', 'Password:', errors.password)}
+          <input type="submit" value="Login" />
+        </Form>
+        <div className="signup">
+          <h3>
+            New to Maintenance Tracker?
+            <Link to="/signup">Sign Up</Link>
+          </h3>
+        </div>
+      </main>
+    </div>
+  );
+}
+}
+
+UserForm.defaultProps = {
+  error: {},
 };
 
- export default UserForm;
+UserForm.propTypes = {
+  submit: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+  }).isRequired,
+  error: PropTypes.shape({}),
+};
+
+export default UserForm;

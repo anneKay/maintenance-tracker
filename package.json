@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nyc --reporter=lcov mocha --compilers js:babel-core/register **/*testfile.js",
-    "test-front": "jest",
+    "test-front": "jest --coverage -u",
     "test-watch": "nodemon --exec 'npm test'",
     "babel": "babel --presets es2015 server/routes/dbroutes.js -o build/routes/dbroutes.js",
     "babel-react": "babel --presets=react react/src/class_react.js --out-file=react/scripts/app.js --presets=env,react --watch",
@@ -23,6 +23,13 @@
     "setup-tables": "babel-node --presets=es2015 server/database/setupTables.js",
     "seed-admin": "babel-node --presets=es2015 server/database/seedAdmin.js"
   },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/front_react/src/tests/testSetup.js",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/front_react/src/tests/__mocks__/fileMock.js",
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/anneKay/maintenance-tracker.git"
@@ -35,8 +42,12 @@
   },
   "homepage": "https://github.com/anneKay/maintenance-tracker#readme",
   "devDependencies": {
+    "axios-mock-adapter": "^1.15.0",
+    "babel-eslint": "^10.0.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "coveralls": "^2.13.1",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -44,11 +55,14 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "expect": "^1.20.2",
+    "identity-obj-proxy": "^3.0.0",
     "jwt-decode": "^2.2.0",
     "mocha": "^3.5.3",
     "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^1.17.4",
     "nyc": "^11.8.0",
+    "redux-mock-store": "^1.5.3",
+    "sinon": "^6.3.5",
     "supertest": "^2.0.1",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
@@ -77,6 +91,7 @@
     "live-server": "^1.2.0",
     "mini-css-extract-plugin": "^0.4.3",
     "moment": "^2.22.2",
+    "moxios": "^0.4.0",
     "node-sass": "^4.9.3",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "pg": "^7.4.3",

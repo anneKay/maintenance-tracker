@@ -5,6 +5,7 @@
       "es6": true,
       "browser": true
   },
+  "parser": "babel-eslint",
   "plugins": [
       "react"
   ],
@@ -27,13 +28,17 @@
         "ignoreRefs": true
       }],
       "react/no-did-update-set-state": "error",
+      "react/no-unused-state": 0,
       "react/no-unknown-property": "error",
       "import/no-unresolved": [0, { "commonjs": false }],
       "react/no-unused-prop-types": "error",
       "react/prop-types": "error",
       "react/react-in-jsx-scope": "error",
       "no-nested-ternary": 0,
+      "import/extensions": ["error", "as-needed"],
       "no-param-reassign": 0,
-      "no-plusplus": 0
+      "no-plusplus": 0,
+      "jsx-a11y/label-has-for": 0,
+      "jsx-a11y/label-has-associated-control": 0
     }
 }
