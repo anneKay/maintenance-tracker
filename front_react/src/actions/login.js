@@ -20,5 +20,5 @@ export default (email, password, history) => dispatch => APIPOST({ email, passwo
   })
   .catch(error => dispatch({
     type: LOG_IN_FAILURE,
-    payload: error.response,
+    payload: error.response.data,
   }));

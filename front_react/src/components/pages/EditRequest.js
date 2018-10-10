@@ -6,7 +6,7 @@ import editRequest from '../../actions/editRequest';
 import PropTypes from 'prop-types';
 
 
-class EditRequest extends React.Component{
+export class EditRequest extends React.Component{
 	submit = (data, requestType, history) => {
     editRequest(data.title, data.description, requestType, history.location.pathname.substring(6), history);
     return data;
@@ -33,17 +33,13 @@ EditRequest.propTypes = {
 }
  
 
-const mapStateToProps = ({ getReqReducer }) => {
+export const mapStateToProps = ({ getReqReducer }) => {
   const { request } = getReqReducer;
-  console.log('>>>>>>>request', request)
   return {request};
 
 };
-// const mapStateToProps = (state) => {
-//   console.log('>>>>>state', state)
-// };
+
 const mapActionToProps = {
-  //createReqAction,
 };
 export default connect(mapStateToProps, mapActionToProps)(EditRequest);
 

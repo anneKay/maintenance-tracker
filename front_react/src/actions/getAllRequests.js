@@ -20,7 +20,7 @@ export const getUserRequests = () => dispatch => APIGET('/users/requests')
   })
   .catch(error => dispatch({
     type: GET_USER_REQUESTS_FAILURE,
-    payload: error,
+    payload: error.response.data,
   }));
 
 export const getSingleRequest = requestId => dispatch => APIGET(`/users/requests/${requestId}`)
@@ -32,7 +32,7 @@ export const getSingleRequest = requestId => dispatch => APIGET(`/users/requests
   })
   .catch(error => dispatch({
     type: GET_SINGLE_REQUEST_FAILURE,
-    payload: error,
+    payload: error.response.data,
   }));
 
 export const getAllRequests = () => dispatch => APIGET('/requests')
@@ -45,5 +45,5 @@ export const getAllRequests = () => dispatch => APIGET('/requests')
   })
   .catch(error => dispatch({
     type: GET_REQUESTS_FAILURE,
-    payload: error,
+    payload: error.response.data,
   }));

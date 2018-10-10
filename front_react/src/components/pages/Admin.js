@@ -1,33 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Card, Button } from 'semantic-ui-react';
+import { Card, Button, Message } from 'semantic-ui-react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import Header from './Header';
+import { firstButtonText, secButtonText } from '../../helpers/helper';
 import { getAllRequests } from '../../actions/getAllRequests';
-import { approve} from '../../actions/adminActions';
+import admin from '../../actions/adminActions';
 
 
-class AdminPage extends Component {
-  state = {
-    disabled: false
-  }
+export class AdminPage extends Component {
   componentDidMount() {
     const { requests } = this.props;
-    requests()
-      .then(request => {
-        console.log('reqssss', request)
-      })
-    console.log('>>>', this.props.allrequests.allRequests)
+    requests();
   }
 
-  handleClick(requestId, action) {
-   // if(action === 'approve')
+  performAction = (event, reqId) => {
+    const { adminAction } = this.props;
+    const { value } = event.target;
+    adminAction(reqId, value);
   }
 
   render() {
-    const { allrequests } = this.props;
+    const { allrequests, adminResponse } = this.props;
     const requests = allrequests.allRequests;
     return (
       <div>
@@ -42,6 +37,7 @@ class AdminPage extends Component {
             <div className=" container">
               <h3 id="user-reqs">List Of Requests</h3>
               <hr />
+              {adminResponse.message.length > 0 && <Message success>{`${adminResponse.message}, reload page to continue`}</Message>}
               {allrequests && requests ? requests.map(request => (
                 <div id="profile-card">
                   <Card>
@@ -54,23 +50,19 @@ class AdminPage extends Component {
                       </Card.Meta>
                     </Card.Content>
                     <Card.Content extra>
-                    <div className='admin-button'>
-                    <Button.Group>
-                        <Button disabled={request.status === 'resolved'}>{request.status === 'pending' ? 'Approve' : request.status === 'approved' || request.status === 'disapproved' ? 'Reset' : 'Approve'}</Button>
-                        <Button.Or />
-                        <Button disabled={request.status === 'resolved'}>{request.status === 'pending' ? 'Disapprove' : request.status === 'approved' || request.status === 'disapproved' ? 'Resolve' : 'Disapprove'}</Button>
-                      </Button.Group>
-                    </div>
+                      <div className="admin-button">
+                        <Button.Group>
+                          <Button value={firstButtonText(request)} onClick={((event) => { this.performAction(event, request.id); })} disabled={request.status === 'resolved'}>{firstButtonText(request)}</Button>
+                          <Button.Or />
+                          <Button value={secButtonText(request)} onClick={((event) => { this.performAction(event, request.id); })} disabled={request.status === 'resolved'}>{secButtonText(request)}</Button>
+                        </Button.Group>
+                      </div>
                     </Card.Content>
                   </Card>
-                </div>       
+                </div>
               )) : null}
-              
-
             </div>
-
           </section>
-          
         </main>
       </div>
     );
@@ -79,19 +71,23 @@ class AdminPage extends Component {
 
 AdminPage.propTypes = {
   requests: PropTypes.shape({
-
   }).isRequired,
-  allRequests: PropTypes.func.isRequired,
+  allrequests: PropTypes.func.isRequired,
+  adminAction: PropTypes.func.isRequired,
+  adminResponse: PropTypes.shape({
+  }).isRequired,
 };
 
-const mapStateToProps = ({ getReqReducer }) => (
+const mapStateToProps = ({ getReqReducer, adminReducer }) => (
   {
     allrequests: getReqReducer,
+    adminResponse: adminReducer,
   }
 );
 
 const mapActionToProps = {
   requests: getAllRequests,
+  adminAction: admin,
 };
 
 export default connect(mapStateToProps, mapActionToProps)(AdminPage);
