@@ -54,7 +54,7 @@ class Request extends Component {
             <div>
               <Button onClick={() => { this.deleteAction(history.location.pathname.substring(9), history); }} basic color="red">
             Delete
-                </Button>
+              </Button>
             </div>
           </Card.Content>
         </Card>
