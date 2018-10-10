@@ -16,14 +16,16 @@ export class AdminPage extends Component {
   }
 
   performAction = (event, reqId) => {
-    const { adminAction } = this.props;
+    const { adminAction, requests } = this.props;
     const { value } = event.target;
     adminAction(reqId, value);
+    requests();
   }
 
   render() {
     const { allrequests, adminResponse } = this.props;
     const requests = allrequests.allRequests;
+    console.log('screensize', window.screen.width);
     return (
       <div>
         <Header headerName="Admin" className="header-primary" pathname="/admin" pathTwo="/" pathThree="/logout" navTwo="Home" navThree="logout" />
@@ -39,7 +41,7 @@ export class AdminPage extends Component {
               <hr />
               {adminResponse.message.length > 0 && <Message success>{`${adminResponse.message}, reload page to continue`}</Message>}
               {allrequests && requests ? requests.map(request => (
-                <div id="profile-card">
+                <div key={request.id} id="profile-card">
                   <Card>
                     <Card.Content>
                       <Card.Header>{request.title}</Card.Header>

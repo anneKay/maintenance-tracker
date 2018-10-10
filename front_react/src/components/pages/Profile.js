@@ -27,19 +27,14 @@ export class Profile extends Component {
                 <input className="pull-right-sm" type="button" value="Add Request" id="create" />
               </Link>
             </div>
-            <div className="request-div">
-              <div id="requests">
-                <div className="req-container">
-                  <ul id="get-req">
-                    {requests.requests.length > 10 }
-                    {requests.requests.map(request => (
-                      displayReq(request)
-                    ))}
-                  </ul>
-                </div>
-              </div>
+            <div className="req-container">
+              <ul id="get-req">
+                {requests.requests.length > 10 }
+                {requests.requests.map(request => (
+                  displayReq(request)
+                ))}
+              </ul>
             </div>
-
           </section>
         </main>
       </div>

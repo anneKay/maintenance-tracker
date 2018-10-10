@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/anneKay/maintenance-tracker.svg?branch=ft-filter-requests-158456484)](https://travis-ci.org/anneKay/maintenance-tracker) [![Coverage Status](https://coveralls.io/repos/github/anneKay/maintenance-tracker/badge.svg?branch=ft-filter-requests-158456484)](https://coveralls.io/github/anneKay/maintenance-tracker?branch=ft-filter-requests-158456484)  [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability) 
+[![CircleCI](https://circleci.com/gh/anneKay/maintenance-tracker.svg?style=svg)](https://circleci.com/gh/anneKay/maintenance-tracker)
 
 # maintenance-tracker
 

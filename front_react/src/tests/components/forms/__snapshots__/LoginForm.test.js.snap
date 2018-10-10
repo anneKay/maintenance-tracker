@@ -83,12 +83,12 @@ ShallowWrapper {
           className="signup"
         >
           <h3>
-            New to Maintenance Tracker? 
+            New to Maintenance Tracker?
             <Link
               replace={false}
               to="/signup"
             >
-              Sign Up
+               Sign Up
             </Link>
           </h3>
         </div>
@@ -161,12 +161,12 @@ ShallowWrapper {
             className="signup"
           >
             <h3>
-              New to Maintenance Tracker? 
+              New to Maintenance Tracker?
               <Link
                 replace={false}
                 to="/signup"
               >
-                Sign Up
+                 Sign Up
               </Link>
             </h3>
           </div>,
@@ -428,12 +428,12 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": <h3>
-              New to Maintenance Tracker? 
+              New to Maintenance Tracker?
               <Link
                 replace={false}
                 to="/signup"
               >
-                Sign Up
+                 Sign Up
               </Link>
             </h3>,
             "className": "signup",
@@ -445,29 +445,29 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": Array [
-                "New to Maintenance Tracker? ",
+                "New to Maintenance Tracker?",
                 <Link
                   replace={false}
                   to="/signup"
                 >
-                  Sign Up
+                   Sign Up
                 </Link>,
               ],
             },
             "ref": null,
             "rendered": Array [
-              "New to Maintenance Tracker? ",
+              "New to Maintenance Tracker?",
               Object {
                 "instance": null,
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "children": "Sign Up",
+                  "children": " Sign Up",
                   "replace": false,
                   "to": "/signup",
                 },
                 "ref": null,
-                "rendered": "Sign Up",
+                "rendered": " Sign Up",
                 "type": [Function],
               },
             ],
@@ -547,12 +547,12 @@ ShallowWrapper {
             className="signup"
           >
             <h3>
-              New to Maintenance Tracker? 
+              New to Maintenance Tracker?
               <Link
                 replace={false}
                 to="/signup"
               >
-                Sign Up
+                 Sign Up
               </Link>
             </h3>
           </div>
@@ -625,12 +625,12 @@ ShallowWrapper {
               className="signup"
             >
               <h3>
-                New to Maintenance Tracker? 
+                New to Maintenance Tracker?
                 <Link
                   replace={false}
                   to="/signup"
                 >
-                  Sign Up
+                   Sign Up
                 </Link>
               </h3>
             </div>,
@@ -892,12 +892,12 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": <h3>
-                New to Maintenance Tracker? 
+                New to Maintenance Tracker?
                 <Link
                   replace={false}
                   to="/signup"
                 >
-                  Sign Up
+                   Sign Up
                 </Link>
               </h3>,
               "className": "signup",
@@ -909,29 +909,29 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": Array [
-                  "New to Maintenance Tracker? ",
+                  "New to Maintenance Tracker?",
                   <Link
                     replace={false}
                     to="/signup"
                   >
-                    Sign Up
+                     Sign Up
                   </Link>,
                 ],
               },
               "ref": null,
               "rendered": Array [
-                "New to Maintenance Tracker? ",
+                "New to Maintenance Tracker?",
                 Object {
                   "instance": null,
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": "Sign Up",
+                    "children": " Sign Up",
                     "replace": false,
                     "to": "/signup",
                   },
                   "ref": null,
-                  "rendered": "Sign Up",
+                  "rendered": " Sign Up",
                   "type": [Function],
                 },
               ],

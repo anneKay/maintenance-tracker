@@ -1,35 +1,202 @@
 #profile-card {
-  .card {
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
-    max-width: 30%;
-    margin-top: 2em;
-    margin-left: 2em;
-    float: left;
-  }
  .admin-button{
   margin: 0 auto;
   width: 80%;
  }
- .ui.buttons{
-  .button:first-child {
-    background: rgb(14, 126, 79);
-    color: white
-  }
-  .button:first-child:hover {
-    background: rgb(118, 180, 118)
-  }
+//  .ui.buttons{
+//   .button:first-child {
+//     background: rgb(14, 126, 79);
+//     color: white
+//   }
+//   .button:first-child:hover {
+//     background: rgb(118, 180, 118)
+//   }
 
+//  }
+
+ div.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
  }
-  @media(max-width: 425px) {
+  @media(max-width: 768px) and (min-width: 375px) {
+    .card {
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+      min-width: 70%;
+      margin: 2em auto;
+    }
+    .main-card {
+      max-height: 130px;
+    }
+    #card-header {
+      padding: 0px 0;
+      font-family: "Abel", sans-serif;
+      letter-spacing: 3px;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .ui.buttons{
+      font-size: 1rem;
+      max-width: 60%;
+      margin: 0em auto;
+      .button:first-child {
+        background: rgb(14, 126, 79);
+        color: white
+      }
+      .button:first-child:hover {
+        background: rgb(118, 180, 118)
+      }
     
+     }
   }
-  @media (min-width: 48em) and (max-width: 63.0em) {
-   
+  @media (min-width: 1440px) {
+    .card {
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+      max-width: 30%;
+      margin-top: 2em;
+      margin-left: 2em;
+      float: left;
+     
+    }
+  }
+  @media (min-width: 1024px) and (max-width: 1439px){
+    .card {
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+      max-width: 40%;
+      margin-top: 2em;
+      margin-left: 4em;
+      float: left;
+    }
+    .ui.buttons{
+      font-size: 1rem;
+      max-width: 60%;
+      margin: 0em auto;
+      .button:first-child {
+        background: rgb(14, 126, 79);
+        color: white
+      }
+      .button:first-child:hover {
+        background: rgb(118, 180, 118)
+      }
+    
+     }
   }
   @media (max-width: 320px) {
     div.header {
     font-size: 1rem;
     margin-left: 0.5em;
     }
+    #card-header {
+      margin-bottom: unset;
+    }
+    .description {
+      margin-top: -.5em;
+    }
   }
+}
+
+#request-card {
+  
+   div.description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+   }
+    @media(max-width: 768px) and (min-width: 375px) {
+      .ui.card {
+        width: 30%;
+        margin: 10% auto;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);;
+        .content{
+          .header, .description{
+            margin-left: 1em
+    
+          }
+        }
+      }
+      .ui.card .meta {
+        margin: 1em 1em 0em 1em;
+      }
+      .ui.green.button{
+        margin-bottom: 1em;
+        margin-left: 5%;
+        width: 90%;
+        padding: 0.5em;
+        margin-top: 1em;
+        font-size: 1.5rem;
+      }
+      .ui.red.button {
+        width: 90%;
+        margin-left: 5%;
+        padding: 0.5em;
+        font-size: 1.5rem;
+        margin-bottom: 0.5em;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+      }
+      .main-card {
+        max-height: 130px;
+      }
+      #card-header {
+        padding: 0px 0;
+        font-family: "Abel", sans-serif;
+        letter-spacing: 3px;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+      .ui.buttons{
+        font-size: 1rem;
+        max-width: 60%;
+        margin: 0em auto;
+        .button:first-child {
+          background: rgb(14, 126, 79);
+          color: white
+        }
+        .button:first-child:hover {
+          background: rgb(118, 180, 118)
+        }
+      
+       }
+    }
+    @media (min-width: 1440px) {
+      .card {
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+        max-width: 30%;
+        margin-top: 2em;
+        margin-left: 2em;
+        float: left;
+       
+      }
+    }
+    @media (min-width: 1023px) and (max-width: 1439px){
+      .card {
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+        max-width: 60%;
+        margin-top: 2em;
+        margin-left: 1em;
+        float: left;
+      }
+      .ui.buttons{
+        font-size: 1rem;
+        max-width: 60%;
+        margin: 0em auto;
+        .button:first-child {
+          background: rgb(14, 126, 79);
+          color: white
+        }
+        .button:first-child:hover {
+          background: rgb(118, 180, 118)
+        }
+      
+       }
+    }
+    @media (max-width: 320px) {
+      div.header {
+      font-size: 1rem;
+      margin-left: 0.5em;
+      }
+      #card-header {
+        margin-bottom: unset;
+      }
+      .description {
+        margin-top: -.5em;
+      }
+    }
 }

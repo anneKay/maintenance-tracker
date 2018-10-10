@@ -46,8 +46,9 @@ ShallowWrapper {
               <h3>
                 your machineries with just one click
               </h3>
-              <a
-                href="../html/signup.html"
+              <Link
+                replace={false}
+                to="/signup"
               >
                 <button
                   className=""
@@ -56,7 +57,7 @@ ShallowWrapper {
                 >
                    GET STARTED
                 </button>
-              </a>
+              </Link>
             </div>
           </section>
         </main>,
@@ -105,8 +106,9 @@ ShallowWrapper {
               <h3>
                 your machineries with just one click
               </h3>
-              <a
-                href="../html/signup.html"
+              <Link
+                replace={false}
+                to="/signup"
               >
                 <button
                   className=""
@@ -115,7 +117,7 @@ ShallowWrapper {
                 >
                    GET STARTED
                 </button>
-              </a>
+              </Link>
             </div>
           </section>,
         },
@@ -137,8 +139,9 @@ ShallowWrapper {
               <h3>
                 your machineries with just one click
               </h3>
-              <a
-                href="../html/signup.html"
+              <Link
+                replace={false}
+                to="/signup"
               >
                 <button
                   className=""
@@ -147,7 +150,7 @@ ShallowWrapper {
                 >
                    GET STARTED
                 </button>
-              </a>
+              </Link>
             </div>,
             "className": "body-section",
           },
@@ -167,8 +170,9 @@ ShallowWrapper {
                 <h3>
                   your machineries with just one click
                 </h3>,
-                <a
-                  href="../html/signup.html"
+                <Link
+                  replace={false}
+                  to="/signup"
                 >
                   <button
                     className=""
@@ -177,7 +181,7 @@ ShallowWrapper {
                   >
                      GET STARTED
                   </button>
-                </a>,
+                </Link>,
               ],
               "className": "container",
             },
@@ -219,7 +223,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "host",
+                "nodeType": "class",
                 "props": Object {
                   "children": <button
                     className=""
@@ -228,7 +232,8 @@ ShallowWrapper {
                   >
                      GET STARTED
                   </button>,
-                  "href": "../html/signup.html",
+                  "replace": false,
+                  "to": "/signup",
                 },
                 "ref": null,
                 "rendered": Object {
@@ -245,7 +250,7 @@ ShallowWrapper {
                   "rendered": " GET STARTED",
                   "type": "button",
                 },
-                "type": "a",
+                "type": [Function],
               },
             ],
             "type": "div",
@@ -301,8 +306,9 @@ ShallowWrapper {
                 <h3>
                   your machineries with just one click
                 </h3>
-                <a
-                  href="../html/signup.html"
+                <Link
+                  replace={false}
+                  to="/signup"
                 >
                   <button
                     className=""
@@ -311,7 +317,7 @@ ShallowWrapper {
                   >
                      GET STARTED
                   </button>
-                </a>
+                </Link>
               </div>
             </section>
           </main>,
@@ -360,8 +366,9 @@ ShallowWrapper {
                 <h3>
                   your machineries with just one click
                 </h3>
-                <a
-                  href="../html/signup.html"
+                <Link
+                  replace={false}
+                  to="/signup"
                 >
                   <button
                     className=""
@@ -370,7 +377,7 @@ ShallowWrapper {
                   >
                      GET STARTED
                   </button>
-                </a>
+                </Link>
               </div>
             </section>,
           },
@@ -392,8 +399,9 @@ ShallowWrapper {
                 <h3>
                   your machineries with just one click
                 </h3>
-                <a
-                  href="../html/signup.html"
+                <Link
+                  replace={false}
+                  to="/signup"
                 >
                   <button
                     className=""
@@ -402,7 +410,7 @@ ShallowWrapper {
                   >
                      GET STARTED
                   </button>
-                </a>
+                </Link>
               </div>,
               "className": "body-section",
             },
@@ -422,8 +430,9 @@ ShallowWrapper {
                   <h3>
                     your machineries with just one click
                   </h3>,
-                  <a
-                    href="../html/signup.html"
+                  <Link
+                    replace={false}
+                    to="/signup"
                   >
                     <button
                       className=""
@@ -432,7 +441,7 @@ ShallowWrapper {
                     >
                        GET STARTED
                     </button>
-                  </a>,
+                  </Link>,
                 ],
                 "className": "container",
               },
@@ -474,7 +483,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "host",
+                  "nodeType": "class",
                   "props": Object {
                     "children": <button
                       className=""
@@ -483,7 +492,8 @@ ShallowWrapper {
                     >
                        GET STARTED
                     </button>,
-                    "href": "../html/signup.html",
+                    "replace": false,
+                    "to": "/signup",
                   },
                   "ref": null,
                   "rendered": Object {
@@ -500,7 +510,7 @@ ShallowWrapper {
                     "rendered": " GET STARTED",
                     "type": "button",
                   },
-                  "type": "a",
+                  "type": [Function],
                 },
               ],
               "type": "div",

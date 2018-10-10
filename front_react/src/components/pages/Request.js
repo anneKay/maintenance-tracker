@@ -29,7 +29,7 @@ class Request extends Component {
         <div className="details">
           <h2 id="details"> Request Details </h2>
         </div>
-        <Card>
+        <Card id="request-card">
           <Card.Content>
             <Card.Header>{request.request.length > 0 && request.request[0].title}</Card.Header>
             <Card.Description>
@@ -54,7 +54,7 @@ class Request extends Component {
             <div>
               <Button onClick={() => { this.deleteAction(history.location.pathname.substring(9), history); }} basic color="red">
             Delete
-              </Button>
+                </Button>
             </div>
           </Card.Content>
         </Card>

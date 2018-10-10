@@ -60,15 +60,15 @@ export const setToken = (user) => {
   }
 };
 
-export const logoutUser = () => {
+export const logoutUser = (browserHistory) => {
+  browserHistory.push('/login');
   localStorage.clear();
-  history.push('/login');
 };
 
 export const setCurrentUser = () => {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
-  if (token) {
+  if (token || token !== 'undefined') {
     try {
       const { exp } = jwtDecode(token);
       const currentTime = Math.floor(Date.now() / 1000);

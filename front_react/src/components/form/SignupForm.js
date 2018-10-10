@@ -20,7 +20,7 @@ class SignupForm extends React.Component {
 onChange = (event) => {
   const { data } = this.state;
   this.setState({
-    ddata: {
+    data: {
       ...data,
       [event.target.name]: event.target.value,
     },
@@ -64,7 +64,7 @@ render() {
         <div className="login">
           <h3>
             Already a User?
-            <Link to="/login">Login</Link>
+            <Link to="/login"> Login</Link>
           </h3>
         </div>
       </main>

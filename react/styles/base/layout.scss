@@ -48,39 +48,6 @@ div.new-request{
     margin: 10% 4% -8% 45%;
     font-family: cursive;
   }
-  .card{
-    //box-shadow: 2px 0 8px $drop-shadow-color;
-  }
-  .ui.card {
-    width: 30%;
-    margin: 10% auto;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);;
-    .content{
-      .header, .description{
-        margin-left: 1em
-
-      }
-    }
-  }
-  .ui.card .meta {
-    margin: 1em 1em 0em 1em;
-  }
-  .ui.green.button{
-    margin-bottom: 1em;
-    margin-left: 5%;
-    width: 90%;
-    padding: 0.5em;
-    margin-top: 1em;
-    font-size: 1.5rem;
-  }
-  .ui.red.button {
-    width: 90%;
-    margin-left: 5%;
-    padding: 0.5em;
-    font-size: 1.5rem;
-    margin-bottom: 0.5em;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
-  }
   #create{
     background:green;
     color: white;
@@ -270,10 +237,6 @@ div.new-request{
        font-family: 'Times New Roman', Times, serif;
        font-size: 20px;
       }
-      // .details{
-      //   margin: 2% 40%;
-      //   font-family: cursive;
-      // }
       #details-admin {
           background: #eee;
           margin: -1.2em 8em;
@@ -295,7 +258,7 @@ div.new-request{
 
   #dashboard{
     width: 100%;
-    background: teal;
+    background:rgb(14, 66, 36);
     color:white;
     height:auto;
     padding:1em 0em 1em 5em;
@@ -368,6 +331,14 @@ div.new-request{
           width:76px;
           height: 60px;
     }
+    #user-reqs {
+      font-size: 1.2rem;
+      font-family: cursive;
+      color:  teal;
+      width: 40%;
+      margin: 0.5em auto;
+      padding: 0.5em;
+    }
     .user-container {
       margin-right: auto;
         margin-left: auto;
@@ -433,7 +404,7 @@ div.new-request{
       }
       #dashboard{
         width: 100%;
-        background: rgb(51, 45, 45);
+        background: rgb(14, 66, 36);
         color:white;
         display: block;
         text-align: center;
@@ -449,8 +420,8 @@ div.new-request{
         padding-top: 2em;
         margin-bottom: -0.5em;
         margin-left: auto;
-      margin-right: auto;
-      width: 8em
+        margin-right: auto;
+        width: 8em
       }
       section.copyright{
         padding-bottom: 1em;

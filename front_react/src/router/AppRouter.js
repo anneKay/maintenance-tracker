@@ -11,6 +11,7 @@ import { setCurrentUser } from '../helpers/helper';
 import Request from '../components/pages/Request';
 import EditRequest from '../components/pages/EditRequest';
 import Admin from '../components/pages/Admin';
+import Logout from '../components/pages/Logout';
 
 setCurrentUser();
 const AppRouter = () => (
@@ -25,6 +26,7 @@ const AppRouter = () => (
         <Route exact path="/request/:id" component={Request} />
         <Route exact path="/edit/:id" component={EditRequest} />
         <Route path="/admin" component={Admin} />
+        <Route path="/logout" component={Logout} />
       </Switch>
     </BrowserRouter>
   </Provider>
