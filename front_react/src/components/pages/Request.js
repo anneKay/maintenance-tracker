@@ -27,7 +27,7 @@ class Request extends Component {
       <div>
         <Header className="header-primary profile" pathOne="/" navThree="Report Issue" pathTwo="/logout" pathThree="/" navOne="Home" navTwo="logout" />
         <div className="details">
-          <h2 id="details"> Request Details </h2>
+          <h2 id="req-title"> Request Details </h2>
         </div>
         <Card id="request-card">
           <Card.Content>
