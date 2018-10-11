@@ -10,22 +10,35 @@ import admin from '../../actions/adminActions';
 
 
 export class AdminPage extends Component {
+  state = {
+    allRequests: [],
+  }
+
   componentDidMount() {
     const { requests } = this.props;
-    requests();
+    requests()
+      .then((allRequests) => {
+        this.setState({
+          allRequests: allRequests.data.allRequests,
+        });
+      });
   }
 
   performAction = (event, reqId) => {
     const { adminAction, requests } = this.props;
     const { value } = event.target;
     adminAction(reqId, value);
-    requests();
+    requests()
+      .then((allRequests) => {
+        this.setState({
+          allRequests: allRequests.data.allRequests,
+        });
+      });
   }
 
   render() {
-    const { allrequests, adminResponse } = this.props;
-    const requests = allrequests.allRequests;
-    console.log('screensize', window.screen.width);
+    const { adminResponse } = this.props;
+    const { allRequests } = this.state;
     return (
       <div>
         <Header headerName="Admin" className="header-primary" pathname="/admin" pathTwo="/" pathThree="/logout" navTwo="Home" navThree="logout" />
@@ -39,8 +52,8 @@ export class AdminPage extends Component {
             <div className=" container">
               <h3 id="user-reqs">List Of Requests</h3>
               <hr />
-              {adminResponse.message.length > 0 && <Message success>{`${adminResponse.message}, reload page to continue`}</Message>}
-              {allrequests && requests ? requests.map(request => (
+              {adminResponse.message.length > 0 && <Message success compact>{`${adminResponse.message}`}</Message>}
+              {allRequests.length > 0 ? allRequests.map(request => (
                 <div key={request.id} id="profile-card">
                   <Card>
                     <Card.Content>
@@ -74,7 +87,6 @@ export class AdminPage extends Component {
 AdminPage.propTypes = {
   requests: PropTypes.shape({
   }).isRequired,
-  allrequests: PropTypes.func.isRequired,
   adminAction: PropTypes.func.isRequired,
   adminResponse: PropTypes.shape({
   }).isRequired,

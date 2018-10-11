@@ -6,8 +6,23 @@ import { allrequests, adminResponse } from '../../../__mocks__/mockData';
 
 describe('Admin component rendering', () => {
   const sinonSpy = sinon.spy();
+  const state = {
+    allRequests: [],
+  };
+  const data = {
+    request: [{
+      title: 'title',
+      description: 'description',
+      requestType: 'requestType',
+    }],
+  };
+  const requests = () => {
+    const promise = new Promise(resolve => resolve(data));
+    state.allRequests = data;
+    return promise;
+  };
   const props = {
-    requests: jest.fn(),
+    requests,
     adminAction: jest.fn(),
     allrequests,
     adminResponse,

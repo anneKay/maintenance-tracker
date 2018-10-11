@@ -3,16 +3,6 @@
   margin: 0 auto;
   width: 80%;
  }
-//  .ui.buttons{
-//   .button:first-child {
-//     background: rgb(14, 126, 79);
-//     color: white
-//   }
-//   .button:first-child:hover {
-//     background: rgb(118, 180, 118)
-//   }
-
-//  }
 
  div.description {
   overflow: hidden;
@@ -48,15 +38,28 @@
     
      }
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1439px) {
     .card {
       box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
       max-width: 30%;
       margin-top: 2em;
       margin-left: 2em;
       float: left;
-     
     }
+    .ui.buttons{
+      font-size: 1rem;
+      max-width: 60%;
+      margin: 0em auto;
+      .button:first-child {
+        background: rgb(14, 126, 79);
+        color: white
+      }
+      .button:first-child:hover {
+        background: rgb(118, 180, 118)
+      }
+    
+     }
+    
   }
   @media (min-width: 1024px) and (max-width: 1439px){
     .card {
@@ -80,10 +83,18 @@
     
      }
   }
-  @media (max-width: 320px) {
+  @media (max-width: 321px) {
+    .card {
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+      max-width: 90%;
+      width: 20em;
+      margin: 1em auto;
+      // margin-top: 2em;
+      // margin-left: 1em;
+    }
     div.header {
     font-size: 1rem;
-    margin-left: 0.5em;
+    margin-bottom: 1em;
     }
     #card-header {
       margin-bottom: unset;
@@ -91,6 +102,19 @@
     .description {
       margin-top: -.5em;
     }
+    .ui.buttons{
+      font-size: 1rem;
+      max-width: 60%;
+      margin: 0em auto;
+      .button:first-child {
+        background: rgb(14, 126, 79);
+        color: white
+      }
+      .button:first-child:hover {
+        background: rgb(118, 180, 118)
+      }
+    
+     }
   }
 }
 
