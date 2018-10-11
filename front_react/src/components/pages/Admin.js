@@ -25,7 +25,6 @@ export class AdminPage extends Component {
   render() {
     const { allrequests, adminResponse } = this.props;
     const requests = allrequests.allRequests;
-    console.log('screensize', window.screen.width);
     return (
       <div>
         <Header headerName="Admin" className="header-primary" pathname="/admin" pathTwo="/" pathThree="/logout" navTwo="Home" navThree="logout" />
