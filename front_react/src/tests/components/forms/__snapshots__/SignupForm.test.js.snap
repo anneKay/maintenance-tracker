@@ -107,12 +107,12 @@ ShallowWrapper {
           className="login"
         >
           <h3>
-            Already a User? 
+            Already a User?
             <Link
               replace={false}
               to="/login"
             >
-              Login
+               Login
             </Link>
           </h3>
         </div>
@@ -210,12 +210,12 @@ ShallowWrapper {
             className="login"
           >
             <h3>
-              Already a User? 
+              Already a User?
               <Link
                 replace={false}
                 to="/login"
               >
-                Login
+                 Login
               </Link>
             </h3>
           </div>,
@@ -624,12 +624,12 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": <h3>
-              Already a User? 
+              Already a User?
               <Link
                 replace={false}
                 to="/login"
               >
-                Login
+                 Login
               </Link>
             </h3>,
             "className": "login",
@@ -641,29 +641,29 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": Array [
-                "Already a User? ",
+                "Already a User?",
                 <Link
                   replace={false}
                   to="/login"
                 >
-                  Login
+                   Login
                 </Link>,
               ],
             },
             "ref": null,
             "rendered": Array [
-              "Already a User? ",
+              "Already a User?",
               Object {
                 "instance": null,
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "children": "Login",
+                  "children": " Login",
                   "replace": false,
                   "to": "/login",
                 },
                 "ref": null,
-                "rendered": "Login",
+                "rendered": " Login",
                 "type": [Function],
               },
             ],
@@ -768,12 +768,12 @@ ShallowWrapper {
             className="login"
           >
             <h3>
-              Already a User? 
+              Already a User?
               <Link
                 replace={false}
                 to="/login"
               >
-                Login
+                 Login
               </Link>
             </h3>
           </div>
@@ -871,12 +871,12 @@ ShallowWrapper {
               className="login"
             >
               <h3>
-                Already a User? 
+                Already a User?
                 <Link
                   replace={false}
                   to="/login"
                 >
-                  Login
+                   Login
                 </Link>
               </h3>
             </div>,
@@ -1285,12 +1285,12 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": <h3>
-                Already a User? 
+                Already a User?
                 <Link
                   replace={false}
                   to="/login"
                 >
-                  Login
+                   Login
                 </Link>
               </h3>,
               "className": "login",
@@ -1302,29 +1302,29 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": Array [
-                  "Already a User? ",
+                  "Already a User?",
                   <Link
                     replace={false}
                     to="/login"
                   >
-                    Login
+                     Login
                   </Link>,
                 ],
               },
               "ref": null,
               "rendered": Array [
-                "Already a User? ",
+                "Already a User?",
                 Object {
                   "instance": null,
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": "Login",
+                    "children": " Login",
                     "replace": false,
                     "to": "/login",
                   },
                   "ref": null,
-                  "rendered": "Login",
+                  "rendered": " Login",
                   "type": [Function],
                 },
               ],

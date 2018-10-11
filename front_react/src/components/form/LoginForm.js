@@ -51,7 +51,7 @@ render() {
   return (
     <div>
       <main>
-        {error && <Message negative>{error}</Message>}
+        {Object.keys(error).length > 0 && <Message negative>{error}</Message>}
         <Form onSubmit={this.onSubmit}>
           {FormField('text', 'email', this.onChange, data.email, 'Enter email address', 'Email:', errors.email)}
           {FormField('password', 'password', this.onChange, data.password, 'Enter your password', 'Password:', errors.password)}
@@ -60,7 +60,7 @@ render() {
         <div className="signup">
           <h3>
             New to Maintenance Tracker?
-            <Link to="/signup">Sign Up</Link>
+            <Link to="/signup"> Sign Up</Link>
           </h3>
         </div>
       </main>

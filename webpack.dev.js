@@ -4,6 +4,7 @@ module.exports = {
   entry: './front_react/index.js',
   output: {
     path: path.join(__dirname, 'public'),
+    publicPath: '/',
     filename: 'bundle.js',
   },
   mode: 'development',

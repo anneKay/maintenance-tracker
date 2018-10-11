@@ -8,8 +8,8 @@ import createReqAction from '../../actions/postRequest';
 
 export class CreateReq extends React.Component {
   submit = (data, requestType, history) => {
-    const { createReq } = this.props;
-    createReq(data.title, data.description, requestType, history);
+    const { createReqAction } = this.props;
+    createReqAction(data.title, data.description, requestType, history);
     return data;
   }
 
@@ -21,7 +21,7 @@ export class CreateReq extends React.Component {
         <main className="container">
           <h2 id="new-request">Place New Request</h2>
           <div className="form-container new-request">
-            <SendRequest submit={this.submit} history={history}/>
+            <SendRequest submit={this.submit} history={history} />
           </div>
         </main>
       </div>
@@ -30,7 +30,7 @@ export class CreateReq extends React.Component {
 }
 
 CreateReq.propTypes = {
-  createReq: PropTypes.func.isRequired,
+  createReqAction: PropTypes.func.isRequired,
   history: PropTypes.shape({
   }).isRequired,
 };
@@ -42,6 +42,6 @@ export const mapStateToProps = ({ createReqReducer }) => {
 };
 
 const mapActionToProps = {
-  createReq: createReqAction,
+  createReqAction,
 };
 export default connect(mapStateToProps, mapActionToProps)(CreateReq);

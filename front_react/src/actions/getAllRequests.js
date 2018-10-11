@@ -25,6 +25,7 @@ export const getUserRequests = () => dispatch => APIGET('/users/requests')
 
 export const getSingleRequest = requestId => dispatch => APIGET(`/users/requests/${requestId}`)
   .then((request) => {
+    console.log('>>>>>', requestId);
     dispatch({
       type: GET_SINGLE_REQUEST_SUCCESS,
       payload: request.data.request,

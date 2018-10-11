@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import history from '../../history';
 
 const LandingPage = () => (
   <div>
@@ -13,7 +13,7 @@ const LandingPage = () => (
       navOne="Contact"
       navTwo="Login"
       navThree="Signup"
-      pathname={history.location.pathname}
+      pathname="/"
     />
     <main>
       <section className="body-section">
@@ -24,7 +24,7 @@ const LandingPage = () => (
           <h3>Repair, Maintain and Monitor </h3>
           <h3>your machineries with just one click</h3>
 
-          <a href="../html/signup.html"><button className="" type="button" name="button"> GET STARTED</button></a>
+          <Link to="/signup"><button className="" type="button" name="button"> GET STARTED</button></Link>
         </div>
       </section>
     </main>
