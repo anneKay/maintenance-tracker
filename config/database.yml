@@ -1,0 +1,16 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: maintenance_tracker
+  pool: 2
+  POSTGRES_USER: 'nwannakalu'
+  POSTGRES_PASSWORD: ''
+  POSTGRES_HOST: 'localhost'
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: maintenance_tracker
+  pool: 2
+  username: your_username
+  password: your_password
