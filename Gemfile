@@ -14,3 +14,5 @@ gem 'sinatra-activerecord'
 gem 'rake'
 gem 'pry'
 
+# load environment variables
+gem 'dotenv'

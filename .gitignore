@@ -23,6 +23,10 @@ coverage
 # nyc test coverage
 .nyc_output
 
+# Ignore OSx generated files
+.DS_Store
+.idea
+.vscode
 
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
@@ -50,8 +54,9 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-env
+# env environment variables file
+.env
+config/application.yml
 
 **/package-lock.json
 **/package-lock.json.1714970623

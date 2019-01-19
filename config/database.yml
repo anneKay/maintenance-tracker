@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: maintenance_tracker
   pool: 2
-  POSTGRES_USER: 'nwannakalu'
+  POSTGRES_USER: ''
   POSTGRES_PASSWORD: ''
   POSTGRES_HOST: 'localhost'
 
