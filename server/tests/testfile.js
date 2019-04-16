@@ -2,8 +2,8 @@
 
 import expect from 'expect';
 import request from 'supertest';
-import app from "../app";
-import { generateToken } from "../helpers/auth";
+import app from '../app';
+import { generateToken } from '../helpers/auth';
 
 const user = {
   id: 2,
@@ -216,7 +216,7 @@ describe('GET /api/v2/requests', () => {
     request(app)
       .get('/api/v2/requests')
       .expect(401)
-      .expect((res) => {
+      .expect(() => {
       })
       .end(done);
   });

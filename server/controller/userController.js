@@ -74,6 +74,14 @@ export const signinUser = (req, res) => {
       });
     });
 };
+
+export const webhook = (req, res) => {
+  console.log('am getting called', res);
+  res.status(200).send({
+    success: 'am sucesful',
+  });
+};
+
 const validateUserInput = (req, res) => {
   const validatedUser = validUser(req.body);
   if (!validatedUser) {

@@ -4,7 +4,7 @@ import express from 'express'
 const dbrouter = express.Router();
 
 import {createRequest, getAllRequests, getRequestById, modifyRequest, approveRequest, resolveRequest, disapproveRequest, getUserRequests, resetRequest, deleteRequest} from './../controller/requestController'
-import { signupUser, signinUser } from './../controller/userController'
+import { signupUser, signinUser, webhook } from './../controller/userController'
 import authenticateUser from './../middleware/auth'
 import isEmailUnique from './../middleware/checkEmail';
 import requestExists from './../middleware/requestExists';
@@ -16,6 +16,9 @@ import checkForAdmin from '../middleware/userAdmin';
 dbrouter.post('/auth/signup', validateSignup, isEmailUnique, signupUser);
 
 dbrouter.post('/auth/login', signinUser);
+
+dbrouter.head('/webhook_receiver', webhook);
+dbrouter.post('/webhook_receiver', webhook);
 
 // user requests
 dbrouter.post('/users/requests', authenticateUser, createRequest);
