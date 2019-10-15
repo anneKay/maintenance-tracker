@@ -27,6 +27,7 @@ app.use(bodyParser.urlencoded({
 
 const port = process.env.PORT || 3000;
 
+
 app.use('/api/v2', dbroutes);
 app.use('', express.static('ui'));
 app.use('', express.static('api_doc'));
