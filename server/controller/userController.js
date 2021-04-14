@@ -21,7 +21,7 @@ export const signupUser = (req, res) => {
         id, name, email, admin, created_at,
       } = result.rows[0];
       return res.status(201).header({
-        authentication: token,
+        Authorization: token,
       }).send({
         message: `Welcome to maintenance tracker, ${result.rows[0].name}`,
         user: {
@@ -60,7 +60,7 @@ export const signinUser = (req, res) => {
       } = result.rows[0];
       const token = generateToken(result.rows[0]);
       res.status(200).header({
-        authentication: token,
+        Authorization: token,
       }).send({
         message: `Welcome back, ${result.rows[0].name}`,
         user: {

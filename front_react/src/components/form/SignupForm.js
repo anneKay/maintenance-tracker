@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import validator from 'validator';
 import PropTypes from 'prop-types';
@@ -51,9 +51,11 @@ onSubmit = () => {
 
 render() {
   const { data, errors } = this.state;
+  const { error } = this.props;
   return (
     <div>
       <main>
+        {error && <Message negative>{error}</Message>}
         <Form onSubmit={this.onSubmit}>
           {FormField('text', 'name', this.onChange, data.name, 'Full name', 'Name', errors.name)}
           {FormField('text', 'email', this.onChange, data.email, 'Enter email address', 'Email:', errors.email)}

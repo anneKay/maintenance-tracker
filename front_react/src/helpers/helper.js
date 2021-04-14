@@ -7,7 +7,7 @@ import store from '../store/store';
 import { setUser } from '../actions/login';
 import history from '../history';
 
-const BASE_URL = 'https://mtracker-nwanna.herokuapp.com/api/v2';
+const BASE_URL = '/api/v2';
 
 export const APIPOST = (body, path) => axios.post(`${BASE_URL}${path}`, body, {
 });
@@ -53,7 +53,7 @@ export const secButtonText = (request) => {
 
 export const setToken = (user) => {
   if (user && user.headers) {
-    localStorage.setItem('token', user.headers.authentication);
+    localStorage.setItem('token', user.headers.authorization);
     localStorage.setItem('user', JSON.stringify(user.data.user));
     const token = localStorage.getItem('token');
     axios.defaults.headers.common.Authentication = token;

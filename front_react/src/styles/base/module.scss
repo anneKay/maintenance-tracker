@@ -35,6 +35,8 @@ section.body-section > div.container{
     background: rgb(58, 100, 58);
     color: white;
     margin-bottom: 4em;
+    height: 65px;
+
 }
 #login-header a {
     color: white;
@@ -83,7 +85,6 @@ img.logo-bg{
 		}
 
 .pagination {
-	
 	margin-left: auto;
 	margin-right: auto;
 	width: 14em;
@@ -91,7 +92,6 @@ img.logo-bg{
     display: none;
 
 }
-
 
 	.pagination a {
 		color: black;
@@ -270,7 +270,6 @@ ul a {
     color:black;
 }
 
-	
  h3.new-request{
      background: green;
 	 float: right;
@@ -281,7 +280,6 @@ ul a {
 	 margin-top:20px;
      padding: 0.6em;
      text-align: center;
-
  }
 
 	div.form-container {
@@ -292,6 +290,9 @@ ul a {
 		padding: 2em 5em;
 		margin-bottom: 2em;
 	}
+    div.form-auth {
+        margin-top: 40px;
+    }
 
 
  ul h3.new-request:hover{

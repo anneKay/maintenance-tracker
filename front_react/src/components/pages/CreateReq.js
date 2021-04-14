@@ -17,7 +17,7 @@ export class CreateReq extends React.Component {
     const { history } = this.props;
     return (
       <div>
-        <Header id="login-header" className="header-primary profile" pathOne="/" pathTwo="/create" pathThree="/logout" navOne="Home" navTwo="Report Issue" navThree="log Out" />
+        <Header id="login-header" className="header-primary profile" pathOne="/" pathTwo="/create" pathThree="/logout" navOne="Home" navTwo="Report Issue" navThree="logout" />
         <main className="container">
           <h2 id="new-request">Place New Request</h2>
           <div className="form-container new-request">

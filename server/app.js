@@ -8,8 +8,12 @@ import dbroutes from './routes/dbroutes';
 
 
 const app = express();
+const corsOptions = {
+  exposedHeaders: 'Authorization',
+};
 
-app.use(cors());
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
@@ -20,7 +24,7 @@ app.use(bodyParser.urlencoded({
 const port = process.env.PORT || 4000;
 
 app.use('/api/v2', dbroutes);
-//app.use('', express.static('ui'));
+// app.use('', express.static('ui'));
 app.use(express.static('public'));
 app.use('', express.static('api_doc'));
 

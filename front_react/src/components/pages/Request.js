@@ -21,6 +21,13 @@ class Request extends Component {
     deleteReq(history.location.pathname.substring(9), history);
   }
 
+  confirmDelete() {
+    const confirmBox = window.confirm('Do you really want to delete this request?')
+    if (confirmBox === true) {
+      this.deleteAction();
+    }
+  }
+
   render() {
     const { request, history } = this.props;
     return (
@@ -46,15 +53,14 @@ class Request extends Component {
             <div>
               <Link to={`/edit/${history.location.pathname.substring(9)}`}>
                 <Button basic color="green" animated="fade">
-                  <Button.Content visible>Edit</Button.Content>
-                  <Button.Content hidden>click to edit</Button.Content>
+                  <Button.Content>Edit</Button.Content>
                 </Button>
               </Link>
             </div>
             <div>
-              <Button onClick={() => { this.deleteAction(history.location.pathname.substring(9), history); }} basic color="red">
+              <Button onClick={() => { this.confirmDelete(); }} basic color="red">
             Delete
-                </Button>
+              </Button>
             </div>
           </Card.Content>
         </Card>

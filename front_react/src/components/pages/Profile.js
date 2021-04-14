@@ -24,7 +24,8 @@ export class Profile extends Component {
             <div className="request req-layout">
               {requests.requests.length > 0 ? <h2 id="req-header"> Request List  </h2> : <h2 id="req-header"> No Requests Yet  </h2>}
               <Link to="/create">
-                <input className="pull-right-sm" type="button" value="Add Request" id="create" />
+                {/* <input className="pull-right-sm" type="button" value="Add Request" id="create" /> */}
+                <button type="submit" className="add-request pull-right-sm">Add Request</button>
               </Link>
             </div>
             <div className="req-container">

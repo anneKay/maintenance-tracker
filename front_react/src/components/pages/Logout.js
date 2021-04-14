@@ -4,9 +4,7 @@ import { logoutUser } from '../../helpers/helper';
 
 const LogoutUser = ({ history }) => (
   <div>
-    {/* {logoutUser(history)} */}
-    {console.log('here')}
-    <div> this is a test</div>
+    {logoutUser(history)}
   </div>
 );
 

@@ -13,7 +13,7 @@ export class Signup extends Component {
   }
 
   render() {
-    const { history } = this.props;
+    const { history, error } = this.props;
     return (
       <div>
         <Header
@@ -28,8 +28,8 @@ export class Signup extends Component {
           pathname="/signup"
         />
         <div className="container">
-          <div className="form-container">
-            <SignupForm submit={this.submit} history={history} />
+          <div className="form-container form-auth">
+            <SignupForm submit={this.submit} error={error} history={history} />
           </div>
         </div>
       </div>

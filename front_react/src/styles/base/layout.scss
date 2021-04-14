@@ -47,8 +47,8 @@ div.new-request{
     //box-shadow: 2px 0 8px $drop-shadow-color;
   }
   .ui.card {
-    width: 30%;
-    margin: 10% auto;
+    // width: 30%;
+    margin: 20px auto;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);;
     .content{
       .header, .description{
@@ -86,7 +86,7 @@ div.new-request{
   }
   #new-request{
     font-family: cursive;
-    color: rgb(63, 99, 198);
+    color: #3a643a;
     margin-left: 25%;
     padding-top:0.5em;
    
@@ -106,7 +106,6 @@ div.new-request{
       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
     }
     request-layout{
-       
         width: 31.33%;
         padding-left: 2em;     
     }
@@ -308,6 +307,7 @@ div.new-request{
           margin-left: auto;
           margin-right: auto;
           display: block;
+          margin-bottom: 15px;
       }
   
       .btn-primary{

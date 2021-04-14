@@ -29,7 +29,7 @@ render() {
         pathname="/login"
       />
       <main className="container">
-        <div className="form-container">
+        <div className="form-container form-auth">
           <UserForm
             submit={this.submit}
             error={error}
@@ -45,7 +45,7 @@ render() {
 LoginPage.propTypes = {
   login: PropTypes.func.isRequired,
   history: PropTypes.shape({}).isRequired,
-  error: PropTypes.shape({}).isRequired,
+  error: PropTypes.shape({}),
 };
 
 export const mapStateToProps = ({ signupReducer }) => {
