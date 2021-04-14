@@ -50,9 +50,6 @@ var usersignup = document.getElementById('signupuser').addEventListener('submit'
 
 
 function signUp(name, email, password){
-  
-  
-  console.log(`${name} ${email} ${password}`);
 
   return fetch('https://mtracker-nwanna.herokuapp.com/api/v2/auth/signup', {
       method: 'POST',

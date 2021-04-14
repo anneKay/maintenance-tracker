@@ -56,7 +56,6 @@ function login(email, password){
 
 
 function jsonResponse(res) {
-  console.log(res);
        if (res.status == 200 || res.status == 201) {
         
          var authentication = res.headers.get("authentication");
