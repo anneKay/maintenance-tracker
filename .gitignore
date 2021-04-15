@@ -53,3 +53,5 @@ typings/
 
 **/package-lock.json
 **/package-lock.json.1714970623
+npm-debug.log
+.DS_Store
