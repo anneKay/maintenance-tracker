@@ -23,6 +23,9 @@
     "setup-tables": "babel-node --presets=es2015 server/database/setupTables.js",
     "seed-admin": "babel-node --presets=es2015 server/database/seedAdmin.js"
   },
+  "engines": {
+    "node": "8.9.4"
+  },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/front_react/src/tests/testSetup.js",
     "moduleNameMapper": {
