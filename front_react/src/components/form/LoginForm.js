@@ -7,7 +7,6 @@ import FormField from './InputFormField';
 
 class UserForm extends React.Component {
     state = {
-      loading: false,
       data: {
         email: '',
         password: '',
@@ -23,6 +22,7 @@ onChange = (event) => {
       [event.target.name]: event.target.value,
     },
     errors: {},
+    loading: false,
   });
 }
 

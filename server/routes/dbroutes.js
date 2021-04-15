@@ -1,10 +1,11 @@
 //imports from libraries and local files
 
-import express from 'express'
+import express from 'express';
+
 const dbrouter = express.Router();
 
 import {createRequest, getAllRequests, getRequestById, modifyRequest, approveRequest, resolveRequest, disapproveRequest, getUserRequests, resetRequest, deleteRequest} from './../controller/requestController'
-import { signupUser, signinUser, webhook } from './../controller/userController'
+import { signupUser, signinUser } from './../controller/userController'
 import authenticateUser from './../middleware/auth'
 import isEmailUnique from './../middleware/checkEmail';
 import requestExists from './../middleware/requestExists';
@@ -17,9 +18,6 @@ dbrouter.post('/auth/signup', validateSignup, isEmailUnique, signupUser);
 
 dbrouter.post('/auth/login', signinUser);
 
-dbrouter.head('/webhook_receiver', webhook);
-dbrouter.post('/webhook_receiver', webhook);
-
 // user requests
 dbrouter.post('/users/requests', authenticateUser, createRequest);
 
@@ -30,7 +28,7 @@ dbrouter.get('/users/requests/:requestId', authenticateUser, requestExists, getR
 dbrouter.put('/users/requests/:requestId', authenticateUser, requestExists, modifyRequest);
 dbrouter.delete('/users/requests/:requestId', authenticateUser, requestExists, deleteRequest);
 
-//admin routes
+// admin routes
 dbrouter.get('/requests', authenticateUser, checkForAdmin, getAllRequests);
 
 dbrouter.put('/requests/:requestId/approve', authenticateUser, checkForAdmin, requestExists, approveRequest);

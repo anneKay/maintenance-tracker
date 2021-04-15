@@ -6,7 +6,6 @@ import path from 'path';
 import cors from 'cors';
 import dbroutes from './routes/dbroutes';
 
-
 const app = express();
 const corsOptions = {
   exposedHeaders: 'Authorization',
